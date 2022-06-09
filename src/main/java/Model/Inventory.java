@@ -14,14 +14,14 @@ import Model.product.*;
 public class Inventory {
 	List <Product> products_in_inventory = new ArrayList <Product>();
 	
-	public void add_product (Product product) {
+	public void addProduct (Product product) {
 		products_in_inventory.add(product);
 	}
 	
-	public void remove_product_id (int id) {
+	public void removeProductId (int id) {
 		
-		if(this.check_if_there_is_only_one_element_in_the_list()) {
-			this.remove_first_product();
+		if(this.checkIfThereIsOnlyOneElementInTheList()) {
+			this.removeFirstProduct();
 		} else {
 			for(Product p: products_in_inventory) {
 				System.out.println("ID: " + p.getId());
@@ -32,7 +32,7 @@ public class Inventory {
 		}
 	}
 	
-	private boolean check_if_there_is_only_one_element_in_the_list () {
+	private boolean checkIfThereIsOnlyOneElementInTheList () {
 		if(products_in_inventory.size() == 1) {
 			return true;
 		} else {
@@ -41,11 +41,11 @@ public class Inventory {
 	}
 	
 	
-	private void remove_first_product () {
+	private void removeFirstProduct () {
 		this.products_in_inventory.remove(0);
 	}
 
-	public void edit_product_amount (int id, int new_amount) {
+	public void editProductAmount (int id, int new_amount) {
 		for(Product p: products_in_inventory) {
 			if(p.getId() == id) {
 				p.setAmount(new_amount);
@@ -53,7 +53,7 @@ public class Inventory {
 		}
 	}
 
-	public void edit_product_price (int id, double new_price) {
+	public void editProductPrice (int id, double new_price) {
 		for(Product p: products_in_inventory) {
 			if(p.getId() == id) {
 				p.setPrice(new_price);
@@ -61,14 +61,14 @@ public class Inventory {
 		}
 	}
 	
-	public void inventory_print () {
+	public void inventoryPrint () {
 		for(Product p: products_in_inventory) {
 			System.out.println("Name: " + p.getName() + " ID: " + p.getId() +
 			" Price: " + p.getPrice() + " Amount: " + p.getAmount());
 		}
 	}
 
-	public boolean check_empty_list() {
+	public boolean checkEmptyList() {
 		if(products_in_inventory.size() == 0) {
 			return true;
 		} else {

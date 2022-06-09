@@ -32,71 +32,71 @@ public class Testmain {
 		int option;
 		int id;
 		do { 
-				 print_menu();
-			     option = keyboard.nextInt();		     
-			     switch (option) {
-			     case 1:
-			    	 	System.out.println("Nome do produto: ");
-						name = keyboard.next();
+                    print_menu();
+		    option = keyboard.nextInt();		     
+		    switch (option) {
+			case 1:
+			    System.out.println("Nome do produto: ");
+                            name = keyboard.next();
 
-						System.out.println("Preco do produto: ");
-						price = keyboard.nextDouble();
-						clearBuffer(keyboard);
+                            System.out.println("Preco do produto: ");
+                            price = keyboard.nextDouble();
+                            clearBuffer(keyboard);
 						
 						
-						System.out.println("Quantidade do produto: ");
-						amount = keyboard.nextInt();
-						clearBuffer(keyboard);
+                            System.out.println("Quantidade do produto: ");
+                            amount = keyboard.nextInt();
+                            clearBuffer(keyboard);
 						
-						Product p = new Product(name, price, amount);
+                            Product p = new Product(name, price, amount);
 						
-						funcionario.inventory.add_product(p);
-				 break;
+                            funcionario.inventory.addProduct(p);
+                            break;
 					
-			     case 2:
-			    	 	System.out.println("1) Editar quantidade");
-			    	 	System.out.println("2) Editar preco");
-			    	 	System.out.println("3) Sair");
+                        case 2:
+			    System.out.println("1) Editar quantidade");
+			    System.out.println("2) Editar preco");
+			    System.out.println("3) Sair");
 			  
-			    	 		int option2 = keyboard.nextInt();
-			    	 		switch (option2) {
-			    	 		case 1:
-			    	 			System.out.println("Informe o ID: ");
-			    	 			id = keyboard.nextInt();
-			    	 			clearBuffer(keyboard);
-			    	 			System.out.println("Informe a quantidade: ");
-			    	 			amount = keyboard.nextInt();
-			    	 			clearBuffer(keyboard);
-			    	 			funcionario.inventory.edit_product_amount(id, amount);
-			    	 		break;
+			    int option2 = keyboard.nextInt();
+			    switch (option2) {
+			    	case 1:
+                                    System.out.println("Informe o ID: ");
+                                    id = keyboard.nextInt();
+                                    clearBuffer(keyboard);
+                                    System.out.println("Informe a quantidade: ");
+                                    amount = keyboard.nextInt();
+                                    clearBuffer(keyboard);
+                                    funcionario.inventory.editProductAmount(id, amount);
+                                    break;
 			    	 		
-			    	 		case 2:
-			    	 			System.out.println("Informe o ID: ");
-			    	 			id = keyboard.nextInt();
-			    	 			clearBuffer(keyboard);
-			    	 			System.out.println("Informe o preco: ");
-			    	 			price = keyboard.nextInt();
-			    	 			clearBuffer(keyboard);
-			    	 			funcionario.inventory.edit_product_price(id, price);
-			    	 		break; 
-			    	 		}
-			     break;
+			    	case 2:
+                                    System.out.println("Informe o ID: ");
+                                    id = keyboard.nextInt();
+                                    clearBuffer(keyboard);
+                                    System.out.println("Informe o preco: ");
+                                    price = keyboard.nextInt();
+                                    clearBuffer(keyboard);
+                                    funcionario.inventory.editProductPrice(id, price);
+                                    break; 
+			    }
+			    break;
 			     
-			     case 3:
-			    	 funcionario.inventory.inventory_print();
-			    	 System.out.println("Informe o ID do produto");
-			    	 id = keyboard.nextInt();
-			    	 clearBuffer(keyboard);
-			    	 funcionario.inventory.remove_product_id(id);
-			     break;
+			    case 3:
+                                funcionario.inventory.inventoryPrint();
+			    	System.out.println("Informe o ID do produto");
+			    	id = keyboard.nextInt();
+			    	clearBuffer(keyboard);
+			    	funcionario.inventory.removeProductId(id);
+                                break;
 			     
-			     case 4:
-			    	 System.out.println("Imprimir todos os produtos");
-			    	 funcionario.inventory.inventory_print();
-			     break;
-			     }
-			} while(option != 5);
-}	
+			    case 4:
+			    	System.out.println("Imprimir todos os produtos");
+			    	funcionario.inventory.inventoryPrint();
+                                break;
+                    }
+		} while(option != 5);
+        }	
 	
 	private static void print_menu() {
 		System.out.println("Escolha uma opção \n");
@@ -109,7 +109,7 @@ public class Testmain {
 	
 	private static void clearBuffer(Scanner scanner) {
 		if (scanner.hasNextLine()) {
-				scanner.nextLine();
+                    scanner.nextLine();
 		}
 	}
 }
