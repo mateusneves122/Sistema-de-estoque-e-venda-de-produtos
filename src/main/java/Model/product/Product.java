@@ -2,34 +2,47 @@ package Model.product;
 
 public class Product {
 	
-	private float price; 
+	private double price; 
 	private String name; 
-	private Integer code;
+	private static int code = 0;
+	private int amount;
+	private int id;
 	
-	public Product (Float price, String name, Integer code) {
+	public Product (String name, double price, int amount) {
 		this.price = price;
 		this.name = name;
-		this.code = code;
+		this.code++;
+		this.id = code;
+		this.amount = amount;
 	}
 	
-	String getName () {
+	public String getName () {
 		return this.name;
 	}
 	
-	float getPrice () {
+	public double getPrice () {
 		return this.price;
 	}
 
-	Integer getCode () {
+	public int getCode () {
 		return this.code;
 	}
-
-	void setName (String name) {
-		this.name = name;
+	
+	public int getId () {
+		return this.id;
 	}
 	
-	void setPrice (float price) {
+	public int getAmount () {
+		return this.amount;
+	}
+	
+	public void setPrice (double price) {
 		this.price = price;
 	}
+	
+	public void setAmount (int value) {
+		this.amount = value;
+	}
 
+	
 }
