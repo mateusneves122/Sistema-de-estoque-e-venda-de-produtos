@@ -22,12 +22,15 @@ public class Inventory {
 		
 		if(this.checkIfThereIsOnlyOneElementInTheList()) {
 			this.removeFirstProduct();
-		} else {
-			for(Product p: products_in_inventory) {
-				System.out.println("ID: " + p.getId());
-				if(p.getId() == id) {
-					products_in_inventory.remove(p);
-				}
+		} else if(!this.products_in_inventory.isEmpty()){
+                        Product p;
+			for(int i=0; i<products_in_inventory.size(); i++) {
+                            p = products_in_inventory.get(i);
+                            System.out.println("ID: " + p.getId());
+                            if(p.getId() == id) {
+                                products_in_inventory.remove(p);
+                                break;
+                            }
 			}
 		}
 	}
@@ -68,11 +71,5 @@ public class Inventory {
 		}
 	}
 
-	public boolean checkEmptyList() {
-		if(products_in_inventory.size() == 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	
 }
