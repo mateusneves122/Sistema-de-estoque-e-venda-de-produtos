@@ -53,7 +53,7 @@ public class Login extends JFrame {
     private void configuraLogin() {
         int size = 15;
         JPanel jpLogin = new JPanel();
-        jpLogin.setSize(300,900);
+        jpLogin.setSize(300,600);
         jpLogin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         
         jpLogin.add(new JLabel("Nome"));
