@@ -10,9 +10,21 @@ import Model.People;
 public class Employee extends People {
 
 	public static Inventory inventory;
+        private String password;
+        private boolean admin;
 	
-	public Employee(String name, String cpf) {
+	public Employee(String name, String cpf, String password) {
 		super(name, cpf);
 		this.inventory = new Inventory();
+                this.password = password;
 	}
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+        
 }

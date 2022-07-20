@@ -4,8 +4,11 @@
  */
 package View;
 
+import Controller.LoginEntrar.Entrar;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -41,28 +44,38 @@ public class Login extends JFrame {
     }
     
     private void configuraJanela() {
-        this.setSize(1280, 720);
+        this.setSize(320, 120);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         this.tela = new JPanel();
         this.tela.setLayout(new BorderLayout());
-        
+        this.setLocationRelativeTo(null);
         // this.addWindowListener();
     }
     
     private void configuraLogin() {
-        int size = 15;
+        int size = 20;
         JPanel jpLogin = new JPanel();
         jpLogin.setSize(300,600);
         jpLogin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         
-        jpLogin.add(new JLabel("Nome"));
+        jpLogin.add(new JLabel("Nome "));
         tfNome = new JTextField(size);
         jpLogin.add(tfNome);
         
         jpLogin.add(new JLabel("Senha"));
         tfSenha = new JTextField(size);
         jpLogin.add(tfSenha);
+        
+        JButton btnEntrar = new JButton("Entrar");
+        btnEntrar.setPreferredSize(new Dimension(130,20));
+        btnEntrar.addActionListener(new Entrar(this));
+        
+        jpLogin.add(btnEntrar);
+        
+        JButton cadastrar = new JButton("Cadastrar");
+        cadastrar.setPreferredSize(new Dimension(130,20));
+        jpLogin.add(cadastrar);
         
         tela.add(jpLogin, BorderLayout.CENTER);
     }

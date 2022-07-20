@@ -25,7 +25,7 @@ public class Testmain {
 		System.out.println("Digite o cpf: ");
 		cpf = keyboard.next();
 		
-		Employee funcionario = new Employee(name, cpf);
+		Employee funcionario = new Employee(name, cpf, "123");
 		
 		double price;
 		int amount;
@@ -99,7 +99,7 @@ public class Testmain {
         }	
 	
 	private static void print_menu() {
-		System.out.println("Escolha uma opção \n");
+		System.out.println("Escolha uma opï¿½ï¿½o \n");
 		System.out.println("1) Adicionar produto");
 		System.out.println("2) Editar produto");
 		System.out.println("3) Remover produto");
