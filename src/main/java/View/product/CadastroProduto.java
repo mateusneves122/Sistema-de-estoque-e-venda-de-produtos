@@ -4,6 +4,7 @@
  */
 package View.product;
 
+import Controller.CadastroProdutos.SalvarProduto;
 import Model.Inventory;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -16,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -81,9 +83,10 @@ public class CadastroProduto extends JFrame {
     
     
     public CadastroProduto() {
+        this.listaProdutos = new Inventory();
         this.setTitle("Cadastro e edição de produtos");
         String[][] dataTable = {
-            {"","","",""}
+            //{"","","",""}
         };
         
         String[] columnNames = {
@@ -93,7 +96,7 @@ public class CadastroProduto extends JFrame {
             "Quantidade"
         };
         
-        this.tabela = new JTable(dataTable, columnNames) {
+        this.tabela = new JTable(new DefaultTableModel(dataTable, columnNames)) {
             @Override
             public boolean isCellEditable(int data, int columns) {
                 return false;
@@ -131,7 +134,9 @@ public class CadastroProduto extends JFrame {
         jpInsercao.add(new JLabel("Quantidade:"));
         jpInsercao.add(this.Quantidade);
         
-        jpInsercao.add(new JButton("Salvar"));
+        JButton adicionar = new JButton("Salvar");
+        adicionar.addActionListener(new SalvarProduto(this));
+        jpInsercao.add(adicionar);
         
         this.tela.add(jpInsercao, BorderLayout.NORTH);
     }

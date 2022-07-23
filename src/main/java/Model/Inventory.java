@@ -12,7 +12,7 @@ import Model.product.*;
 
 
 public class Inventory {
-	List <Product> products_in_inventory = new ArrayList <Product>();
+	List <Product> products_in_inventory = new ArrayList <>();
 	
 	public void addProduct (Product product) {
 		products_in_inventory.add(product);
