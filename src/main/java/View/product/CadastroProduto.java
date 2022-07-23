@@ -30,6 +30,56 @@ public class CadastroProduto extends JFrame {
     private JTextField preco;
     private JTextField Quantidade;
 
+    public JPanel getTela() {
+        return tela;
+    }
+
+    public void setTela(JPanel tela) {
+        this.tela = tela;
+    }
+
+    public JTable getTabela() {
+        return tabela;
+    }
+
+    public void setTabela(JTable tabela) {
+        this.tabela = tabela;
+    }
+
+    public Inventory getListaProdutos() {
+        return listaProdutos;
+    }
+
+    public void setListaProdutos(Inventory listaProdutos) {
+        this.listaProdutos = listaProdutos;
+    }
+
+    public JTextField getNome() {
+        return nome;
+    }
+
+    public void setNome(JTextField nome) {
+        this.nome = nome;
+    }
+
+    public JTextField getPreco() {
+        return preco;
+    }
+
+    public void setPreco(JTextField preco) {
+        this.preco = preco;
+    }
+
+    public JTextField getQuantidade() {
+        return Quantidade;
+    }
+
+    public void setQuantidade(JTextField Quantidade) {
+        this.Quantidade = Quantidade;
+    }
+
+    
+    
     public CadastroProduto() {
         this.setTitle("Cadastro e edição de produtos");
         String[][] dataTable = {
