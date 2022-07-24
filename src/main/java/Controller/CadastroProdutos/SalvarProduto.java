@@ -6,6 +6,7 @@ package Controller.CadastroProdutos;
 
 import Model.product.Product;
 import View.product.CadastroProduto;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
@@ -36,10 +37,20 @@ public class SalvarProduto implements ActionListener {
             model.addRow(new Object[]{produto.getId(), nome, preco, quantidade});
             
             this.tela.getTabela().setModel(model);
+            
+            tela.getNome().setText("");
+            tela.getNome().setBackground(Color.white);
+            
+            tela.getPreco().setText("");
+            tela.getPreco().setBackground(Color.white);
+            
+            tela.getQuantidade().setText("");
+            tela.getQuantidade().setBackground(Color.white);
             this.tela.repaint();
         }
         catch (NumberFormatException err) {
-            
+            tela.getPreco().setBackground(new Color(254,57,57));
+            tela.getQuantidade().setBackground(new Color(254,57,57));
         }
     }
     
