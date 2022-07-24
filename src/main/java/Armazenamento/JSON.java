@@ -21,25 +21,25 @@ public class JSON {
         return json;
     }
 
-    public static String toJSON(List<Employee> contatos) {
+    public static String toJSON(List<Employee> funcionarios) {
         Gson gson = new Gson();
-        String json = gson.toJson(contatos);
+        String json = gson.toJson(funcionarios);
         return json;
     }
     
-    public static Employee toContato(String conteudo) {
+    public static Employee toFuncionario(String conteudo) {
         Gson gson = new Gson();
         Employee contato = gson.fromJson(conteudo, Employee.class);
 
         return contato;
     }
 
-    public static List<Employee> toContatos(String conteudo) {
+    public static List<Employee> toFuncionarios(String conteudo) {
         Gson gson = new Gson();
         java.lang.reflect.Type funcionariosTipo = new TypeToken<ArrayList<Employee>>() {
         }.getType();
-        List<Employee> contatos = gson.fromJson(conteudo, funcionariosTipo);
+        List<Employee> funcionarios = gson.fromJson(conteudo, funcionariosTipo);
 
-        return contatos;
+        return funcionarios;
     }
 }

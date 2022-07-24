@@ -5,11 +5,13 @@
 package View;
 
 import Controller.LoginEntrar.Entrar;
+import Model.employee.Employee;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -21,6 +23,8 @@ public class Login extends JFrame {
     private JPanel tela;
     private JTextField tfNome;
     private JTextField tfSenha;
+    
+    private JList<Employee> funcionarios;
 
     public Login() {
     }
@@ -39,6 +43,14 @@ public class Login extends JFrame {
 
     public void setTfSenha(JTextField tfSenha) {
         this.tfSenha = tfSenha;
+    }
+
+    public JList<Employee> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(JList<Employee> funcionarios) {
+        this.funcionarios = funcionarios;
     }
     
     private void configuraJanela() {
