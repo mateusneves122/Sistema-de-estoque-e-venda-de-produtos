@@ -15,7 +15,7 @@ public class Employee extends People {
 	
 	public Employee(String name, String cpf, String password) {
 		super(name, cpf);
-		this.inventory = new Inventory();
+		inventory = new Inventory();
                 this.password = password;
 	}
 
@@ -26,5 +26,12 @@ public class Employee extends People {
     public void setPassword(String password) {
         this.password = password;
     }
-        
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 }

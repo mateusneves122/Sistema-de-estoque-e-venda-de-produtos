@@ -83,28 +83,7 @@ public class CadastroProduto extends JFrame {
     
     
     public CadastroProduto() {
-        this.listaProdutos = new Inventory();
-        this.setTitle("Cadastro e edição de produtos");
-        String[][] dataTable = {
-            //{"","","",""}
-        };
         
-        String[] columnNames = {
-            "Id",
-            "Produto",
-            "Valor Unitário",
-            "Quantidade"
-        };
-        
-        this.tabela = new JTable(new DefaultTableModel(dataTable, columnNames)) {
-            @Override
-            public boolean isCellEditable(int data, int columns) {
-                return false;
-            }
-        };
-        
-        this.tabela.setPreferredScrollableViewportSize(new Dimension(640, 480));
-        this.tabela.setFillsViewportHeight(true);
     }
     
     private void configuraJanela() {
@@ -146,6 +125,28 @@ public class CadastroProduto extends JFrame {
         JPanel jpTabela = new JPanel();
         jpTabela.setPreferredSize(new Dimension(640, 480));
         
+        this.listaProdutos = new Inventory();
+        this.setTitle("Cadastro e edição de produtos");
+        String[][] dataTable = {
+            //{"","","",""}
+        };
+        
+        String[] columnNames = {
+            "Id",
+            "Produto",
+            "Valor Unitário",
+            "Quantidade"
+        };
+        
+        this.tabela = new JTable(new DefaultTableModel(dataTable, columnNames)) {
+            @Override
+            public boolean isCellEditable(int data, int columns) {
+                return false;
+            }
+        };
+        
+        this.tabela.setPreferredScrollableViewportSize(new Dimension(640, 480));
+        this.tabela.setFillsViewportHeight(true);
         
         JScrollPane painel = new JScrollPane(this.tabela);
         jpTabela.add(painel);
