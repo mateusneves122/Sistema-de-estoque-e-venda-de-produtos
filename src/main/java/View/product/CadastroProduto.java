@@ -104,11 +104,17 @@ public class CadastroProduto extends JFrame {
         this.setSize(1280, 720);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        this.abas = new JTabbedPane();
+        
         this.telaProduto = new JPanel();
         this.telaProduto.setLayout(new BorderLayout());
         
         this.telaFuncionario = new JPanel();
         this.telaFuncionario.setLayout(new BorderLayout());
+        this.telaFuncionario.add(new JLabel("Olá!"));
+        
+        this.abas.addTab("Produtos", this.telaProduto);
+        this.abas.addTab("Funcionários", this.telaFuncionario);
         
         this.setLocationRelativeTo(null);
     }
@@ -176,7 +182,7 @@ public class CadastroProduto extends JFrame {
         //abas.addTab("Produtos", this.telaProduto);
         //abas.addTab("Funcionários", this.telaFuncionario);
         
-        this.add(this.telaProduto);
+        this.add(this.abas);
         this.setVisible(true);
     }
     
