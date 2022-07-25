@@ -11,6 +11,9 @@ public class Product {
 	private static int code = 0;
 	private int amount;
 	private int id;
+        
+        private String descricao;
+        private String tipo;
 	
 	public Product (String name, double price, int amount) {
 		this.price = price;
@@ -47,6 +50,22 @@ public class Product {
 	public void setAmount (int value) {
 		this.amount = value;
 	}
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
 	
 }

@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -22,7 +23,7 @@ import javax.swing.JTextField;
 public class Login extends JFrame {
     private JPanel tela;
     private JTextField tfNome;
-    private JTextField tfSenha;
+    private JPasswordField tfSenha;
     
     private JList<Employee> funcionarios;
 
@@ -37,11 +38,11 @@ public class Login extends JFrame {
         this.tfNome = tfNome;
     }
 
-    public JTextField getTfSenha() {
+    public JPasswordField getTfSenha() {
         return tfSenha;
     }
 
-    public void setTfSenha(JTextField tfSenha) {
+    public void setTfSenha(JPasswordField tfSenha) {
         this.tfSenha = tfSenha;
     }
 
@@ -74,7 +75,7 @@ public class Login extends JFrame {
         jpLogin.add(tfNome);
         
         jpLogin.add(new JLabel("Senha"));
-        tfSenha = new JTextField(size);
+        tfSenha = new JPasswordField(size);
         jpLogin.add(tfSenha);
         
         JButton btnEntrar = new JButton("Entrar");

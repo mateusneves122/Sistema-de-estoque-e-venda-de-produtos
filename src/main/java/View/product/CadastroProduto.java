@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -24,20 +25,32 @@ import javax.swing.table.DefaultTableModel;
  * @author yanfo
  */
 public class CadastroProduto extends JFrame {
-    private JPanel tela;
+    JTabbedPane abas;
+    
+    private JPanel telaProduto;
     private JTable tabela;
     private Inventory listaProdutos;
     
     private JTextField nome;
     private JTextField preco;
     private JTextField Quantidade;
+    
+    private JPanel telaFuncionario;
 
-    public JPanel getTela() {
-        return tela;
+    public JPanel getTelaFuncionario() {
+        return telaFuncionario;
     }
 
-    public void setTela(JPanel tela) {
-        this.tela = tela;
+    public void setTelaFuncionario(JPanel telaFuncionario) {
+        this.telaFuncionario = telaFuncionario;
+    }
+
+    public JPanel getTelaProduto() {
+        return telaProduto;
+    }
+
+    public void setTelaProduto(JPanel tela) {
+        this.telaProduto = tela;
     }
 
     public JTable getTabela() {
@@ -90,8 +103,12 @@ public class CadastroProduto extends JFrame {
         this.setSize(1280, 720);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        this.tela = new JPanel();
-        this.tela.setLayout(new BorderLayout());
+        this.telaProduto = new JPanel();
+        this.telaProduto.setLayout(new BorderLayout());
+        
+        this.telaFuncionario = new JPanel();
+        this.telaFuncionario.setLayout(new BorderLayout());
+        
         this.setLocationRelativeTo(null);
     }
     
@@ -117,7 +134,7 @@ public class CadastroProduto extends JFrame {
         adicionar.addActionListener(new SalvarProduto(this));
         jpInsercao.add(adicionar);
         
-        this.tela.add(jpInsercao, BorderLayout.NORTH);
+        this.telaProduto.add(jpInsercao, BorderLayout.NORTH);
     }
     
     // TODO: realizar a inserção dos dados
@@ -151,11 +168,14 @@ public class CadastroProduto extends JFrame {
         JScrollPane painel = new JScrollPane(this.tabela);
         jpTabela.add(painel);
         
-        this.tela.add(jpTabela, BorderLayout.WEST);
+        this.telaProduto.add(jpTabela, BorderLayout.WEST);
     }
     
     public void mostraTela() {
-        this.add(this.tela);
+        //abas.addTab("Produtos", this.telaProduto);
+        //abas.addTab("Funcionários", this.telaFuncionario);
+        
+        this.add(this.telaProduto);
         this.setVisible(true);
     }
     
