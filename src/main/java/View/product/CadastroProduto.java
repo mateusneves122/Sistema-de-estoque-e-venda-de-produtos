@@ -37,6 +37,7 @@ public class CadastroProduto extends JFrame {
     
     private JPanel telaFuncionario;
 
+    //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
     public JPanel getTelaFuncionario() {
         return telaFuncionario;
     }
@@ -93,7 +94,7 @@ public class CadastroProduto extends JFrame {
         this.Quantidade = Quantidade;
     }
 
-    
+    //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
     
     public CadastroProduto() {
         
