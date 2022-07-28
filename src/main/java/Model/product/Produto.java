@@ -5,51 +5,51 @@
 package Model.product;
 
 public class Produto {
-	
-	private double preco; 
-	private String name; 
-	private static int codigo = 0;
-	private int quantidade;
-	private int id;
-        
-        private String descricao;
-        private String tipo;
-	
-	public Produto (String nome, double preco, int quantidade) {
-		this.preco = preco;
-		this.name = nome;
-		this.codigo++;
-		this.id = codigo;
-		this.quantidade = quantidade;
-	}
-	
-	public String getName () {
-		return this.name;
-	}
-	
-	public double getPreco () {
-		return this.preco;
-	}
 
-	public int getCodigo () {
-		return this.codigo;
-	}
-	
-	public int getId () {
-		return this.id;
-	}
-	
-	public int getQuantidade () {
-		return this.quantidade;
-	}
-	
-	public void setPreco (double preco) {
-		this.preco = preco;
-	}
-	
-	public void setQuantidade (int value) {
-		this.quantidade = value;
-	}
+    private double preco;
+    private String nome;
+    private static int codigo = 0;
+    private int quantidade;
+    private int id;
+
+    private String descricao;
+    private String tipo;
+
+    public Produto(String nome, double preco, int quantidade) {
+        this.preco = preco;
+        this.nome = nome;
+        this.codigo++;
+        this.id = codigo;
+        this.quantidade = quantidade;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public double getPreco() {
+        return this.preco;
+    }
+
+    public int getCodigo() {
+        return this.codigo;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public int getQuantidade() {
+        return this.quantidade;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public void setQuantidade(int value) {
+        this.quantidade = value;
+    }
 
     public String getDescricao() {
         return descricao;
@@ -67,5 +67,4 @@ public class Produto {
         this.tipo = tipo;
     }
 
-	
 }

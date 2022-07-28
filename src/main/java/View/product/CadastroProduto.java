@@ -4,12 +4,12 @@
  */
 package View.product;
 
+import Controller.CadastroProdutos.ExcluirProduto;
 import Controller.CadastroProdutos.SalvarProduto;
 import Model.Estoque;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,14 +28,15 @@ public class CadastroProduto extends JFrame {
     JTabbedPane abas;
     
     private JPanel telaProduto;
-    private JTable tabela;
+    private JTable tabelaProdutos;
     private Estoque listaProdutos;
     
-    private JTextField nome;
+    private JTextField nomeProduto;
     private JTextField preco;
     private JTextField Quantidade;
     
     private JPanel telaFuncionario;
+    private JTable tabelaFuncionarios;
 
     //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
     public JPanel getTelaFuncionario() {
@@ -46,6 +47,14 @@ public class CadastroProduto extends JFrame {
         this.telaFuncionario = telaFuncionario;
     }
 
+    public JTable getTabelaFuncionarios() {
+        return tabelaFuncionarios;
+    }
+
+    public void setTabelaFuncionarios(JTable tabelaFuncionarios) {
+        this.tabelaFuncionarios = tabelaFuncionarios;
+    }
+
     public JPanel getTelaProduto() {
         return telaProduto;
     }
@@ -54,12 +63,12 @@ public class CadastroProduto extends JFrame {
         this.telaProduto = tela;
     }
 
-    public JTable getTabela() {
-        return tabela;
+    public JTable getTabelaProdutos() {
+        return tabelaProdutos;
     }
 
-    public void setTabela(JTable tabela) {
-        this.tabela = tabela;
+    public void setTabelaProdutos(JTable tabelaProdutos) {
+        this.tabelaProdutos = tabelaProdutos;
     }
 
     public Estoque getListaProdutos() {
@@ -70,12 +79,12 @@ public class CadastroProduto extends JFrame {
         this.listaProdutos = listaProdutos;
     }
 
-    public JTextField getNome() {
-        return nome;
+    public JTextField getNomeProduto() {
+        return nomeProduto;
     }
 
-    public void setNome(JTextField nome) {
-        this.nome = nome;
+    public void setNomeProduto(JTextField nomeProduto) {
+        this.nomeProduto = nomeProduto;
     }
 
     public JTextField getPreco() {
@@ -97,7 +106,7 @@ public class CadastroProduto extends JFrame {
     //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
     
     public CadastroProduto() {
-        
+        this.listaProdutos = new Estoque();
     }
     
     private void configuraJanela() {
@@ -119,19 +128,19 @@ public class CadastroProduto extends JFrame {
         this.setLocationRelativeTo(null);
     }
     
-    private void configuraInsercao() {
+    private void configuraInsercaoProduto() {
         int size = 15;
         JPanel jpInsercao = new JPanel();
         jpInsercao.setPreferredSize(new Dimension(1280,240));
         
-        this.nome = new JTextField(size);
+        this.nomeProduto = new JTextField(size);
         this.preco = new JTextField(size);
         this.Quantidade = new JTextField(size);
         
         
         
         jpInsercao.add(new JLabel("Nome:"));
-        jpInsercao.add(this.nome);
+        jpInsercao.add(this.nomeProduto);
         jpInsercao.add(new JLabel("Preço:"));
         jpInsercao.add(this.preco);
         jpInsercao.add(new JLabel("Quantidade:"));
@@ -141,15 +150,16 @@ public class CadastroProduto extends JFrame {
         adicionar.addActionListener(new SalvarProduto(this));
         jpInsercao.add(adicionar);
         
+        
+        
         this.telaProduto.add(jpInsercao, BorderLayout.NORTH);
     }
     
     // TODO: realizar a inserção dos dados
-    private void configuraPlanilha() {
+    private void configuraPlanilhaProdutos() {
         JPanel jpTabela = new JPanel();
         jpTabela.setPreferredSize(new Dimension(640, 480));
         
-        this.listaProdutos = new Estoque();
         this.setTitle("Cadastro e edição de produtos");
         String[][] dataTable = {
             //{"","","",""}
@@ -162,34 +172,44 @@ public class CadastroProduto extends JFrame {
             "Quantidade"
         };
         
-        this.tabela = new JTable(new DefaultTableModel(dataTable, columnNames)) {
+        this.tabelaProdutos = new JTable(new DefaultTableModel(dataTable, columnNames)) {
             @Override
             public boolean isCellEditable(int data, int columns) {
                 return false;
             }
         };
         
-        this.tabela.setPreferredScrollableViewportSize(new Dimension(640, 480));
-        this.tabela.setFillsViewportHeight(true);
+        this.tabelaProdutos.setPreferredScrollableViewportSize(new Dimension(640, 480));
+        this.tabelaProdutos.setFillsViewportHeight(true);
         
-        JScrollPane painel = new JScrollPane(this.tabela);
+        JScrollPane painel = new JScrollPane(this.tabelaProdutos);
         jpTabela.add(painel);
         
         this.telaProduto.add(jpTabela, BorderLayout.WEST);
     }
     
-    public void mostraTela() {
-        //abas.addTab("Produtos", this.telaProduto);
-        //abas.addTab("Funcionários", this.telaFuncionario);
+    private void configuraTelaDetalhes() {
+        JPanel jpDetalhes = new JPanel();
+        jpDetalhes.setPreferredSize(new Dimension(620,480));
+        jpDetalhes.setBorder(BorderFactory.createTitledBorder("Detalhes"));
         
+        JButton remove = new JButton("Remover");
+        remove.addActionListener(new ExcluirProduto(this));
+        jpDetalhes.add(remove);
+        
+        this.telaProduto.add(jpDetalhes, BorderLayout.EAST);
+    }
+    
+    public void mostraTela() {
         this.add(this.abas);
         this.setVisible(true);
     }
     
     public void montaTela() {
         configuraJanela();
-        configuraInsercao();
-        configuraPlanilha();
+        configuraInsercaoProduto();
+        configuraPlanilhaProdutos();
+        configuraTelaDetalhes();
         mostraTela();
     }
     

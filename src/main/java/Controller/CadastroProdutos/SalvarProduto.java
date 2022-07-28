@@ -24,7 +24,7 @@ public class SalvarProduto implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String nome = this.tela.getNome().getText();
+        String nome = this.tela.getNomeProduto().getText();
         try {
             double preco = toDouble(this.tela.getPreco().getText());
             int quantidade = toInt(this.tela.getQuantidade().getText());
@@ -32,13 +32,13 @@ public class SalvarProduto implements ActionListener {
             tela.getListaProdutos().addProduct(produto);
             
             
-            DefaultTableModel model = (DefaultTableModel) this.tela.getTabela().getModel();
+            DefaultTableModel model = (DefaultTableModel) this.tela.getTabelaProdutos().getModel();
             model.addRow(new Object[]{produto.getId(), nome, preco, quantidade});
             
-            this.tela.getTabela().setModel(model);
+            this.tela.getTabelaProdutos().setModel(model);
             
-            tela.getNome().setText("");
-            tela.getNome().setBackground(Color.white);
+            tela.getNomeProduto().setText("");
+            tela.getNomeProduto().setBackground(Color.white);
             
             tela.getPreco().setText("");
             tela.getPreco().setBackground(Color.white);
