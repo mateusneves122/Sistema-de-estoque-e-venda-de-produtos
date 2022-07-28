@@ -7,8 +7,8 @@ package Model;
 
 import java.util.Scanner;
 
-import Model.product.Product;
-import Model.employee.Employee;
+import Model.product.Produto;
+import Model.employee.Funcionario;
 import Model.*;
 
 public class Testmain {
@@ -25,7 +25,7 @@ public class Testmain {
 		System.out.println("Digite o cpf: ");
 		cpf = keyboard.next();
 		
-		Employee funcionario = new Employee(name, cpf, "123");
+		Funcionario funcionario = new Funcionario(name, cpf, "123");
 		
 		double price;
 		int amount;
@@ -48,9 +48,9 @@ public class Testmain {
                             amount = keyboard.nextInt();
                             clearBuffer(keyboard);
 						
-                            Product p = new Product(name, price, amount);
+                            Produto p = new Produto(name, price, amount);
 						
-                            funcionario.inventory.addProduct(p);
+                            funcionario.estoque.addProduct(p);
                             break;
 					
                         case 2:
@@ -67,7 +67,7 @@ public class Testmain {
                                     System.out.println("Informe a quantidade: ");
                                     amount = keyboard.nextInt();
                                     clearBuffer(keyboard);
-                                    funcionario.inventory.editProductAmount(id, amount);
+                                    funcionario.estoque.editProductAmount(id, amount);
                                     break;
 			    	 		
 			    	case 2:
@@ -77,22 +77,22 @@ public class Testmain {
                                     System.out.println("Informe o preco: ");
                                     price = keyboard.nextInt();
                                     clearBuffer(keyboard);
-                                    funcionario.inventory.editProductPrice(id, price);
+                                    funcionario.estoque.editProductPrice(id, price);
                                     break; 
 			    }
 			    break;
 			     
 			    case 3:
-                                funcionario.inventory.inventoryPrint();
+                                funcionario.estoque.inventoryPrint();
 			    	System.out.println("Informe o ID do produto");
 			    	id = keyboard.nextInt();
 			    	clearBuffer(keyboard);
-			    	funcionario.inventory.removeProductId(id);
+			    	funcionario.estoque.removeProductId(id);
                                 break;
 			     
 			    case 4:
 			    	System.out.println("Imprimir todos os produtos");
-			    	funcionario.inventory.inventoryPrint();
+			    	funcionario.estoque.inventoryPrint();
                                 break;
                     }
 		} while(option != 5);

@@ -4,7 +4,7 @@
  */
 package Controller.LoginEntrar;
 
-import Model.employee.Employee;
+import Model.employee.Funcionario;
 import View.Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,15 +24,15 @@ public class Entrar implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        List<Employee> funcionarios = new ArrayList<>();
-        funcionarios.add(new Employee("Mateus","33333333333", "1234"));
-        funcionarios.add(new Employee("Denis","55555555555", "1234"));
+        List<Funcionario> funcionarios = new ArrayList<>();
+        funcionarios.add(new Funcionario("Mateus","33333333333", "1234"));
+        funcionarios.add(new Funcionario("Denis","55555555555", "1234"));
         
         String nome = tela.getTfNome().getText();
         String senha = tela.getTfSenha().getText();
         
-        for(Employee i : funcionarios) {
-            if(nome.equals(i.getName()) && senha.equals(i.getPassword())) {
+        for(Funcionario i : funcionarios) {
+            if(nome.equals(i.getNome()) && senha.equals(i.getSenha())) {
                 System.out.println("Logou");
             }
         }

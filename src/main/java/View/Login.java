@@ -5,7 +5,7 @@
 package View;
 
 import Controller.LoginEntrar.Entrar;
-import Model.employee.Employee;
+import Model.employee.Funcionario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JButton;
@@ -25,7 +25,7 @@ public class Login extends JFrame {
     private JTextField tfNome;
     private JPasswordField tfSenha;
     
-    private JList<Employee> funcionarios;
+    private JList<Funcionario> funcionarios;
 
     public Login() {
     }
@@ -46,11 +46,11 @@ public class Login extends JFrame {
         this.tfSenha = tfSenha;
     }
 
-    public JList<Employee> getFuncionarios() {
+    public JList<Funcionario> getFuncionarios() {
         return funcionarios;
     }
 
-    public void setFuncionarios(JList<Employee> funcionarios) {
+    public void setFuncionarios(JList<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
     

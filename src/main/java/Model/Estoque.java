@@ -11,24 +11,24 @@ import Model.product.*;
 
 
 
-public class Inventory {
-	List <Product> products_in_inventory = new ArrayList <>();
+public class Estoque {
+	List <Produto> produtosEmEstoque = new ArrayList <>();
 	
-	public void addProduct (Product product) {
-		products_in_inventory.add(product);
+	public void addProduct (Produto product) {
+		produtosEmEstoque.add(product);
 	}
 	
 	public void removeProductId (int id) {
 		
 		if(this.checkIfThereIsOnlyOneElementInTheList()) {
 			this.removeFirstProduct();
-		} else if(!this.products_in_inventory.isEmpty()){
-                        Product p;
-			for(int i=0; i<products_in_inventory.size(); i++) {
-                            p = products_in_inventory.get(i);
+		} else if(!this.produtosEmEstoque.isEmpty()){
+                        Produto p;
+			for(int i=0; i<produtosEmEstoque.size(); i++) {
+                            p = produtosEmEstoque.get(i);
                             System.out.println("ID: " + p.getId());
                             if(p.getId() == id) {
-                                products_in_inventory.remove(p);
+                                produtosEmEstoque.remove(p);
                                 break;
                             }
 			}
@@ -36,7 +36,7 @@ public class Inventory {
 	}
 	
 	private boolean checkIfThereIsOnlyOneElementInTheList () {
-		if(products_in_inventory.size() == 1) {
+		if(produtosEmEstoque.size() == 1) {
 			return true;
 		} else {
 			return false;
@@ -45,29 +45,29 @@ public class Inventory {
 	
 	
 	private void removeFirstProduct () {
-		this.products_in_inventory.remove(0);
+		this.produtosEmEstoque.remove(0);
 	}
 
 	public void editProductAmount (int id, int new_amount) {
-		for(Product p: products_in_inventory) {
+		for(Produto p: produtosEmEstoque) {
 			if(p.getId() == id) {
-				p.setAmount(new_amount);
+				p.setQuantidade(new_amount);
 			}
 		}
 	}
 
 	public void editProductPrice (int id, double new_price) {
-		for(Product p: products_in_inventory) {
+		for(Produto p: produtosEmEstoque) {
 			if(p.getId() == id) {
-				p.setPrice(new_price);
+				p.setPreco(new_price);
 			}
 		}
 	}
 	
 	public void inventoryPrint () {
-		for(Product p: products_in_inventory) {
+		for(Produto p: produtosEmEstoque) {
 			System.out.println("Name: " + p.getName() + " ID: " + p.getId() +
-			" Price: " + p.getPrice() + " Amount: " + p.getAmount());
+			" Price: " + p.getPreco() + " Amount: " + p.getQuantidade());
 		}
 	}
 

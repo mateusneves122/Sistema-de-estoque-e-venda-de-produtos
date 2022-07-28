@@ -4,33 +4,33 @@
 
 package Model;
 
-public abstract class People {
+public abstract class Pessoa {
 
-	protected String name;
+	protected String nome;
 	protected String cpf;
 	
-	public People (String name, String cpf) {
-		this.name = name;
+	public Pessoa (String nome, String cpf) {
+		this.nome = nome;
 		this.cpf = cpf;
 	}
 
-	public String getName() {
-		return this.name;
+	public String getNome() {
+		return this.nome;
 	}
 
 	public String getCpf() {
 		return this.cpf;
 	}
 	
-	protected void setName(String name) {
-		this.name = name;
+	protected void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	protected void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	protected boolean check_cpf_size(String cpf) {
+	protected boolean validaCpf(String cpf) {
 		if(cpf.length() == 11)
 			return true;
 		 else 

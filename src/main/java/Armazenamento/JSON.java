@@ -4,7 +4,7 @@
  */
 package Armazenamento;
 
-import Model.employee.Employee;
+import Model.employee.Funcionario;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
@@ -15,30 +15,30 @@ import java.util.List;
  * @author yanfo
  */
 public class JSON {
-    public static String toJSON(Employee funcionario) {
+    public static String toJSON(Funcionario funcionario) {
         Gson gson = new Gson();
         String json = gson.toJson(funcionario);
         return json;
     }
 
-    public static String toJSON(List<Employee> funcionarios) {
+    public static String toJSON(List<Funcionario> funcionarios) {
         Gson gson = new Gson();
         String json = gson.toJson(funcionarios);
         return json;
     }
     
-    public static Employee toFuncionario(String conteudo) {
+    public static Funcionario toFuncionario(String conteudo) {
         Gson gson = new Gson();
-        Employee contato = gson.fromJson(conteudo, Employee.class);
+        Funcionario contato = gson.fromJson(conteudo, Funcionario.class);
 
         return contato;
     }
 
-    public static List<Employee> toFuncionarios(String conteudo) {
+    public static List<Funcionario> toFuncionarios(String conteudo) {
         Gson gson = new Gson();
-        java.lang.reflect.Type funcionariosTipo = new TypeToken<ArrayList<Employee>>() {
+        java.lang.reflect.Type funcionariosTipo = new TypeToken<ArrayList<Funcionario>>() {
         }.getType();
-        List<Employee> funcionarios = gson.fromJson(conteudo, funcionariosTipo);
+        List<Funcionario> funcionarios = gson.fromJson(conteudo, funcionariosTipo);
 
         return funcionarios;
     }

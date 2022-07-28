@@ -4,51 +4,51 @@
 
 package Model.product;
 
-public class Product {
+public class Produto {
 	
-	private double price; 
+	private double preco; 
 	private String name; 
-	private static int code = 0;
-	private int amount;
+	private static int codigo = 0;
+	private int quantidade;
 	private int id;
         
         private String descricao;
         private String tipo;
 	
-	public Product (String name, double price, int amount) {
-		this.price = price;
-		this.name = name;
-		this.code++;
-		this.id = code;
-		this.amount = amount;
+	public Produto (String nome, double preco, int quantidade) {
+		this.preco = preco;
+		this.name = nome;
+		this.codigo++;
+		this.id = codigo;
+		this.quantidade = quantidade;
 	}
 	
 	public String getName () {
 		return this.name;
 	}
 	
-	public double getPrice () {
-		return this.price;
+	public double getPreco () {
+		return this.preco;
 	}
 
-	public int getCode () {
-		return this.code;
+	public int getCodigo () {
+		return this.codigo;
 	}
 	
 	public int getId () {
 		return this.id;
 	}
 	
-	public int getAmount () {
-		return this.amount;
+	public int getQuantidade () {
+		return this.quantidade;
 	}
 	
-	public void setPrice (double price) {
-		this.price = price;
+	public void setPreco (double preco) {
+		this.preco = preco;
 	}
 	
-	public void setAmount (int value) {
-		this.amount = value;
+	public void setQuantidade (int value) {
+		this.quantidade = value;
 	}
 
     public String getDescricao() {

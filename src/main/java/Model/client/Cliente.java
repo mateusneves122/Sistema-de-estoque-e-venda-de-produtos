@@ -4,11 +4,11 @@
 
 package Model.client;
 
-import Model.People;
+import Model.Pessoa;
 
-public class Client extends People {
+public class Cliente extends Pessoa {
 
-	public Client (String name, String cpf) {
-		super(name, cpf);
+	public Cliente (String nome, String cpf) {
+		super(nome, cpf);
 	}
 }

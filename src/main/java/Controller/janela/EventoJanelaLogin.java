@@ -6,7 +6,7 @@ package Controller.janela;
 
 import Armazenamento.Arquivo;
 import Armazenamento.JSON;
-import Model.employee.Employee;
+import Model.employee.Funcionario;
 import View.Login;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -29,11 +29,11 @@ public class EventoJanelaLogin implements WindowListener {
     public void windowOpened(WindowEvent e) {
         try {
             String lerArquivo = Arquivo.lerArquivo("dados");
-            List<Employee> contatos = JSON.toFuncionarios(lerArquivo);
+            List<Funcionario> contatos = JSON.toFuncionarios(lerArquivo);
             
-            DefaultListModel<Employee> modelo = new DefaultListModel<>();
+            DefaultListModel<Funcionario> modelo = new DefaultListModel<>();
             
-            for (Employee contato : contatos) {
+            for (Funcionario contato : contatos) {
                 modelo.addElement(contato);
             }
             // Editar aqui

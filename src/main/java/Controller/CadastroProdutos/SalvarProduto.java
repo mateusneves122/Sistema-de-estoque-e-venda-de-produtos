@@ -4,7 +4,7 @@
  */
 package Controller.CadastroProdutos;
 
-import Model.product.Product;
+import Model.product.Produto;
 import View.product.CadastroProduto;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -28,7 +28,7 @@ public class SalvarProduto implements ActionListener {
         try {
             double preco = toDouble(this.tela.getPreco().getText());
             int quantidade = toInt(this.tela.getQuantidade().getText());
-            Product produto = new Product(nome, preco, quantidade);
+            Produto produto = new Produto(nome, preco, quantidade);
             tela.getListaProdutos().addProduct(produto);
             
             

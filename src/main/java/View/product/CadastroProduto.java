@@ -5,7 +5,7 @@
 package View.product;
 
 import Controller.CadastroProdutos.SalvarProduto;
-import Model.Inventory;
+import Model.Estoque;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -29,7 +29,7 @@ public class CadastroProduto extends JFrame {
     
     private JPanel telaProduto;
     private JTable tabela;
-    private Inventory listaProdutos;
+    private Estoque listaProdutos;
     
     private JTextField nome;
     private JTextField preco;
@@ -62,11 +62,11 @@ public class CadastroProduto extends JFrame {
         this.tabela = tabela;
     }
 
-    public Inventory getListaProdutos() {
+    public Estoque getListaProdutos() {
         return listaProdutos;
     }
 
-    public void setListaProdutos(Inventory listaProdutos) {
+    public void setListaProdutos(Estoque listaProdutos) {
         this.listaProdutos = listaProdutos;
     }
 
@@ -149,7 +149,7 @@ public class CadastroProduto extends JFrame {
         JPanel jpTabela = new JPanel();
         jpTabela.setPreferredSize(new Dimension(640, 480));
         
-        this.listaProdutos = new Inventory();
+        this.listaProdutos = new Estoque();
         this.setTitle("Cadastro e edição de produtos");
         String[][] dataTable = {
             //{"","","",""}
