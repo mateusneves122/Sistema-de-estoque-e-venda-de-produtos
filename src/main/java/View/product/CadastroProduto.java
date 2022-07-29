@@ -39,6 +39,10 @@ public class CadastroProduto extends JFrame {
     private JTextField Quantidade;
     private JTextArea descricao;
     private JComboBox tipoProduto;
+    private JComboBox unidadeMedida;
+    private JTextField pesoVolume;
+    private JTextField fornecedor;
+    private JTextField localizacao;
     
     private JPanel telaFuncionario;
     private JTable tabelaFuncionarios;
@@ -132,9 +136,40 @@ public class CadastroProduto extends JFrame {
     public void setTabelaFuncionarios(JTable tabelaFuncionarios) {
         this.tabelaFuncionarios = tabelaFuncionarios;
     }
-    
-    
 
+    public JComboBox getUnidadeMedida() {
+        return unidadeMedida;
+    }
+
+    public void setUnidadeMedida(JComboBox unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
+    }
+
+    public JTextField getPesoVolume() {
+        return pesoVolume;
+    }
+
+    public void setPesoVolume(JTextField pesoVolume) {
+        this.pesoVolume = pesoVolume;
+    }
+
+    public JTextField getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(JTextField fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public JTextField getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(JTextField localizacao) {
+        this.localizacao = localizacao;
+    }
+
+    
     //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
     
     public CadastroProduto() {
@@ -164,38 +199,64 @@ public class CadastroProduto extends JFrame {
     private void configuraInsercaoProduto() {
         int size = 10;
         JPanel jpInsercao = new JPanel();
+        JPanel esquerda = new JPanel();
+        JPanel direita = new JPanel();
         jpInsercao.setPreferredSize(new Dimension(1280,240));
+        esquerda.setPreferredSize(new Dimension(960,240));
+        direita.setPreferredSize(new Dimension(320,240));
+        
+        jpInsercao.setLayout(new BorderLayout());
         
         this.nomeProduto = new JTextField(size);
         this.preco = new JTextField(size);
         this.Quantidade = new JTextField(size);
         
         
-        jpInsercao.add(new JLabel("Nome:"));
-        jpInsercao.add(this.nomeProduto);
-        jpInsercao.add(new JLabel("Preço:"));
-        jpInsercao.add(this.preco);
-        jpInsercao.add(new JLabel("Quantidade:"));
-        jpInsercao.add(this.Quantidade);
-        
-        this.descricao = new JTextArea();
-        this.descricao.setPreferredSize(new Dimension(120,150));
-        this.descricao.setBorder(BorderFactory.createTitledBorder("Descrição"));
-        jpInsercao.add(this.descricao);
+        esquerda.add(new JLabel("Nome:"));
+        esquerda.add(this.nomeProduto);
+        esquerda.add(new JLabel("Preço:"));
+        esquerda.add(this.preco);
+        esquerda.add(new JLabel("Quantidade:"));
+        esquerda.add(this.Quantidade);
         
         String[] tipos = {"Alimento", "Material", "Fármaco", "Eletrônico"};
         this.tipoProduto = new JComboBox(tipos);
         this.tipoProduto.setSelectedIndex(0);
-        jpInsercao.add(new JLabel("Tipo:"));
-        jpInsercao.add(this.tipoProduto);
+        esquerda.add(new JLabel("Tipo:"));
+        esquerda.add(this.tipoProduto);
         
-        JButton adicionar = new JButton("Salvar");
+        esquerda.add(new JLabel("Peso/Volume:"));
+        this.pesoVolume = new JTextField(size);
+        esquerda.add(this.pesoVolume);
+        
+        String[] uniMedida = {"(---)","Kg","g","mg","L","ml"};
+        this.unidadeMedida = new JComboBox(uniMedida);
+        this.unidadeMedida.setSelectedIndex(0);
+        esquerda.add(this.unidadeMedida);
+        
+        esquerda.add(new JLabel("Fornecedor:"));
+        this.fornecedor = new JTextField(size);
+        esquerda.add(this.fornecedor);
+        
+        esquerda.add(new JLabel("Localização no estoque:"));
+        this.localizacao = new JTextField(size);
+        esquerda.add(this.localizacao);
+        
+        this.descricao = new JTextArea();
+        this.descricao.setPreferredSize(new Dimension(240,150));
+        this.descricao.setBorder(BorderFactory.createTitledBorder("Descrição"));
+        direita.add(this.descricao);
+        
+        JButton adicionar = new JButton("Adicionar");
         adicionar.addActionListener(new SalvarProduto(this));
-        jpInsercao.add(adicionar);
+        esquerda.add(adicionar);
         
         //this.atualizar.addActionListener();
         this.atualizar.setEnabled(false);
-        jpInsercao.add(this.atualizar);
+        esquerda.add(this.atualizar);
+        
+        jpInsercao.add(esquerda, BorderLayout.WEST);
+        jpInsercao.add(direita, BorderLayout.EAST);
         
         this.telaProduto.add(jpInsercao, BorderLayout.NORTH);
     }

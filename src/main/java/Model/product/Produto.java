@@ -15,6 +15,10 @@ public class Produto {
     private String descricao;
     private String tipo;
     private String localizacaoNoEstoque;
+    private String fornecedor;
+    
+    private double pesoVolume;
+    private String unidadeMedida;
 
     public Produto(String nome, double preco, int quantidade) {
         this.preco = preco;
@@ -77,4 +81,29 @@ public class Produto {
         this.localizacaoNoEstoque = localizacaoNoEstoque;
     }
 
+    public String getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(String fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public double getPesoVolume() {
+        return pesoVolume;
+    }
+
+    public void setPesoVolume(double pesoVolume) {
+        this.pesoVolume = pesoVolume;
+    }
+
+    public String getUnidadeMedida() {
+        return unidadeMedida;
+    }
+
+    public void setUnidadeMedida(String unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
+    }
+
+    
 }
