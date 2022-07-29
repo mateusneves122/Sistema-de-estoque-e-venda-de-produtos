@@ -5,8 +5,10 @@
 package Controller.TelaVendas;
 
 import View.TelaVendas;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,7 +23,34 @@ public class AdicionarNoCarrinho implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        int index = this.tela.getProdutos().getSelectedRow();
         
+        if(index != -1) {
+            DefaultTableModel carrinhoModel = (DefaultTableModel) this.tela.getCarrinho().getModel();
+            DefaultTableModel tabelaModel = (DefaultTableModel) this.tela.getProdutos().getModel();
+            try{
+                int qtd = Integer.parseInt(this.tela.getQuantidade().getText());
+                int valorCelula = Integer.parseInt(tabelaModel.getValueAt(index, 3).toString());
+                if(valorCelula >= qtd){
+                    
+                    //altera o valor no estoque
+                    valorCelula -= qtd;
+                    tabelaModel.setValueAt(valorCelula, index, 3);
+                    this.tela.getProdutos().setModel(tabelaModel);
+                    //adicina no carrinho
+                    carrinhoModel.addRow(new Object[]{tabelaModel.getValueAt(index, 0),tabelaModel.getValueAt(index, 1),tabelaModel.getValueAt(index, 2),qtd});
+                    this.tela.getCarrinho().setModel(carrinhoModel);
+                    
+                }
+                // limpeza tela
+                tela.getQuantidade().setText("");
+                tela.getQuantidade().setBackground(Color.white);
+                this.tela.repaint();
+            }
+            catch (NumberFormatException err){
+                tela.getQuantidade().setBackground(new Color(254,57,57));
+            }
+        }
     }
     
 }

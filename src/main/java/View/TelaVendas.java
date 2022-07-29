@@ -5,6 +5,7 @@
 package View;
 
 import Controller.LoginEntrar.Entrar;
+import Controller.TelaVendas.AdicionarNoCarrinho;
 import Model.employee.Funcionario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -107,6 +108,7 @@ public class TelaVendas extends JFrame {
         jpFun.setPreferredSize(new Dimension(620,200));
         
         JButton adicionar = new JButton("Adicionar");
+        adicionar.addActionListener(new AdicionarNoCarrinho(this));
         jpFun.add(adicionar);
         this.Quantidade = new JTextField(size);
         jpFun.add(this.Quantidade);
@@ -115,7 +117,7 @@ public class TelaVendas extends JFrame {
         
         String[] fPagamento = { "Cartão", "Dinheiro" };
         JComboBox pagList = new JComboBox(fPagamento);
-        pagList.setSelectedIndex(1);
+        pagList.setSelectedIndex(0);
         //pagList.addActionListener(this);
         jpFun.add(new JLabel("Forma de pagamento:"));
         jpFun.add(pagList);
@@ -139,6 +141,7 @@ public class TelaVendas extends JFrame {
             {"1","banana","1.99","100"},
             {"2","pera","2.99","50"}
         };
+        
         String[] columnNames = {
             "Id",
             "Produto",
