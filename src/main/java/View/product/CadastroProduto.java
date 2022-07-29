@@ -11,12 +11,14 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,7 +27,8 @@ import javax.swing.table.DefaultTableModel;
  * @author yanfo
  */
 public class CadastroProduto extends JFrame {
-    JTabbedPane abas;
+    private JTabbedPane abas;
+    private JButton atualizar;
     
     private JPanel telaProduto;
     private JTable tabelaProdutos;
@@ -34,33 +37,28 @@ public class CadastroProduto extends JFrame {
     private JTextField nomeProduto;
     private JTextField preco;
     private JTextField Quantidade;
+    private JTextArea descricao;
+    private JComboBox tipoProduto;
     
     private JPanel telaFuncionario;
     private JTable tabelaFuncionarios;
 
     //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
-    public JPanel getTelaFuncionario() {
-        return telaFuncionario;
+
+    public JButton getAtualizar() {
+        return atualizar;
     }
 
-    public void setTelaFuncionario(JPanel telaFuncionario) {
-        this.telaFuncionario = telaFuncionario;
-    }
-
-    public JTable getTabelaFuncionarios() {
-        return tabelaFuncionarios;
-    }
-
-    public void setTabelaFuncionarios(JTable tabelaFuncionarios) {
-        this.tabelaFuncionarios = tabelaFuncionarios;
+    public void setAtualizar(JButton atualizar) {
+        this.atualizar = atualizar;
     }
 
     public JPanel getTelaProduto() {
         return telaProduto;
     }
 
-    public void setTelaProduto(JPanel tela) {
-        this.telaProduto = tela;
+    public void setTelaProduto(JPanel telaProduto) {
+        this.telaProduto = telaProduto;
     }
 
     public JTable getTabelaProdutos() {
@@ -103,10 +101,45 @@ public class CadastroProduto extends JFrame {
         this.Quantidade = Quantidade;
     }
 
+    public JTextArea getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(JTextArea descricao) {
+        this.descricao = descricao;
+    }
+
+    public JComboBox getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(JComboBox tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+
+    public JPanel getTelaFuncionario() {
+        return telaFuncionario;
+    }
+
+    public void setTelaFuncionario(JPanel telaFuncionario) {
+        this.telaFuncionario = telaFuncionario;
+    }
+
+    public JTable getTabelaFuncionarios() {
+        return tabelaFuncionarios;
+    }
+
+    public void setTabelaFuncionarios(JTable tabelaFuncionarios) {
+        this.tabelaFuncionarios = tabelaFuncionarios;
+    }
+    
+    
+
     //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
     
     public CadastroProduto() {
         this.listaProdutos = new Estoque();
+        this.atualizar = new JButton("Atualizar");
     }
     
     private void configuraJanela() {
@@ -129,14 +162,13 @@ public class CadastroProduto extends JFrame {
     }
     
     private void configuraInsercaoProduto() {
-        int size = 15;
+        int size = 10;
         JPanel jpInsercao = new JPanel();
         jpInsercao.setPreferredSize(new Dimension(1280,240));
         
         this.nomeProduto = new JTextField(size);
         this.preco = new JTextField(size);
         this.Quantidade = new JTextField(size);
-        
         
         
         jpInsercao.add(new JLabel("Nome:"));
@@ -146,11 +178,24 @@ public class CadastroProduto extends JFrame {
         jpInsercao.add(new JLabel("Quantidade:"));
         jpInsercao.add(this.Quantidade);
         
+        this.descricao = new JTextArea();
+        this.descricao.setPreferredSize(new Dimension(120,150));
+        this.descricao.setBorder(BorderFactory.createTitledBorder("Descrição"));
+        jpInsercao.add(this.descricao);
+        
+        String[] tipos = {"Alimento", "Material", "Fármaco", "Eletrônico"};
+        this.tipoProduto = new JComboBox(tipos);
+        this.tipoProduto.setSelectedIndex(0);
+        jpInsercao.add(new JLabel("Tipo:"));
+        jpInsercao.add(this.tipoProduto);
+        
         JButton adicionar = new JButton("Salvar");
         adicionar.addActionListener(new SalvarProduto(this));
         jpInsercao.add(adicionar);
         
-        
+        //this.atualizar.addActionListener();
+        this.atualizar.setEnabled(false);
+        jpInsercao.add(this.atualizar);
         
         this.telaProduto.add(jpInsercao, BorderLayout.NORTH);
     }
@@ -196,6 +241,8 @@ public class CadastroProduto extends JFrame {
         JButton remove = new JButton("Remover");
         remove.addActionListener(new ExcluirProduto(this));
         jpDetalhes.add(remove);
+        
+        JButton editar = new JButton("Editar");
         
         this.telaProduto.add(jpDetalhes, BorderLayout.EAST);
     }

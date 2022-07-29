@@ -29,8 +29,11 @@ public class SalvarProduto implements ActionListener {
             double preco = toDouble(this.tela.getPreco().getText());
             int quantidade = toInt(this.tela.getQuantidade().getText());
             Produto produto = new Produto(nome, preco, quantidade);
-            tela.getListaProdutos().addProduct(produto);
             
+            tela.getListaProdutos().addProduct(produto);
+            String descricao = tela.getDescricao().getText();
+            
+            produto.setDescricao(descricao);
             
             DefaultTableModel model = (DefaultTableModel) this.tela.getTabelaProdutos().getModel();
             model.addRow(new Object[]{produto.getId(), nome, preco, quantidade});

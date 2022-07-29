@@ -14,6 +14,7 @@ public class Produto {
 
     private String descricao;
     private String tipo;
+    private String localizacaoNoEstoque;
 
     public Produto(String nome, double preco, int quantidade) {
         this.preco = preco;
@@ -21,6 +22,7 @@ public class Produto {
         this.codigo++;
         this.id = codigo;
         this.quantidade = quantidade;
+        this.descricao = "";
     }
 
     public String getNome() {
@@ -65,6 +67,14 @@ public class Produto {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getLocalizacaoNoEstoque() {
+        return localizacaoNoEstoque;
+    }
+
+    public void setLocalizacaoNoEstoque(String localizacaoNoEstoque) {
+        this.localizacaoNoEstoque = localizacaoNoEstoque;
     }
 
 }
