@@ -239,7 +239,7 @@ public class CadastroProduto extends JFrame {
         this.unidadeMedida.setSelectedIndex(0);
         esquerda.add(this.unidadeMedida);
         
-        String[] tipos = {
+        String[] grupo = {
             "Alimento",
             "Material",
             "Fármaco",
@@ -249,8 +249,18 @@ public class CadastroProduto extends JFrame {
             "Vestuário",
             "Higiene",
             "Limpeza",
-            "Maquinário"};
-        this.tipoProduto = new JComboBox(tipos);
+            "Maquinário",
+            "Infantil",
+            "Jogo",
+            "Áudio",
+            "Escritório",
+            "Automotivo",
+            "Cozinha",
+            "Jardim",
+            "Esporte",
+            "Ferramenta",
+            "Pet Shop"};
+        this.tipoProduto = new JComboBox(grupo);
         this.tipoProduto.setSelectedIndex(0);
         esquerda.add(new JLabel("Grupo:"));
         esquerda.add(this.tipoProduto);
