@@ -29,6 +29,13 @@ public class ExcluirProduto implements ActionListener {
             DefaultTableModel tabela = (DefaultTableModel) this.tela.getTabelaProdutos().getModel();
             tabela.removeRow(index);
             this.tela.getTabelaProdutos().setModel(tabela);
+            
+            tela.getdDescricao().setText("");
+            tela.getdFornecedor().setText("");
+            tela.getdLocalizacao().setText("");
+            tela.getdTipoProduto().setText("");
+            tela.getdUnidadeMedida().setText("");
+            tela.getdUnidadeOpt().setText("");
         }
     }
     

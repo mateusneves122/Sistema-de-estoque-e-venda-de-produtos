@@ -26,8 +26,6 @@ public class EditarProduto implements ActionListener {
         if(index!=-1) {
             int id = (int) this.tela.getTabelaProdutos().getValueAt(index, 0);
             Produto produto = new Produto("",0,0);
-            
-            
             for(Produto i : this.tela.getListaProdutos().getProdutosEmEstoque()) {
                 if(i.getId()==id) {
                     produto = i;
@@ -61,6 +59,15 @@ public class EditarProduto implements ActionListener {
             
             this.tela.getAtualizar().setEnabled(true);
             this.tela.getAdicionar().setEnabled(false);
+            
+            tela.getdDescricao().setText("");
+            tela.getdFornecedor().setText("");
+            tela.getdLocalizacao().setText("");
+            tela.getdTipoProduto().setText("");
+            tela.getdUnidadeMedida().setText("");
+            tela.getdUnidadeOpt().setText("");
+            
+            tela.repaint();
         }
     }
     

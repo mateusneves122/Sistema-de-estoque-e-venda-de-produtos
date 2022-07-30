@@ -8,6 +8,7 @@ import Controller.CadastroProdutos.AtualizarProduto;
 import Controller.CadastroProdutos.EditarProduto;
 import Controller.CadastroProdutos.ExcluirProduto;
 import Controller.CadastroProdutos.SalvarProduto;
+import Controller.CadastroProdutos.VisualizaItem;
 import Model.Estoque;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -46,6 +47,14 @@ public class CadastroProduto extends JFrame {
     private JTextField pesoVolume;
     private JTextField fornecedor;
     private JTextField localizacao;
+    
+    // Painel de detalhes
+    private JTextArea dDescricao;
+    private JTextField dTipoProduto;
+    private JTextField dUnidadeMedida;
+    private JTextField dUnidadeOpt;
+    private JTextField dFornecedor;
+    private JTextField dLocalizacao;
     
     private JPanel telaFuncionario;
     private JTable tabelaFuncionarios;
@@ -178,6 +187,54 @@ public class CadastroProduto extends JFrame {
 
     public void setAdicionar(JButton adicionar) {
         this.adicionar = adicionar;
+    }
+
+    public JTextArea getdDescricao() {
+        return dDescricao;
+    }
+
+    public void setdDescricao(JTextArea dDescricao) {
+        this.dDescricao = dDescricao;
+    }
+
+    public JTextField getdTipoProduto() {
+        return dTipoProduto;
+    }
+
+    public void setdTipoProduto(JTextField dTipoProduto) {
+        this.dTipoProduto = dTipoProduto;
+    }
+
+    public JTextField getdUnidadeMedida() {
+        return dUnidadeMedida;
+    }
+
+    public void setdUnidadeMedida(JTextField dUnidadeMedida) {
+        this.dUnidadeMedida = dUnidadeMedida;
+    }
+
+    public JTextField getdUnidadeOpt() {
+        return dUnidadeOpt;
+    }
+
+    public void setdUnidadeOpt(JTextField dUnidadeOpt) {
+        this.dUnidadeOpt = dUnidadeOpt;
+    }
+
+    public JTextField getdFornecedor() {
+        return dFornecedor;
+    }
+
+    public void setdFornecedor(JTextField dFornecedor) {
+        this.dFornecedor = dFornecedor;
+    }
+
+    public JTextField getdLocalizacao() {
+        return dLocalizacao;
+    }
+
+    public void setdLocalizacao(JTextField dLocalizacao) {
+        this.dLocalizacao = dLocalizacao;
     }
 
     
@@ -318,6 +375,7 @@ public class CadastroProduto extends JFrame {
         
         this.tabelaProdutos.setPreferredScrollableViewportSize(new Dimension(640, 480));
         this.tabelaProdutos.setFillsViewportHeight(true);
+        this.tabelaProdutos.addMouseListener(new VisualizaItem(this));
         
         JScrollPane painel = new JScrollPane(this.tabelaProdutos);
         jpTabela.add(painel);
@@ -326,17 +384,57 @@ public class CadastroProduto extends JFrame {
     }
     
     private void configuraTelaDetalhes() {
+        int size = 20;
         JPanel jpDetalhes = new JPanel();
         jpDetalhes.setPreferredSize(new Dimension(620,480));
         jpDetalhes.setBorder(BorderFactory.createTitledBorder("Detalhes"));
+        jpDetalhes.setLayout(new BorderLayout());
+        
+        JPanel esquerda = new JPanel();
+        esquerda.setPreferredSize(new Dimension(310,480));
+        JPanel direita = new JPanel();
+        direita.setPreferredSize(new Dimension(310,480));
+        
+        esquerda.add(new JLabel("Grupo:"));
+        dTipoProduto = new JTextField(size);
+        dTipoProduto.setEditable(false);
+        esquerda.add(dTipoProduto);
+        
+        esquerda.add(new JLabel("Unidade:"));
+        dUnidadeMedida = new JTextField(17);
+        dUnidadeMedida.setEditable(false);
+        esquerda.add(dUnidadeMedida);
+        
+        dUnidadeOpt = new JTextField(3);
+        dUnidadeOpt.setEditable(false);
+        esquerda.add(dUnidadeOpt);
+        
+        esquerda.add(new JLabel("Fornecedor:"));
+        dFornecedor = new JTextField(size);
+        dFornecedor.setEditable(false);
+        esquerda.add(dFornecedor);
+        
+        esquerda.add(new JLabel("Localização:"));
+        dLocalizacao = new JTextField(size);
+        dLocalizacao.setEditable(false);
+        esquerda.add(dLocalizacao);
+        
+        direita.add(new JLabel("Descrição:"));
+        dDescricao = new JTextArea();
+        dDescricao.setPreferredSize(new Dimension(240,150));
+        dDescricao.setEditable(false);
+        direita.add(dDescricao);
         
         JButton remove = new JButton("Remover");
         remove.addActionListener(new ExcluirProduto(this));
-        jpDetalhes.add(remove);
+        esquerda.add(remove);
         
         JButton editar = new JButton("Editar");
         editar.addActionListener(new EditarProduto(this));
-        jpDetalhes.add(editar);
+        esquerda.add(editar);
+        
+        jpDetalhes.add(esquerda, BorderLayout.WEST);
+        jpDetalhes.add(direita, BorderLayout.EAST);
         
         this.telaProduto.add(jpDetalhes, BorderLayout.EAST);
     }
