@@ -181,7 +181,7 @@ public class CadastroProduto extends JFrame {
     }
 
     
-    //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
+    //////////////////////////////////// Métodos da Janela///////////////////////////////////
     
     public CadastroProduto() {
         this.listaProdutos = new Estoque();
@@ -208,7 +208,7 @@ public class CadastroProduto extends JFrame {
     }
     
     private void configuraInsercaoProduto() {
-        int size = 10;
+        int size = 11;
         JPanel jpInsercao = new JPanel();
         JPanel esquerda = new JPanel();
         JPanel direita = new JPanel();
@@ -230,20 +230,30 @@ public class CadastroProduto extends JFrame {
         esquerda.add(new JLabel("Quantidade:"));
         esquerda.add(this.Quantidade);
         
-        String[] tipos = {"Alimento", "Material", "Fármaco", "Eletrônico"};
-        this.tipoProduto = new JComboBox(tipos);
-        this.tipoProduto.setSelectedIndex(0);
-        esquerda.add(new JLabel("Tipo:"));
-        esquerda.add(this.tipoProduto);
-        
-        esquerda.add(new JLabel("Peso/Volume:"));
+        esquerda.add(new JLabel("Unidade:"));
         this.pesoVolume = new JTextField(size);
         esquerda.add(this.pesoVolume);
         
-        String[] uniMedida = {"(---)","Kg","g","mg","L","ml"};
+        String[] uniMedida = {"UN","DZ","RS","TO","KG","GR","MG","LT","ML","MT","CM","MM","PC"};
         this.unidadeMedida = new JComboBox(uniMedida);
         this.unidadeMedida.setSelectedIndex(0);
         esquerda.add(this.unidadeMedida);
+        
+        String[] tipos = {
+            "Alimento",
+            "Material",
+            "Fármaco",
+            "Eletrônico",
+            "Cosmético",
+            "Livro",
+            "Vestuário",
+            "Higiene",
+            "Limpeza",
+            "Maquinário"};
+        this.tipoProduto = new JComboBox(tipos);
+        this.tipoProduto.setSelectedIndex(0);
+        esquerda.add(new JLabel("Grupo:"));
+        esquerda.add(this.tipoProduto);
         
         esquerda.add(new JLabel("Fornecedor:"));
         this.fornecedor = new JTextField(size);
