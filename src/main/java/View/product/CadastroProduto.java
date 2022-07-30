@@ -4,6 +4,8 @@
  */
 package View.product;
 
+import Controller.CadastroProdutos.AtualizarProduto;
+import Controller.CadastroProdutos.EditarProduto;
 import Controller.CadastroProdutos.ExcluirProduto;
 import Controller.CadastroProdutos.SalvarProduto;
 import Model.Estoque;
@@ -11,12 +13,14 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,7 +29,9 @@ import javax.swing.table.DefaultTableModel;
  * @author yanfo
  */
 public class CadastroProduto extends JFrame {
-    JTabbedPane abas;
+    protected JTabbedPane abas;
+    protected JButton atualizar;
+    protected JButton adicionar;
     
     private JPanel telaProduto;
     private JTable tabelaProdutos;
@@ -34,33 +40,32 @@ public class CadastroProduto extends JFrame {
     private JTextField nomeProduto;
     private JTextField preco;
     private JTextField Quantidade;
+    private JTextArea descricao;
+    private JComboBox tipoProduto;
+    private JComboBox unidadeMedida;
+    private JTextField pesoVolume;
+    private JTextField fornecedor;
+    private JTextField localizacao;
     
     private JPanel telaFuncionario;
     private JTable tabelaFuncionarios;
 
     //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
-    public JPanel getTelaFuncionario() {
-        return telaFuncionario;
+
+    public JButton getAtualizar() {
+        return atualizar;
     }
 
-    public void setTelaFuncionario(JPanel telaFuncionario) {
-        this.telaFuncionario = telaFuncionario;
-    }
-
-    public JTable getTabelaFuncionarios() {
-        return tabelaFuncionarios;
-    }
-
-    public void setTabelaFuncionarios(JTable tabelaFuncionarios) {
-        this.tabelaFuncionarios = tabelaFuncionarios;
+    public void setAtualizar(JButton atualizar) {
+        this.atualizar = atualizar;
     }
 
     public JPanel getTelaProduto() {
         return telaProduto;
     }
 
-    public void setTelaProduto(JPanel tela) {
-        this.telaProduto = tela;
+    public void setTelaProduto(JPanel telaProduto) {
+        this.telaProduto = telaProduto;
     }
 
     public JTable getTabelaProdutos() {
@@ -103,10 +108,84 @@ public class CadastroProduto extends JFrame {
         this.Quantidade = Quantidade;
     }
 
-    //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
+    public JTextArea getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(JTextArea descricao) {
+        this.descricao = descricao;
+    }
+
+    public JComboBox getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(JComboBox tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+
+    public JPanel getTelaFuncionario() {
+        return telaFuncionario;
+    }
+
+    public void setTelaFuncionario(JPanel telaFuncionario) {
+        this.telaFuncionario = telaFuncionario;
+    }
+
+    public JTable getTabelaFuncionarios() {
+        return tabelaFuncionarios;
+    }
+
+    public void setTabelaFuncionarios(JTable tabelaFuncionarios) {
+        this.tabelaFuncionarios = tabelaFuncionarios;
+    }
+
+    public JComboBox getUnidadeMedida() {
+        return unidadeMedida;
+    }
+
+    public void setUnidadeMedida(JComboBox unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
+    }
+
+    public JTextField getPesoVolume() {
+        return pesoVolume;
+    }
+
+    public void setPesoVolume(JTextField pesoVolume) {
+        this.pesoVolume = pesoVolume;
+    }
+
+    public JTextField getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(JTextField fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public JTextField getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(JTextField localizacao) {
+        this.localizacao = localizacao;
+    }
+
+    public JButton getAdicionar() {
+        return adicionar;
+    }
+
+    public void setAdicionar(JButton adicionar) {
+        this.adicionar = adicionar;
+    }
+
+    
+    //////////////////////////////////// Métodos da Janela///////////////////////////////////
     
     public CadastroProduto() {
         this.listaProdutos = new Estoque();
+        this.atualizar = new JButton("Atualizar");
     }
     
     private void configuraJanela() {
@@ -129,28 +208,76 @@ public class CadastroProduto extends JFrame {
     }
     
     private void configuraInsercaoProduto() {
-        int size = 15;
+        int size = 11;
         JPanel jpInsercao = new JPanel();
+        JPanel esquerda = new JPanel();
+        JPanel direita = new JPanel();
         jpInsercao.setPreferredSize(new Dimension(1280,240));
+        esquerda.setPreferredSize(new Dimension(960,240));
+        direita.setPreferredSize(new Dimension(320,240));
+        
+        jpInsercao.setLayout(new BorderLayout());
         
         this.nomeProduto = new JTextField(size);
         this.preco = new JTextField(size);
         this.Quantidade = new JTextField(size);
         
         
+        esquerda.add(new JLabel("Nome:"));
+        esquerda.add(this.nomeProduto);
+        esquerda.add(new JLabel("Preço:"));
+        esquerda.add(this.preco);
+        esquerda.add(new JLabel("Quantidade:"));
+        esquerda.add(this.Quantidade);
         
-        jpInsercao.add(new JLabel("Nome:"));
-        jpInsercao.add(this.nomeProduto);
-        jpInsercao.add(new JLabel("Preço:"));
-        jpInsercao.add(this.preco);
-        jpInsercao.add(new JLabel("Quantidade:"));
-        jpInsercao.add(this.Quantidade);
+        esquerda.add(new JLabel("Unidade:"));
+        this.pesoVolume = new JTextField(size);
+        esquerda.add(this.pesoVolume);
         
-        JButton adicionar = new JButton("Salvar");
+        String[] uniMedida = {"UN","DZ","RS","TO","KG","GR","MG","LT","ML","MT","CM","MM","PC"};
+        this.unidadeMedida = new JComboBox(uniMedida);
+        this.unidadeMedida.setSelectedIndex(0);
+        esquerda.add(this.unidadeMedida);
+        
+        String[] tipos = {
+            "Alimento",
+            "Material",
+            "Fármaco",
+            "Eletrônico",
+            "Cosmético",
+            "Livro",
+            "Vestuário",
+            "Higiene",
+            "Limpeza",
+            "Maquinário"};
+        this.tipoProduto = new JComboBox(tipos);
+        this.tipoProduto.setSelectedIndex(0);
+        esquerda.add(new JLabel("Grupo:"));
+        esquerda.add(this.tipoProduto);
+        
+        esquerda.add(new JLabel("Fornecedor:"));
+        this.fornecedor = new JTextField(size);
+        esquerda.add(this.fornecedor);
+        
+        esquerda.add(new JLabel("Localização no estoque:"));
+        this.localizacao = new JTextField(size);
+        esquerda.add(this.localizacao);
+        
+        this.descricao = new JTextArea();
+        this.descricao.setPreferredSize(new Dimension(240,150));
+        this.descricao.setBorder(BorderFactory.createTitledBorder("Descrição"));
+        direita.add(this.descricao);
+        
+        this.adicionar = new JButton("Adicionar");
         adicionar.addActionListener(new SalvarProduto(this));
-        jpInsercao.add(adicionar);
+        esquerda.add(adicionar);
         
+        this.atualizar.addActionListener(new AtualizarProduto(this));
+        this.atualizar.setEnabled(false);
+        esquerda.add(this.atualizar);
         
+        jpInsercao.add(esquerda, BorderLayout.WEST);
+        jpInsercao.add(direita, BorderLayout.EAST);
         
         this.telaProduto.add(jpInsercao, BorderLayout.NORTH);
     }
@@ -196,6 +323,10 @@ public class CadastroProduto extends JFrame {
         JButton remove = new JButton("Remover");
         remove.addActionListener(new ExcluirProduto(this));
         jpDetalhes.add(remove);
+        
+        JButton editar = new JButton("Editar");
+        editar.addActionListener(new EditarProduto(this));
+        jpDetalhes.add(editar);
         
         this.telaProduto.add(jpDetalhes, BorderLayout.EAST);
     }
