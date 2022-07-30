@@ -21,6 +21,15 @@ public class AdicionarNoCarrinho implements ActionListener{
         this.tela = tela;
     }
     
+    //public void calculat(DefaultTableModel a){
+    //    double t=0;
+    //    for(int i =0; i<a.getRowCount();i++){
+    //        t += (Integer.parseInt(a.getValueAt(i, 2).toString())*Integer.parseInt(a.getValueAt(i, 3).toString()));
+    //    }
+    //    a.addRow(new Object[]{"Total :",1,1,t});
+        
+    //}
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         int index = this.tela.getProdutos().getSelectedRow();
@@ -29,6 +38,9 @@ public class AdicionarNoCarrinho implements ActionListener{
             DefaultTableModel carrinhoModel = (DefaultTableModel) this.tela.getCarrinho().getModel();
             DefaultTableModel tabelaModel = (DefaultTableModel) this.tela.getProdutos().getModel();
             try{
+                //if(carrinhoModel.getRowCount()> 1){
+                //    carrinhoModel.removeRow(carrinhoModel.getRowCount()-1);
+                //}
                 int qtd = Integer.parseInt(this.tela.getQuantidade().getText());
                 int valorCelula = Integer.parseInt(tabelaModel.getValueAt(index, 3).toString());
                 if(valorCelula >= qtd){
@@ -39,6 +51,7 @@ public class AdicionarNoCarrinho implements ActionListener{
                     this.tela.getProdutos().setModel(tabelaModel);
                     //adicina no carrinho
                     carrinhoModel.addRow(new Object[]{tabelaModel.getValueAt(index, 0),tabelaModel.getValueAt(index, 1),tabelaModel.getValueAt(index, 2),qtd});
+                    //calculat(carrinhoModel);
                     this.tela.getCarrinho().setModel(carrinhoModel);
                     
                 }
