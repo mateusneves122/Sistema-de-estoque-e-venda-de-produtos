@@ -50,7 +50,7 @@ public class EditarProduto implements ActionListener {
             
             int tamanhoUniMedida = this.tela.getUnidadeMedida().getItemCount();
             for(int i=0; i<tamanhoUniMedida; i++) {
-                if(produto.getTipo() == this.tela.getUnidadeMedida().getItemAt(i)) {
+                if(produto.getUnidadeMedida() == this.tela.getUnidadeMedida().getItemAt(i)) {
                     this.tela.getUnidadeMedida().setSelectedIndex(i);
                 }
             }
@@ -60,6 +60,7 @@ public class EditarProduto implements ActionListener {
             this.tela.getDescricao().setText(produto.getDescricao());
             
             this.tela.getAtualizar().setEnabled(true);
+            this.tela.getAdicionar().setEnabled(false);
         }
     }
     

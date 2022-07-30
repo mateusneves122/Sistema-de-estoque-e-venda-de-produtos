@@ -4,6 +4,7 @@
  */
 package View.product;
 
+import Controller.CadastroProdutos.AtualizarProduto;
 import Controller.CadastroProdutos.EditarProduto;
 import Controller.CadastroProdutos.ExcluirProduto;
 import Controller.CadastroProdutos.SalvarProduto;
@@ -30,6 +31,7 @@ import javax.swing.table.DefaultTableModel;
 public class CadastroProduto extends JFrame {
     protected JTabbedPane abas;
     protected JButton atualizar;
+    protected JButton adicionar;
     
     private JPanel telaProduto;
     private JTable tabelaProdutos;
@@ -170,6 +172,14 @@ public class CadastroProduto extends JFrame {
         this.localizacao = localizacao;
     }
 
+    public JButton getAdicionar() {
+        return adicionar;
+    }
+
+    public void setAdicionar(JButton adicionar) {
+        this.adicionar = adicionar;
+    }
+
     
     //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
     
@@ -248,11 +258,11 @@ public class CadastroProduto extends JFrame {
         this.descricao.setBorder(BorderFactory.createTitledBorder("Descrição"));
         direita.add(this.descricao);
         
-        JButton adicionar = new JButton("Adicionar");
+        this.adicionar = new JButton("Adicionar");
         adicionar.addActionListener(new SalvarProduto(this));
         esquerda.add(adicionar);
         
-        //this.atualizar.addActionListener();
+        this.atualizar.addActionListener(new AtualizarProduto(this));
         this.atualizar.setEnabled(false);
         esquerda.add(this.atualizar);
         

@@ -15,21 +15,30 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author yanfo
  */
-public class SalvarProduto implements ActionListener {
-    private CadastroProduto tela = new CadastroProduto();
+public class AtualizarProduto implements ActionListener {
+    private CadastroProduto tela;
 
-    public SalvarProduto(CadastroProduto tela) {
+    public AtualizarProduto(CadastroProduto tela) {
         this.tela = tela;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            String nome = this.tela.getNomeProduto().getText();
-            double preco = toDouble(this.tela.getPreco().getText());
-            int quantidade = toInt(this.tela.getQuantidade().getText());
-            Produto produto = new Produto(nome, preco, quantidade);
+            int index = this.tela.getTabelaProdutos().getSelectedRow();
             
+            String nome = this.tela.getNomeProduto().getText();
+            double preco = Double.parseDouble(this.tela.getPreco().getText());
+            int quantidade = Integer.parseInt(this.tela.getQuantidade().getText());
+            Produto produto = new Produto("",0,0);
+            
+            int id = Integer.parseInt(tela.getTabelaProdutos().getValueAt(index, 0).toString());
+            for(Produto i : tela.getListaProdutos().getProdutosEmEstoque()) {
+                if(i.getId()==id) {
+                    produto = i;
+                    break;
+                }
+            }
             
             String descricao = tela.getDescricao().getText();
             String tipo = tela.getTipoProduto().getSelectedItem().toString();
@@ -48,24 +57,24 @@ public class SalvarProduto implements ActionListener {
             tela.getListaProdutos().addProduct(produto);
             DefaultTableModel model = (DefaultTableModel) this.tela.getTabelaProdutos().getModel();
             model.addRow(new Object[]{produto.getId(), nome, preco, quantidade});
-            
+            model.removeRow(index);
             this.tela.getTabelaProdutos().setModel(model);
             
             tela.getNomeProduto().setText("");
             tela.getNomeProduto().setBackground(Color.white);
-            
             tela.getPreco().setText("");
             tela.getPreco().setBackground(Color.white);
-            
             tela.getQuantidade().setText("");
             tela.getQuantidade().setBackground(Color.white);
-            
             tela.getTipoProduto().setSelectedIndex(0);
             tela.getPesoVolume().setText("");
             tela.getUnidadeMedida().setSelectedIndex(0);
             tela.getFornecedor().setText("");
             tela.getLocalizacao().setText("");
             tela.getDescricao().setText("");
+            
+            tela.getAtualizar().setEnabled(false);
+            tela.getAdicionar().setEnabled(true);
             
             this.tela.repaint();
         }
@@ -75,13 +84,5 @@ public class SalvarProduto implements ActionListener {
         }
     }
     
-    private Double toDouble(String preco) throws NumberFormatException {
-        Double number1 = Double.parseDouble(preco);
-        return number1;
-    }
     
-    private int toInt(String qtd) throws NumberFormatException {
-        int number2 = Integer.parseInt(qtd);
-        return number2;
-    }
 }
