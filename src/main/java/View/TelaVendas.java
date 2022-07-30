@@ -6,6 +6,7 @@ package View;
 
 import Controller.LoginEntrar.Entrar;
 import Controller.TelaVendas.AdicionarNoCarrinho;
+import Controller.TelaVendas.ExcluirDoCarrinho;
 import Model.employee.Funcionario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -113,6 +114,7 @@ public class TelaVendas extends JFrame {
         this.Quantidade = new JTextField(size);
         jpFun.add(this.Quantidade);
         JButton remover = new JButton("Remover");
+        remover.addActionListener(new ExcluirDoCarrinho(this));
         jpFun.add(remover);
         
         String[] fPagamento = { "Cartão", "Dinheiro" };

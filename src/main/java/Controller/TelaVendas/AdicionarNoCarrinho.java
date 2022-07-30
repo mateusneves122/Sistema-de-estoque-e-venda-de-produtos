@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author PICHAU
  */
 public class AdicionarNoCarrinho implements ActionListener{
-    private TelaVendas tela = new TelaVendas();
+    private TelaVendas tela;// = new TelaVendas();
 
     public AdicionarNoCarrinho(TelaVendas tela) {
         this.tela = tela;
