@@ -4,6 +4,7 @@
  */
 package View.product;
 
+import Controller.CadastroProdutos.EditarProduto;
 import Controller.CadastroProdutos.ExcluirProduto;
 import Controller.CadastroProdutos.SalvarProduto;
 import Model.Estoque;
@@ -27,8 +28,8 @@ import javax.swing.table.DefaultTableModel;
  * @author yanfo
  */
 public class CadastroProduto extends JFrame {
-    private JTabbedPane abas;
-    private JButton atualizar;
+    protected JTabbedPane abas;
+    protected JButton atualizar;
     
     private JPanel telaProduto;
     private JTable tabelaProdutos;
@@ -304,6 +305,8 @@ public class CadastroProduto extends JFrame {
         jpDetalhes.add(remove);
         
         JButton editar = new JButton("Editar");
+        editar.addActionListener(new EditarProduto(this));
+        jpDetalhes.add(editar);
         
         this.telaProduto.add(jpDetalhes, BorderLayout.EAST);
     }

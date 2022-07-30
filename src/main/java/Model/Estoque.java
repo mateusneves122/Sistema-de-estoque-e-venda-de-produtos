@@ -47,7 +47,7 @@ public class Estoque {
     private void removeFirstProduct() {
         this.produtosEmEstoque.remove(0);
     }
-
+    
     public void editProductAmount(int id, int new_amount) {
         for (Produto p : produtosEmEstoque) {
             if (p.getId() == id) {
@@ -69,6 +69,10 @@ public class Estoque {
             System.out.println("Name: " + p.getNome() + " ID: " + p.getId()
                     + " Price: " + p.getPreco() + " Amount: " + p.getQuantidade());
         }
+    }
+
+    public List<Produto> getProdutosEmEstoque() {
+        return produtosEmEstoque;
     }
 
 }

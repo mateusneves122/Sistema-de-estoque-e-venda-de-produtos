@@ -59,6 +59,14 @@ public class SalvarProduto implements ActionListener {
             
             tela.getQuantidade().setText("");
             tela.getQuantidade().setBackground(Color.white);
+            
+            tela.getTipoProduto().setSelectedIndex(0);
+            tela.getPesoVolume().setText("");
+            tela.getUnidadeMedida().setSelectedIndex(0);
+            tela.getFornecedor().setText("");
+            tela.getLocalizacao().setText("");
+            tela.getDescricao().setText("");
+            
             this.tela.repaint();
         }
         catch (NumberFormatException err) {

@@ -4,6 +4,7 @@
  */
 package Controller.CadastroProdutos;
 
+import Model.product.Produto;
 import View.product.CadastroProduto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +14,7 @@ import java.awt.event.ActionListener;
  * @author yanfo
  */
 public class EditarProduto implements ActionListener {
-    CadastroProduto tela;
+    private CadastroProduto tela;
 
     public EditarProduto(CadastroProduto tela) {
         this.tela = tela;
@@ -22,7 +23,44 @@ public class EditarProduto implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         int index = this.tela.getTabelaProdutos().getSelectedRow();
-        
+        if(index!=-1) {
+            int id = (int) this.tela.getTabelaProdutos().getValueAt(index, 0);
+            Produto produto = new Produto("",0,0);
+            
+            
+            for(Produto i : this.tela.getListaProdutos().getProdutosEmEstoque()) {
+                if(i.getId()==id) {
+                    produto = i;
+                    break;
+                }
+            }
+            
+            this.tela.getNomeProduto().setText(produto.getNome());
+            this.tela.getPreco().setText(Double.toString(produto.getPreco()));
+            this.tela.getQuantidade().setText(Integer.toString(produto.getQuantidade()));
+            
+            int tamanhoTipo = this.tela.getTipoProduto().getItemCount();
+            for(int i=0; i<tamanhoTipo; i++) {
+                if(produto.getTipo() == this.tela.getTipoProduto().getItemAt(i)) {
+                    this.tela.getTipoProduto().setSelectedIndex(i);
+                }
+            }
+            
+            this.tela.getPesoVolume().setText(Double.toString(produto.getPesoVolume()));
+            
+            int tamanhoUniMedida = this.tela.getUnidadeMedida().getItemCount();
+            for(int i=0; i<tamanhoUniMedida; i++) {
+                if(produto.getTipo() == this.tela.getUnidadeMedida().getItemAt(i)) {
+                    this.tela.getUnidadeMedida().setSelectedIndex(i);
+                }
+            }
+            
+            this.tela.getFornecedor().setText(produto.getFornecedor());
+            this.tela.getLocalizacao().setText(produto.getLocalizacaoNoEstoque());
+            this.tela.getDescricao().setText(produto.getDescricao());
+            
+            this.tela.getAtualizar().setEnabled(true);
+        }
     }
     
 }
