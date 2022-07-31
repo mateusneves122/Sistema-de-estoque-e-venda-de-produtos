@@ -44,7 +44,7 @@ public class EditarProduto implements ActionListener {
                 }
             }
             
-            this.tela.getPesoVolume().setText(Double.toString(produto.getPesoVolume()));
+            this.tela.getValorUnidade().setText(Double.toString(produto.getPesoVolume()));
             
             int tamanhoUniMedida = this.tela.getUnidadeMedida().getItemCount();
             for(int i=0; i<tamanhoUniMedida; i++) {

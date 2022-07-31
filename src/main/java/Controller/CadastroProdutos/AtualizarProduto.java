@@ -44,7 +44,7 @@ public class AtualizarProduto implements ActionListener {
             String tipo = tela.getTipoProduto().getSelectedItem().toString();
             String localizacao = tela.getLocalizacao().getText();
             String fornecedor = tela.getFornecedor().getText();
-            double pesoVolume = Double.parseDouble(tela.getPesoVolume().getText());
+            double pesoVolume = Double.parseDouble(tela.getValorUnidade().getText());
             String unidadeMedida = tela.getUnidadeMedida().getSelectedItem().toString();
             
             produto.setDescricao(descricao);
@@ -67,7 +67,7 @@ public class AtualizarProduto implements ActionListener {
             tela.getQuantidade().setText("");
             tela.getQuantidade().setBackground(Color.white);
             tela.getTipoProduto().setSelectedIndex(0);
-            tela.getPesoVolume().setText("");
+            tela.getValorUnidade().setText("");
             tela.getUnidadeMedida().setSelectedIndex(0);
             tela.getFornecedor().setText("");
             tela.getLocalizacao().setText("");

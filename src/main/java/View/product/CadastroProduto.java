@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -38,13 +39,14 @@ public class CadastroProduto extends JFrame {
     private JTable tabelaProdutos;
     private Estoque listaProdutos;
     
+    // Painel de inserção de produtos
     private JTextField nomeProduto;
     private JTextField preco;
     private JTextField Quantidade;
     private JTextArea descricao;
     private JComboBox tipoProduto;
     private JComboBox unidadeMedida;
-    private JTextField pesoVolume;
+    private JTextField valorUnidade;
     private JTextField fornecedor;
     private JTextField localizacao;
     
@@ -56,7 +58,19 @@ public class CadastroProduto extends JFrame {
     private JTextField dFornecedor;
     private JTextField dLocalizacao;
     
+    // Tela de funcionários
     private JPanel telaFuncionario;
+    
+    private JTextField nomeFuncionario;
+    private JTextField cpf;
+    private JTextField pagamentoFixo;
+    private JPasswordField senha;
+    private JTextField rg;
+    private JTextField telefone;
+    private JTextField registro;
+    private JComboBox sexo;
+    private JTextField cargo;
+    
     private JTable tabelaFuncionarios;
 
     //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
@@ -157,12 +171,12 @@ public class CadastroProduto extends JFrame {
         this.unidadeMedida = unidadeMedida;
     }
 
-    public JTextField getPesoVolume() {
-        return pesoVolume;
+    public JTextField getValorUnidade() {
+        return valorUnidade;
     }
 
-    public void setPesoVolume(JTextField pesoVolume) {
-        this.pesoVolume = pesoVolume;
+    public void setValorUnidade(JTextField valorUnidade) {
+        this.valorUnidade = valorUnidade;
     }
 
     public JTextField getFornecedor() {
@@ -237,6 +251,81 @@ public class CadastroProduto extends JFrame {
         this.dLocalizacao = dLocalizacao;
     }
 
+    //////////////////////////////////// Métodos Getters e setters dos Funcionários///////////
+
+    public JTextField getNomeFuncionario() {
+        return nomeFuncionario;
+    }
+
+    public void setNomeFuncionario(JTextField nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+    }
+
+    public JTextField getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(JTextField cpf) {
+        this.cpf = cpf;
+    }
+
+    public JTextField getPagamentoFixo() {
+        return pagamentoFixo;
+    }
+
+    public void setPagamentoFixo(JTextField pagamentoFixo) {
+        this.pagamentoFixo = pagamentoFixo;
+    }
+
+    public JPasswordField getSenha() {
+        return senha;
+    }
+
+    public void setSenha(JPasswordField senha) {
+        this.senha = senha;
+    }
+
+    public JTextField getRg() {
+        return rg;
+    }
+
+    public void setRg(JTextField rg) {
+        this.rg = rg;
+    }
+
+    public JTextField getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(JTextField telefone) {
+        this.telefone = telefone;
+    }
+
+    public JTextField getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(JTextField registro) {
+        this.registro = registro;
+    }
+
+    public JComboBox getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(JComboBox sexo) {
+        this.sexo = sexo;
+    }
+
+    public JTextField getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(JTextField cargo) {
+        this.cargo = cargo;
+    }
+    
+    
     
     //////////////////////////////////// Métodos da Janela///////////////////////////////////
     
@@ -256,7 +345,6 @@ public class CadastroProduto extends JFrame {
         
         this.telaFuncionario = new JPanel();
         this.telaFuncionario.setLayout(new BorderLayout());
-        this.telaFuncionario.add(new JLabel("Olá!"));
         
         this.abas.addTab("Produtos", this.telaProduto);
         this.abas.addTab("Funcionários", this.telaFuncionario);
@@ -288,8 +376,8 @@ public class CadastroProduto extends JFrame {
         esquerda.add(this.Quantidade);
         
         esquerda.add(new JLabel("Unidade:"));
-        this.pesoVolume = new JTextField(size);
-        esquerda.add(this.pesoVolume);
+        this.valorUnidade = new JTextField(size);
+        esquerda.add(this.valorUnidade);
         
         String[] uniMedida = {"UN","DZ","RS","TO","KG","GR","MG","LT","ML","MT","CM","MM","PC"};
         this.unidadeMedida = new JComboBox(uniMedida);
@@ -406,7 +494,7 @@ public class CadastroProduto extends JFrame {
         esquerda.add(dUnidadeMedida);
         
         dUnidadeOpt = new JTextField(3);
-        dUnidadeOpt.setEditable(false);
+        dUnidadeOpt.setEditable(false); 
         esquerda.add(dUnidadeOpt);
         
         esquerda.add(new JLabel("Fornecedor:"));
@@ -439,6 +527,66 @@ public class CadastroProduto extends JFrame {
         this.telaProduto.add(jpDetalhes, BorderLayout.EAST);
     }
     
+    
+    public void configuraCadastroFuncionario() {
+        int size = 14;
+        JPanel painelCrud = new JPanel();
+        JPanel esquerda = new JPanel();
+        JPanel direitaVazia = new JPanel();
+        
+        painelCrud.setLayout(new BorderLayout());
+        painelCrud.setPreferredSize(new Dimension(426,720));
+        esquerda.setPreferredSize(new Dimension(213,720));
+        direitaVazia.setPreferredSize(new Dimension(213,720));
+        
+        
+        esquerda.add(new JLabel("Nome:"));
+        nomeFuncionario = new JTextField(size);
+        esquerda.add(nomeFuncionario);
+        
+        esquerda.add(new JLabel("CPF:"));
+        cpf = new JTextField(size);
+        esquerda.add(cpf);
+        
+        esquerda.add(new JLabel("Senha:"));
+        senha = new JPasswordField(size);
+        esquerda.add(senha);
+        
+        // Observação: Fiz umas gambiarras abaixo para deixar os campos
+        // minimamente formatados da tela
+        esquerda.add(new JLabel("Pagamento fixo:"));
+        pagamentoFixo = new JTextField(9);
+        esquerda.add(pagamentoFixo);
+        
+        esquerda.add(new JLabel("RG:"));
+        rg = new JTextField(size);
+        esquerda.add(rg);
+        
+        esquerda.add(new JLabel("Telefone:"));
+        telefone = new JTextField(10);
+        esquerda.add(telefone);
+        
+        esquerda.add(new JLabel("Registro:"));
+        registro = new JTextField(11);
+        esquerda.add(registro);
+        
+        esquerda.add(new JLabel("Sexo:"));
+        String[] sexos = {"Masculino","Feminino","Outro"};
+        sexo = new JComboBox(sexos);
+        esquerda.add(sexo);
+        
+        esquerda.add(new JLabel("               Cargo:"));
+        cargo = new JTextField(10);
+        esquerda.add(cargo);
+        
+        JButton adicionar = new JButton("Adicionar");
+        esquerda.add(adicionar);
+        
+        painelCrud.add(esquerda, BorderLayout.WEST);
+        
+        this.telaFuncionario.add(painelCrud, BorderLayout.WEST);
+    }
+    
     public void mostraTela() {
         this.add(this.abas);
         this.setVisible(true);
@@ -449,6 +597,7 @@ public class CadastroProduto extends JFrame {
         configuraInsercaoProduto();
         configuraPlanilhaProdutos();
         configuraTelaDetalhes();
+        configuraCadastroFuncionario();
         mostraTela();
     }
     

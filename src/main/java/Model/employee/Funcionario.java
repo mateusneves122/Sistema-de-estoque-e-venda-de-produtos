@@ -12,6 +12,12 @@ public class Funcionario extends Pessoa {
 	public static Estoque estoque;
         private String senha;
         private boolean admin;
+        private double pagamentoFixo;
+        private String rg;
+        private int telefone;
+        private String registro;
+        private String sexo;
+        private String cargo;
 	
 	public Funcionario(String nome, String cpf, String senha) {
 		super(nome, cpf);
@@ -34,4 +40,54 @@ public class Funcionario extends Pessoa {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+
+    public double getPagamentoFixo() {
+        return pagamentoFixo;
+    }
+
+    public void setPagamentoFixo(double pagamentoFixo) {
+        this.pagamentoFixo = pagamentoFixo;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public int getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(String registro) {
+        this.registro = registro;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+    
+    
 }
