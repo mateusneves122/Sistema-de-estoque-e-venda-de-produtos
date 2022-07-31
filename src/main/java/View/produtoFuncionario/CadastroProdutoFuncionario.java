@@ -9,6 +9,7 @@ import Controller.CadastroProdutos.EditarProduto;
 import Controller.CadastroProdutos.ExcluirProduto;
 import Controller.CadastroProdutos.SalvarProduto;
 import Controller.CadastroProdutos.VisualizaItem;
+import Controller.cadastroFuncionario.EditarFuncionario;
 import Controller.cadastroFuncionario.LimparCampos;
 import Controller.cadastroFuncionario.RemoverFuncionario;
 import Controller.cadastroFuncionario.SalvarFuncionario;
@@ -223,6 +224,7 @@ public class CadastroProdutoFuncionario extends JFrame {
     private void configuraJanela() {
         // Janela por padrão na Resolução 1280x720
         this.setSize(1280, 720);
+        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         this.abas = new JTabbedPane();
@@ -513,6 +515,7 @@ public class CadastroProdutoFuncionario extends JFrame {
         esquerda.add(remover);
         
         JButton editar = new JButton("Editar");
+        editar.addActionListener(new EditarFuncionario(this));
         esquerda.add(editar);
         
         JButton limpar = new JButton("Limpar");

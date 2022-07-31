@@ -4,7 +4,6 @@
  */
 package Controller.cadastroFuncionario;
 
-import Model.employee.Funcionario;
 import View.produtoFuncionario.CadastroProdutoFuncionario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

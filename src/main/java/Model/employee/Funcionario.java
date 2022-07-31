@@ -9,25 +9,25 @@ import Model.Pessoa;
 
 public class Funcionario extends Pessoa {
 
-	public static Estoque estoque;
-        private String senha;
-        private boolean admin;
-        private double pagamentoFixo;
-        private String rg;
-        private int telefone;
-        private int registro;
-        private String sexo;
-        private String cargo;
-        
-        private static int geraRegistro = 0;
-	
-	public Funcionario(String nome, String cpf, String senha) {
-		super(nome, cpf);
-		estoque = new Estoque();
-                this.senha = senha;
-                geraRegistro += 1;
-                this.registro = geraRegistro;
-	}
+    public static Estoque estoque;
+    private String senha;
+    private boolean admin;
+    private double pagamentoFixo;
+    private String rg;
+    private int telefone;
+    private int registro;
+    private String sexo;
+    private String cargo;
+
+    private static int geraRegistro = 0;
+
+    public Funcionario(String nome, String cpf, String senha) {
+        super(nome, cpf);
+        estoque = new Estoque();
+        this.senha = senha;
+        geraRegistro += 1;
+        this.registro = geraRegistro;
+    }
 
     public String getSenha() {
         return senha;
@@ -88,6 +88,5 @@ public class Funcionario extends Pessoa {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-    
-    
+
 }

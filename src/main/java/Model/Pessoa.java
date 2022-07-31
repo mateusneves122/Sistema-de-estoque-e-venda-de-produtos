@@ -22,11 +22,11 @@ public abstract class Pessoa {
 		return this.cpf;
 	}
 	
-	protected void setNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	protected void setCpf(String cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
