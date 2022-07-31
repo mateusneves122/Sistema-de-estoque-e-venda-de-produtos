@@ -10,5 +10,7 @@ package Interfaces;
  * @author SuvacoDeCobra
  */
 public interface View {
-  public void configuraJanela();  
+  public void configuraJanela();
+  public void mostraTela();
+  public void montaTela();
 }

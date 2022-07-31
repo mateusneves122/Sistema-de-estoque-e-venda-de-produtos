@@ -5,6 +5,7 @@
  */
 package Controller.TelaVendas;
 
+import View.CompraCartao;
 import View.FinalizarCompra;
 import View.TelaVendas;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,7 @@ public class FinalizarCompraBtn implements ActionListener {
 
     private TelaVendas telaVenda;
     private FinalizarCompra telaFinCompra;
+    private CompraCartao telacartao;
     private String formaDePagamento;
     private double totalPagar;
     
@@ -31,13 +33,19 @@ public class FinalizarCompraBtn implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
        JTable carrinho = this.telaVenda.getCarrinho();
-       
-       //Paramêtros para instancia a telFinCompra;
        this.formaDePagamento = this.telaVenda.getFormaPagamentoToString();
        this.totalPagar = calculaTotal(carrinho);
-       telaFinCompra = new FinalizarCompra(Double.toString(totalPagar), formaDePagamento);
        
-       telaFinCompra.montaTela();
+       //Paramêtros para instancia a telFinCompra;
+       if(this.telaVenda.getFormaPagamentoIndex() == 0){
+           
+           telaFinCompra = new FinalizarCompra(Double.toString(totalPagar), formaDePagamento);
+           telaFinCompra.montaTela();
+       }else{
+           telacartao = new CompraCartao(Double.toString(totalPagar), formaDePagamento);
+           telacartao.montaTela();
+       }
+       
     }
     
     
