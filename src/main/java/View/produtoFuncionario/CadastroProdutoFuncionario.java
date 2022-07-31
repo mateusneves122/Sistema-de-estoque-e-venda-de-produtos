@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package View.product;
+package View.produtoFuncionario;
 
 import Controller.CadastroProdutos.AtualizarProduto;
 import Controller.CadastroProdutos.EditarProduto;
@@ -12,8 +12,6 @@ import Controller.CadastroProdutos.VisualizaItem;
 import Model.Estoque;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.util.Calendar;
-import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -24,19 +22,17 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author yanfo
  */
-public class CadastroProduto extends JFrame {
+public class CadastroProdutoFuncionario extends JFrame {
     protected JTabbedPane abas;
     protected JButton atualizar;
     protected JButton adicionar;
@@ -77,7 +73,6 @@ public class CadastroProduto extends JFrame {
     private JComboBox sexo;
     private JTextField cargo;
     private ButtonGroup isAdmin;
-    private JSpinner data;
     
     private JTable tabelaFuncionarios;
 
@@ -259,15 +254,6 @@ public class CadastroProduto extends JFrame {
         this.dLocalizacao = dLocalizacao;
     }
 
-    public JSpinner getData() {
-        return data;
-    }
-
-    public void setData(JSpinner data) {
-        this.data = data;
-    }
-    
-    
     //////////////////////////////////// Métodos Getters e setters dos Funcionários///////////
 
     public JTextField getNomeFuncionario() {
@@ -354,12 +340,14 @@ public class CadastroProduto extends JFrame {
     
     //////////////////////////////////// Métodos da Janela///////////////////////////////////
     
-    public CadastroProduto() {
+    public CadastroProdutoFuncionario() {
         this.listaProdutos = new Estoque();
         this.atualizar = new JButton("Atualizar");
+        this.setTitle("Cadastro e edição de produtos e funcionários");
     }
     
     private void configuraJanela() {
+        // Janela por padrão na Resolução 1280x720
         this.setSize(1280, 720);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -378,11 +366,21 @@ public class CadastroProduto extends JFrame {
     }
     
     private void configuraInsercaoProduto() {
+        // Tamanho dos campos dos JTextFields
         int size = 11;
+        // Container do gerenciamento de produtos no estoque.
         JPanel jpInsercao = new JPanel();
+        
+        // Divisão do container de gerenciamento de produtos para fins de formatação
         JPanel esquerda = new JPanel();
         JPanel direita = new JPanel();
+        
+        // Tamanho do container de gerenciamento de produtos irá ter toda a largura
+        // da tela e metade da altura. Ficará no cabeçalho da tela
         jpInsercao.setPreferredSize(new Dimension(1280,240));
+        
+        // painel esquerdo tem dois terços da largura da tela e o painel direito,
+        // um terço.
         esquerda.setPreferredSize(new Dimension(960,240));
         direita.setPreferredSize(new Dimension(320,240));
         
@@ -392,7 +390,7 @@ public class CadastroProduto extends JFrame {
         this.preco = new JTextField(size);
         this.Quantidade = new JTextField(size);
         
-        
+        // Inserção dos componentes no painel esquerdo
         esquerda.add(new JLabel("Nome:"));
         esquerda.add(this.nomeProduto);
         esquerda.add(new JLabel("Preço:"));
@@ -400,6 +398,7 @@ public class CadastroProduto extends JFrame {
         esquerda.add(new JLabel("Quantidade:"));
         esquerda.add(this.Quantidade);
         
+        // Unidade de medida
         esquerda.add(new JLabel("Unidade:"));
         this.valorUnidade = new JTextField(size);
         esquerda.add(this.valorUnidade);
@@ -409,6 +408,7 @@ public class CadastroProduto extends JFrame {
         this.unidadeMedida.setSelectedIndex(0);
         esquerda.add(this.unidadeMedida);
         
+        // Grupos de produtos disponíveis para inserção
         String[] grupo = {
             "Alimento",
             "Material",
@@ -448,10 +448,12 @@ public class CadastroProduto extends JFrame {
         this.descricao.setBorder(BorderFactory.createTitledBorder("Descrição"));
         direita.add(this.descricao);
         
+        // Adição do botão adicionar: Adiciona os produtos na planilha
         this.adicionar = new JButton("Adicionar");
         adicionar.addActionListener(new SalvarProduto(this));
         esquerda.add(adicionar);
         
+        // Atualização dos itens editados na planilha
         this.atualizar.addActionListener(new AtualizarProduto(this));
         this.atualizar.setEnabled(false);
         esquerda.add(this.atualizar);
@@ -464,13 +466,13 @@ public class CadastroProduto extends JFrame {
     
     // TODO: realizar a inserção dos dados
     private void configuraPlanilhaProdutos() {
+        // Container da planilha
         JPanel jpTabela = new JPanel();
+        // Tamanho do container da planilha irá ter metade da largura da janela.
+        // Ficará no canto inferior esquerdo
         jpTabela.setPreferredSize(new Dimension(640, 480));
         
-        this.setTitle("Cadastro e edição de produtos e funcionários");
-        String[][] dataTable = {
-            //{"","","",""}
-        };
+        String[][] dataTable = {};
         
         String[] columnNames = {
             "Id",
@@ -479,6 +481,7 @@ public class CadastroProduto extends JFrame {
             "Quantidade"
         };
         
+        // A planilha de produtos não terá suas células editáveis
         this.tabelaProdutos = new JTable(new DefaultTableModel(dataTable, columnNames)) {
             @Override
             public boolean isCellEditable(int data, int columns) {
@@ -488,6 +491,9 @@ public class CadastroProduto extends JFrame {
         
         this.tabelaProdutos.setPreferredScrollableViewportSize(new Dimension(640, 480));
         this.tabelaProdutos.setFillsViewportHeight(true);
+        
+        // Ao clicar em alguma linha da planilha, os dados do produto serão colocados
+        // em detalhes na tela de Detalhes ( Tela à direita da planilha)
         this.tabelaProdutos.addMouseListener(new VisualizaItem(this));
         
         JScrollPane painel = new JScrollPane(this.tabelaProdutos);
@@ -497,6 +503,7 @@ public class CadastroProduto extends JFrame {
     }
     
     private void configuraTelaDetalhes() {
+        // Tamanho dos campos do JTextField
         int size = 20;
         JPanel jpDetalhes = new JPanel();
         jpDetalhes.setPreferredSize(new Dimension(620,480));
@@ -614,12 +621,6 @@ public class CadastroProduto extends JFrame {
         esquerda.add(funcionario);
         esquerda.add(admin);
         
-        esquerda.add(new JLabel("Contrato até:"));
-        SpinnerDateModel dataModel = new SpinnerDateModel();
-        data = new JSpinner(dataModel);
-        data.setEditor(new JSpinner.DateEditor(data,"dd.MM.yyyy"));
-        esquerda.add(data);
-        
         JButton adicionar = new JButton("Adicionar");
         esquerda.add(adicionar);
         
@@ -647,8 +648,7 @@ public class CadastroProduto extends JFrame {
             "Registro",
             "Cargo",
             "Função",
-            "Pagamento",
-            "Expira"
+            "Pagamento"
         };
         
         this.tabelaFuncionarios = new JTable(new DefaultTableModel(dataTable, nomeColunas)) {
@@ -684,7 +684,7 @@ public class CadastroProduto extends JFrame {
     }
     
     public static void main(String[] args) {
-        CadastroProduto tela = new CadastroProduto();
+        CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario();
         tela.montaTela();
     }
 }

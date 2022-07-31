@@ -5,7 +5,7 @@
 package Controller.CadastroProdutos;
 
 import Model.product.Produto;
-import View.product.CadastroProduto;
+import View.produtoFuncionario.CadastroProdutoFuncionario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,9 +14,9 @@ import java.awt.event.ActionListener;
  * @author yanfo
  */
 public class EditarProduto implements ActionListener {
-    private CadastroProduto tela;
+    private CadastroProdutoFuncionario tela;
 
-    public EditarProduto(CadastroProduto tela) {
+    public EditarProduto(CadastroProdutoFuncionario tela) {
         this.tela = tela;
     }
     

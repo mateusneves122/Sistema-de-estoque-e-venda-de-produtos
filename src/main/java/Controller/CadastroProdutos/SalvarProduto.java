@@ -5,7 +5,7 @@
 package Controller.CadastroProdutos;
 
 import Model.product.Produto;
-import View.product.CadastroProduto;
+import View.produtoFuncionario.CadastroProdutoFuncionario;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,9 +16,9 @@ import javax.swing.table.DefaultTableModel;
  * @author yanfo
  */
 public class SalvarProduto implements ActionListener {
-    private CadastroProduto tela = new CadastroProduto();
+    private CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario();
 
-    public SalvarProduto(CadastroProduto tela) {
+    public SalvarProduto(CadastroProdutoFuncionario tela) {
         this.tela = tela;
     }
 

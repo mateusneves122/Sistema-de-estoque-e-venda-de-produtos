@@ -5,7 +5,7 @@
 package Controller.CadastroProdutos;
 
 import Model.product.Produto;
-import View.product.CadastroProduto;
+import View.produtoFuncionario.CadastroProdutoFuncionario;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -15,9 +15,9 @@ import java.awt.event.MouseListener;
  */
 public class VisualizaItem implements MouseListener {
 
-    CadastroProduto tela;
+    CadastroProdutoFuncionario tela;
 
-    public VisualizaItem(CadastroProduto tela) {
+    public VisualizaItem(CadastroProdutoFuncionario tela) {
         this.tela = tela;
     }
     

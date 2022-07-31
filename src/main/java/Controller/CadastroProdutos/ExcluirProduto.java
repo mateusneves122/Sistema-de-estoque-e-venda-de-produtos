@@ -4,7 +4,7 @@
  */
 package Controller.CadastroProdutos;
 
-import View.product.CadastroProduto;
+import View.produtoFuncionario.CadastroProdutoFuncionario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.table.DefaultTableModel;
@@ -14,9 +14,9 @@ import javax.swing.table.DefaultTableModel;
  * @author yanfo
  */
 public class ExcluirProduto implements ActionListener {
-    private CadastroProduto tela;
+    private CadastroProdutoFuncionario tela;
 
-    public ExcluirProduto(CadastroProduto tela) {
+    public ExcluirProduto(CadastroProdutoFuncionario tela) {
         this.tela = tela;
     }
     
