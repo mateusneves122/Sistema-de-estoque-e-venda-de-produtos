@@ -640,7 +640,31 @@ public class CadastroProduto extends JFrame {
     public void configuraPlanilhaFuncionarios() {
         JPanel jpTabela = new JPanel();
         jpTabela.setPreferredSize(new Dimension(640, 720));
+        String[][] dataTable = {};
         
+        String[] nomeColunas = {
+            "Nome",
+            "Registro",
+            "Cargo",
+            "Função",
+            "Pagamento",
+            "Expira"
+        };
+        
+        this.tabelaFuncionarios = new JTable(new DefaultTableModel(dataTable, nomeColunas)) {
+            @Override
+            public boolean isCellEditable(int data, int columns) {
+                return false;
+            }
+        };
+        this.tabelaFuncionarios.setPreferredScrollableViewportSize(new Dimension(640, 480));
+        this.tabelaFuncionarios.setFillsViewportHeight(true);
+        //this.tabelaFuncionarios.addMouseListener();
+        
+        JScrollPane painel = new JScrollPane(this.tabelaFuncionarios);
+        jpTabela.add(painel);
+        
+        this.telaFuncionario.add(jpTabela);
     }
     
     
@@ -655,6 +679,7 @@ public class CadastroProduto extends JFrame {
         configuraPlanilhaProdutos();
         configuraTelaDetalhes();
         configuraCadastroFuncionario();
+        configuraPlanilhaFuncionarios();
         mostraTela();
     }
     
