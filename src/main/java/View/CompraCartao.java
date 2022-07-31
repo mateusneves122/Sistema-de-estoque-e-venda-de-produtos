@@ -33,7 +33,7 @@ public class CompraCartao extends JFrame implements View{
     
     @Override
     public void configuraJanela(){
-        this.setSize(680, 130);
+        this.setSize(200,230);
         
         this.tela = new JPanel();
         this.tela.setLayout(new BorderLayout());
@@ -45,7 +45,7 @@ public class CompraCartao extends JFrame implements View{
         JPanel jpFinalizarCompra = new JPanel();
         jpFinalizarCompra.setSize(300,600);
         
-        jpFinalizarCompra.setLayout(new GridLayout(3,3));
+        jpFinalizarCompra.setLayout(new GridLayout(10,1));
         jpFinalizarCompra.add(new JLabel("Total a pagar: " + totalPagar));
         jpFinalizarCompra.add(new JLabel("Desconto:"));
         jpFinalizarCompra.add(new JLabel("Metodo de pagamento: " + metodoPagamento));
