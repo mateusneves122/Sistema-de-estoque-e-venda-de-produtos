@@ -83,176 +83,88 @@ public class CadastroProdutoFuncionario extends JFrame {
         return atualizar;
     }
 
-    public void setAtualizar(JButton atualizar) {
-        this.atualizar = atualizar;
-    }
-
     public JPanel getTelaProduto() {
         return telaProduto;
-    }
-
-    public void setTelaProduto(JPanel telaProduto) {
-        this.telaProduto = telaProduto;
     }
 
     public JTable getTabelaProdutos() {
         return tabelaProdutos;
     }
 
-    public void setTabelaProdutos(JTable tabelaProdutos) {
-        this.tabelaProdutos = tabelaProdutos;
-    }
-
     public Estoque getListaProdutos() {
         return listaProdutos;
-    }
-
-    public void setListaProdutos(Estoque listaProdutos) {
-        this.listaProdutos = listaProdutos;
     }
 
     public JTextField getNomeProduto() {
         return nomeProduto;
     }
 
-    public void setNomeProduto(JTextField nomeProduto) {
-        this.nomeProduto = nomeProduto;
-    }
-
     public JTextField getPreco() {
         return preco;
-    }
-
-    public void setPreco(JTextField preco) {
-        this.preco = preco;
     }
 
     public JTextField getQuantidade() {
         return Quantidade;
     }
 
-    public void setQuantidade(JTextField Quantidade) {
-        this.Quantidade = Quantidade;
-    }
-
     public JTextArea getDescricao() {
         return descricao;
-    }
-
-    public void setDescricao(JTextArea descricao) {
-        this.descricao = descricao;
     }
 
     public JComboBox getTipoProduto() {
         return tipoProduto;
     }
 
-    public void setTipoProduto(JComboBox tipoProduto) {
-        this.tipoProduto = tipoProduto;
-    }
-
     public JPanel getTelaFuncionario() {
         return telaFuncionario;
-    }
-
-    public void setTelaFuncionario(JPanel telaFuncionario) {
-        this.telaFuncionario = telaFuncionario;
     }
 
     public JTable getTabelaFuncionarios() {
         return tabelaFuncionarios;
     }
 
-    public void setTabelaFuncionarios(JTable tabelaFuncionarios) {
-        this.tabelaFuncionarios = tabelaFuncionarios;
-    }
-
     public JComboBox getUnidadeMedida() {
         return unidadeMedida;
-    }
-
-    public void setUnidadeMedida(JComboBox unidadeMedida) {
-        this.unidadeMedida = unidadeMedida;
     }
 
     public JTextField getValorUnidade() {
         return valorUnidade;
     }
 
-    public void setValorUnidade(JTextField valorUnidade) {
-        this.valorUnidade = valorUnidade;
-    }
-
     public JTextField getFornecedor() {
         return fornecedor;
-    }
-
-    public void setFornecedor(JTextField fornecedor) {
-        this.fornecedor = fornecedor;
     }
 
     public JTextField getLocalizacao() {
         return localizacao;
     }
 
-    public void setLocalizacao(JTextField localizacao) {
-        this.localizacao = localizacao;
-    }
-
     public JButton getAdicionar() {
         return adicionar;
-    }
-
-    public void setAdicionar(JButton adicionar) {
-        this.adicionar = adicionar;
     }
 
     public JTextArea getdDescricao() {
         return dDescricao;
     }
 
-    public void setdDescricao(JTextArea dDescricao) {
-        this.dDescricao = dDescricao;
-    }
-
     public JTextField getdTipoProduto() {
         return dTipoProduto;
-    }
-
-    public void setdTipoProduto(JTextField dTipoProduto) {
-        this.dTipoProduto = dTipoProduto;
     }
 
     public JTextField getdUnidadeMedida() {
         return dUnidadeMedida;
     }
 
-    public void setdUnidadeMedida(JTextField dUnidadeMedida) {
-        this.dUnidadeMedida = dUnidadeMedida;
-    }
-
     public JTextField getdUnidadeOpt() {
         return dUnidadeOpt;
-    }
-
-    public void setdUnidadeOpt(JTextField dUnidadeOpt) {
-        this.dUnidadeOpt = dUnidadeOpt;
     }
 
     public JTextField getdFornecedor() {
         return dFornecedor;
     }
 
-    public void setdFornecedor(JTextField dFornecedor) {
-        this.dFornecedor = dFornecedor;
-    }
-
     public JTextField getdLocalizacao() {
         return dLocalizacao;
-    }
-
-    public void setdLocalizacao(JTextField dLocalizacao) {
-        this.dLocalizacao = dLocalizacao;
     }
 
     //////////////////////////////////// Métodos Getters e setters dos Funcionários///////////
@@ -261,83 +173,41 @@ public class CadastroProdutoFuncionario extends JFrame {
         return nomeFuncionario;
     }
 
-    public void setNomeFuncionario(JTextField nomeFuncionario) {
-        this.nomeFuncionario = nomeFuncionario;
-    }
-
     public JTextField getCpf() {
         return cpf;
-    }
-
-    public void setCpf(JTextField cpf) {
-        this.cpf = cpf;
     }
 
     public JTextField getPagamentoFixo() {
         return pagamentoFixo;
     }
 
-    public void setPagamentoFixo(JTextField pagamentoFixo) {
-        this.pagamentoFixo = pagamentoFixo;
-    }
-
     public JPasswordField getSenha() {
         return senha;
-    }
-
-    public void setSenha(JPasswordField senha) {
-        this.senha = senha;
     }
 
     public JTextField getRg() {
         return rg;
     }
 
-    public void setRg(JTextField rg) {
-        this.rg = rg;
-    }
-
     public JTextField getTelefone() {
         return telefone;
-    }
-
-    public void setTelefone(JTextField telefone) {
-        this.telefone = telefone;
     }
 
     public JTextField getRegistro() {
         return registro;
     }
 
-    public void setRegistro(JTextField registro) {
-        this.registro = registro;
-    }
-
     public JComboBox getSexo() {
         return sexo;
-    }
-
-    public void setSexo(JComboBox sexo) {
-        this.sexo = sexo;
     }
 
     public JTextField getCargo() {
         return cargo;
     }
 
-    public void setCargo(JTextField cargo) {
-        this.cargo = cargo;
-    }
-
     public ButtonGroup getIsAdmin() {
         return isAdmin;
     }
-
-    public void setIsAdmin(ButtonGroup isAdmin) {
-        this.isAdmin = isAdmin;
-    }
-
-    
     
     //////////////////////////////////// Métodos da Janela///////////////////////////////////
     

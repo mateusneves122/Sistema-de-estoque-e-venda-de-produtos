@@ -12,7 +12,7 @@ public class Funcionario extends Pessoa {
 	public static Estoque estoque;
         private String senha;
         private boolean admin;
-        private double pagamentoFixo;
+        private float pagamentoFixo;
         private String rg;
         private int telefone;
         private String registro;
@@ -41,11 +41,11 @@ public class Funcionario extends Pessoa {
         this.admin = admin;
     }
 
-    public double getPagamentoFixo() {
+    public float getPagamentoFixo() {
         return pagamentoFixo;
     }
 
-    public void setPagamentoFixo(double pagamentoFixo) {
+    public void setPagamentoFixo(float pagamentoFixo) {
         this.pagamentoFixo = pagamentoFixo;
     }
 

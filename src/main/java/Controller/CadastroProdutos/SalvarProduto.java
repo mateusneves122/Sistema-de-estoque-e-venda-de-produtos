@@ -28,8 +28,6 @@ public class SalvarProduto implements ActionListener {
             String nome = this.tela.getNomeProduto().getText();
             double preco = toDouble(this.tela.getPreco().getText());
             int quantidade = toInt(this.tela.getQuantidade().getText());
-            Produto produto = new Produto(nome, preco, quantidade);
-            
             
             String descricao = tela.getDescricao().getText();
             String tipo = tela.getTipoProduto().getSelectedItem().toString();
@@ -37,6 +35,8 @@ public class SalvarProduto implements ActionListener {
             String fornecedor = tela.getFornecedor().getText();
             double pesoVolume = Double.parseDouble(tela.getValorUnidade().getText());
             String unidadeMedida = tela.getUnidadeMedida().getSelectedItem().toString();
+            
+            Produto produto = new Produto(nome, preco, quantidade);
             
             produto.setDescricao(descricao);
             produto.setTipo(tipo);
