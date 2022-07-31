@@ -572,17 +572,23 @@ public class CadastroProdutoFuncionario extends JFrame {
     
     
     public void configuraCadastroFuncionario() {
+        // Tamanho dos campos dos JTextFields
         int size = 14;
+        
+        // Painel do CRUD dos funcionários
         JPanel painelCrud = new JPanel();
+        
+        // Paineis esquerdo e direito para formatação
         JPanel esquerda = new JPanel();
         JPanel direitaVazia = new JPanel();
         
+        // A tela de cadastro ficará no canto esquerdo da janela
         painelCrud.setLayout(new BorderLayout());
         painelCrud.setPreferredSize(new Dimension(426,720));
         esquerda.setPreferredSize(new Dimension(226,720));
         direitaVazia.setPreferredSize(new Dimension(200,720));
         
-        
+        // Adição dos campos no painel esquerdo
         esquerda.add(new JLabel("Nome:"));
         nomeFuncionario = new JTextField(size);
         esquerda.add(nomeFuncionario);
@@ -632,6 +638,7 @@ public class CadastroProdutoFuncionario extends JFrame {
         esquerda.add(funcionario);
         esquerda.add(admin);
         
+        // Botões para a manipulação dos dados
         JButton adicionar = new JButton("Adicionar");
         esquerda.add(adicionar);
         
