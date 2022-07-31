@@ -30,7 +30,7 @@ public abstract class Pessoa {
 		this.cpf = cpf;
 	}
 
-	protected boolean validaCpf(String cpf) {
+	public boolean validaCpf(String cpf) {
 		if(cpf.length() == 11)
 			return true;
 		 else 

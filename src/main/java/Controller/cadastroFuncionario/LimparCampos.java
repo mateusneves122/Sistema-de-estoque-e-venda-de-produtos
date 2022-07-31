@@ -28,9 +28,9 @@ public class LimparCampos implements ActionListener {
         this.tela.getSenha().setText("");
         this.tela.getRg().setText("");
         this.tela.getTelefone().setText("");
-        this.tela.getRegistro().setText("");
         this.tela.getSexo().setSelectedIndex(0);
         this.tela.getCargo().setText("");
+        this.tela.getIsAdmin().setSelectedIndex(0);
     }
     
 }

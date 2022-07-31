@@ -33,7 +33,8 @@ public class VisualizaItem implements MouseListener {
                     break;
                 }
             }
-            // =======================================
+            
+            
             this.tela.getdTipoProduto().setText(produto.getTipo());
             this.tela.getdUnidadeMedida().setText(Double.toString(produto.getPesoVolume()));
             this.tela.getdUnidadeOpt().setText(produto.getUnidadeMedida());

@@ -10,18 +10,18 @@ import Controller.CadastroProdutos.ExcluirProduto;
 import Controller.CadastroProdutos.SalvarProduto;
 import Controller.CadastroProdutos.VisualizaItem;
 import Controller.cadastroFuncionario.LimparCampos;
+import Controller.cadastroFuncionario.SalvarFuncionario;
 import Model.Estoque;
+import Model.FuncionariosContratados;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -41,6 +41,7 @@ public class CadastroProdutoFuncionario extends JFrame {
     private JPanel telaProduto;
     private JTable tabelaProdutos;
     private Estoque listaProdutos;
+    private FuncionariosContratados funcionariosContratados;
     
     // Painel de inserção de produtos
     private JTextField nomeProduto;
@@ -70,15 +71,18 @@ public class CadastroProdutoFuncionario extends JFrame {
     private JPasswordField senha;
     private JTextField rg;
     private JTextField telefone;
-    private JTextField registro;
     private JComboBox sexo;
     private JTextField cargo;
-    private ButtonGroup isAdmin;
+    private JComboBox isAdmin;
     
     private JTable tabelaFuncionarios;
 
     //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
 
+    public FuncionariosContratados getFuncionariosContratados() {
+        return funcionariosContratados;
+    }
+    
     public JButton getAtualizar() {
         return atualizar;
     }
@@ -193,10 +197,6 @@ public class CadastroProdutoFuncionario extends JFrame {
         return telefone;
     }
 
-    public JTextField getRegistro() {
-        return registro;
-    }
-
     public JComboBox getSexo() {
         return sexo;
     }
@@ -205,7 +205,7 @@ public class CadastroProdutoFuncionario extends JFrame {
         return cargo;
     }
 
-    public ButtonGroup getIsAdmin() {
+    public JComboBox getIsAdmin() {
         return isAdmin;
     }
     
@@ -213,6 +213,7 @@ public class CadastroProdutoFuncionario extends JFrame {
     
     public CadastroProdutoFuncionario() {
         this.listaProdutos = new Estoque();
+        this.funcionariosContratados = new FuncionariosContratados();
         this.atualizar = new JButton("Atualizar");
         this.setTitle("Cadastro e edição de produtos e funcionários");
     }
@@ -483,14 +484,10 @@ public class CadastroProdutoFuncionario extends JFrame {
         esquerda.add(rg);
         
         esquerda.add(new JLabel("Telefone:"));
-        telefone = new JTextField(10);
+        telefone = new JTextField(11);
         esquerda.add(telefone);
         
-        esquerda.add(new JLabel("Registro:"));
-        registro = new JTextField(13);
-        esquerda.add(registro);
-        
-        esquerda.add(new JLabel("Sexo:"));
+        esquerda.add(new JLabel("      Sexo:"));
         String[] sexos = {"Masculino","Feminino","Outro"};
         sexo = new JComboBox(sexos);
         esquerda.add(sexo);
@@ -500,17 +497,13 @@ public class CadastroProdutoFuncionario extends JFrame {
         esquerda.add(cargo);
         
         esquerda.add(new JLabel("Grupo:"));
-        JRadioButton funcionario = new JRadioButton("vendas");
-        JRadioButton admin = new JRadioButton("Administração");
-        isAdmin = new ButtonGroup();
-        isAdmin.add(funcionario);
-        isAdmin.add(admin);
-        isAdmin.setSelected(funcionario.getModel(), rootPaneCheckingEnabled);
-        esquerda.add(funcionario);
-        esquerda.add(admin);
+        String[] funcoes = {"Vendas","Administração"};
+        isAdmin = new JComboBox(funcoes);
+        esquerda.add(isAdmin);
         
         // Botões para a manipulação dos dados
         JButton adicionar = new JButton("Adicionar");
+        adicionar.addActionListener(new SalvarFuncionario(this));
         esquerda.add(adicionar);
         
         JButton remover = new JButton("Remover");

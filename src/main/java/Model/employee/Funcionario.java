@@ -15,14 +15,18 @@ public class Funcionario extends Pessoa {
         private float pagamentoFixo;
         private String rg;
         private int telefone;
-        private String registro;
+        private int registro;
         private String sexo;
         private String cargo;
+        
+        private static int geraRegistro = 0;
 	
 	public Funcionario(String nome, String cpf, String senha) {
 		super(nome, cpf);
 		estoque = new Estoque();
                 this.senha = senha;
+                geraRegistro += 1;
+                this.registro = geraRegistro;
 	}
 
     public String getSenha() {
@@ -65,12 +69,8 @@ public class Funcionario extends Pessoa {
         this.telefone = telefone;
     }
 
-    public String getRegistro() {
+    public int getRegistro() {
         return registro;
-    }
-
-    public void setRegistro(String registro) {
-        this.registro = registro;
     }
 
     public String getSexo() {
