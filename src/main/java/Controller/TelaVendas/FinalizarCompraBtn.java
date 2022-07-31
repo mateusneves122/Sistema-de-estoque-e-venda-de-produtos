@@ -15,27 +15,29 @@ import javax.swing.JTable;
  *
  * @author SuvacoDeCobra
  */
-public class btnFinalizarCompra implements ActionListener {
+
+public class FinalizarCompraBtn implements ActionListener {
 
     private TelaVendas telaVenda;
     private FinalizarCompra telaFinCompra;
     private String formaDePagamento;
     private double totalPagar;
     
-    public btnFinalizarCompra(TelaVendas tela) {
+    public FinalizarCompraBtn(TelaVendas tela) {
        this.telaVenda = tela;
        this.totalPagar = 0;
-       this.formaDePagamento = this.telaVenda.getFormaPagamentoToString();
+//       this.formaDePagamento = this.telaVenda.getFormaPagamentoToString();
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-       //Calculando o total a pagar;
        JTable carrinho = this.telaVenda.getCarrinho();
        
+       //Paramêtros para instancia a telFinCompra;
+       this.formaDePagamento = this.telaVenda.getFormaPagamentoToString();
        this.totalPagar = calculaTotal(carrinho);
-       
        telaFinCompra = new FinalizarCompra(Double.toString(totalPagar), formaDePagamento);
+       
        telaFinCompra.montaTela();
     }
     
@@ -46,8 +48,8 @@ public class btnFinalizarCompra implements ActionListener {
        
        for(int i = 0;i < totalRow;i++) {
            double valor = Double.parseDouble((String) carrinho.getModel().getValueAt(i, 2));
-           double quantidade = (int) carrinho.getModel().getValueAt(i, 3);
-           soma += valor*quantidade;
+           int quantidade = (int) carrinho.getModel().getValueAt(i, 3);
+           soma += valor*(double)quantidade;
         }
        return soma;
     }

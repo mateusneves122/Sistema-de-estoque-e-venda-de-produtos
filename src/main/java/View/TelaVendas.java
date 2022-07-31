@@ -6,7 +6,7 @@ package View;
 
 import Controller.TelaVendas.AdicionarNoCarrinho;
 import Controller.TelaVendas.ExcluirDoCarrinho;
-import Controller.TelaVendas.btnFinalizarCompra;
+import Controller.TelaVendas.FinalizarCompraBtn;
 import Enum.ColumnNameProduto;
 import Enum.FormaPagamento;
 import java.awt.BorderLayout;
@@ -133,7 +133,7 @@ public class TelaVendas extends JFrame {
         jpFun.add(pagamentoList);
         
         JButton fim = new JButton("Finalizar compra");
-        fim.addActionListener(new btnFinalizarCompra(this));
+        fim.addActionListener(new FinalizarCompraBtn(this));
         jpFun.add(fim);
         telaDir.add(jpFun, BorderLayout.SOUTH);
 
