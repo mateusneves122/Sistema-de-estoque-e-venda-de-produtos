@@ -629,6 +629,9 @@ public class CadastroProduto extends JFrame {
         JButton editar = new JButton("Editar");
         esquerda.add(editar);
         
+        JButton limpar = new JButton("Limpar");
+        esquerda.add(limpar);
+        
         painelCrud.add(esquerda, BorderLayout.WEST);
         
         this.telaFuncionario.add(painelCrud, BorderLayout.WEST);
