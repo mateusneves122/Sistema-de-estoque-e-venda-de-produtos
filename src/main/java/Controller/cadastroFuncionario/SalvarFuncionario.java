@@ -24,7 +24,7 @@ public class SalvarFuncionario implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            float pagamento = Float.parseFloat(this.tela.getPagamentoFixo().getText());
+            double pagamento = Float.parseFloat(this.tela.getPagamentoFixo().getText());
             int telefone = Integer.parseInt(this.tela.getTelefone().getText());
             String nome = this.tela.getNomeFuncionario().getText();
             char[] senha = this.tela.getSenha().getPassword();
@@ -41,7 +41,7 @@ public class SalvarFuncionario implements ActionListener {
             funcionario.setTelefone(telefone);
             funcionario.setSexo(sexo);
             funcionario.setCargo(cargo);
-            if(admin.equals("vendas"))
+            if(admin.equals("Vendas"))
                 funcionario.setAdmin(false);
             else 
                 funcionario.setAdmin(true);
@@ -60,6 +60,7 @@ public class SalvarFuncionario implements ActionListener {
             this.tela.getTelefone().setText("");
             this.tela.getSexo().setSelectedIndex(0);
             this.tela.getCargo().setText("");
+            
             
             this.tela.repaint();
         }

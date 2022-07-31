@@ -11,6 +11,7 @@ import Controller.CadastroProdutos.SalvarProduto;
 import Controller.CadastroProdutos.VisualizaItem;
 import Controller.cadastroFuncionario.LimparCampos;
 import Controller.cadastroFuncionario.SalvarFuncionario;
+import Controller.cadastroFuncionario.VisualizarFuncionario;
 import Model.Estoque;
 import Model.FuncionariosContratados;
 import java.awt.BorderLayout;
@@ -542,7 +543,7 @@ public class CadastroProdutoFuncionario extends JFrame {
         };
         this.tabelaFuncionarios.setPreferredScrollableViewportSize(new Dimension(640, 480));
         this.tabelaFuncionarios.setFillsViewportHeight(true);
-        //this.tabelaFuncionarios.addMouseListener();
+        this.tabelaFuncionarios.addMouseListener(new VisualizarFuncionario(this));
         
         JScrollPane painel = new JScrollPane(this.tabelaFuncionarios);
         jpTabela.add(painel);
