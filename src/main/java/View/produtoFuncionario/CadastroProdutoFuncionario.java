@@ -9,6 +9,7 @@ import Controller.CadastroProdutos.EditarProduto;
 import Controller.CadastroProdutos.ExcluirProduto;
 import Controller.CadastroProdutos.SalvarProduto;
 import Controller.CadastroProdutos.VisualizaItem;
+import Controller.cadastroFuncionario.LimparCampos;
 import Model.Estoque;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -649,6 +650,7 @@ public class CadastroProdutoFuncionario extends JFrame {
         esquerda.add(editar);
         
         JButton limpar = new JButton("Limpar");
+        limpar.addActionListener(new LimparCampos(this));
         esquerda.add(limpar);
         
         painelCrud.add(esquerda, BorderLayout.WEST);

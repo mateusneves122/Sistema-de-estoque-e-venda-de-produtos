@@ -22,7 +22,15 @@ public class LimparCampos implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        this.tela.getNomeFuncionario().setText("");
+        this.tela.getCpf().setText("");
+        this.tela.getPagamentoFixo().setText("");
+        this.tela.getSenha().setText("");
+        this.tela.getRg().setText("");
+        this.tela.getTelefone().setText("");
+        this.tela.getRegistro().setText("");
+        this.tela.getSexo().setSelectedIndex(0);
+        this.tela.getCargo().setText("");
     }
     
 }
