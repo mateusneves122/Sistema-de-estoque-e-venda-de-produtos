@@ -505,16 +505,25 @@ public class CadastroProdutoFuncionario extends JFrame {
     private void configuraTelaDetalhes() {
         // Tamanho dos campos do JTextField
         int size = 20;
+        
+        // Painel dos detalhes do produto selecionado na lpanilha
         JPanel jpDetalhes = new JPanel();
+        
+        // o painel ocupará a metade da largura da janela.
+        // Ficará no canto inferior direito da tela ( à direita da tela)
         jpDetalhes.setPreferredSize(new Dimension(620,480));
+        
         jpDetalhes.setBorder(BorderFactory.createTitledBorder("Detalhes"));
         jpDetalhes.setLayout(new BorderLayout());
         
+        // Paineis esquerdo e direito do container de detalhes. São usados para
+        // manter os campos formatados
         JPanel esquerda = new JPanel();
         esquerda.setPreferredSize(new Dimension(310,480));
         JPanel direita = new JPanel();
         direita.setPreferredSize(new Dimension(310,480));
         
+        // Campos que serão usados para exibir os detalhes dos produtos ( Contém gambiarras para formatação)
         esquerda.add(new JLabel("Grupo:"));
         dTipoProduto = new JTextField(size);
         dTipoProduto.setEditable(false);
@@ -545,10 +554,12 @@ public class CadastroProdutoFuncionario extends JFrame {
         dDescricao.setEditable(false);
         direita.add(dDescricao);
         
+        // Remover dados da planilha e do armazenamento
         JButton remove = new JButton("Remover");
         remove.addActionListener(new ExcluirProduto(this));
         esquerda.add(remove);
         
+        // Editar dados do produto
         JButton editar = new JButton("Editar");
         editar.addActionListener(new EditarProduto(this));
         esquerda.add(editar);
