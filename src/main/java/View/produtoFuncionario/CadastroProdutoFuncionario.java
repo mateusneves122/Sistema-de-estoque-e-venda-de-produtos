@@ -10,6 +10,7 @@ import Controller.CadastroProdutos.ExcluirProduto;
 import Controller.CadastroProdutos.SalvarProduto;
 import Controller.CadastroProdutos.VisualizaItem;
 import Controller.cadastroFuncionario.LimparCampos;
+import Controller.cadastroFuncionario.RemoverFuncionario;
 import Controller.cadastroFuncionario.SalvarFuncionario;
 import Controller.cadastroFuncionario.VisualizarFuncionario;
 import Model.Estoque;
@@ -508,6 +509,7 @@ public class CadastroProdutoFuncionario extends JFrame {
         esquerda.add(adicionar);
         
         JButton remover = new JButton("Remover");
+        remover.addActionListener(new RemoverFuncionario(this));
         esquerda.add(remover);
         
         JButton editar = new JButton("Editar");

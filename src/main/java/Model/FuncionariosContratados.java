@@ -27,5 +27,31 @@ public class FuncionariosContratados {
         this.funcionariosContratados = funcionariosContratados;
     }
     
-    
+    public void removeRegistroFuncionario(int id) {
+
+        if (this.checkIfThereIsOnlyOneElementInTheList()) {
+            this.removeFirstProduct();
+        } else if (!this.funcionariosContratados.isEmpty()) {
+            Funcionario p;
+            for (int i = 0; i < funcionariosContratados.size(); i++) {
+                p = funcionariosContratados.get(i);
+                if (p.getRegistro() == id) {
+                    funcionariosContratados.remove(p);
+                    break;
+                }
+            }
+        }
+    }
+
+    private boolean checkIfThereIsOnlyOneElementInTheList() {
+        if (funcionariosContratados.size() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void removeFirstProduct() {
+        this.funcionariosContratados.remove(0);
+    }
 }
