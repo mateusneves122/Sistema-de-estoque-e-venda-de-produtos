@@ -4,10 +4,9 @@
  */
 package View;
 
-import Controller.LoginEntrar.Entrar;
 import Controller.TelaVendas.AdicionarNoCarrinho;
 import Controller.TelaVendas.ExcluirDoCarrinho;
-import Model.employee.Funcionario;
+import Controller.TelaVendas.btnFinalizarCompra;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
@@ -15,9 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -84,7 +81,6 @@ public class TelaVendas extends JFrame {
     }
     
     
-    
     private void configuraJanela() {
         this.setSize(1280, 720);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -125,6 +121,7 @@ public class TelaVendas extends JFrame {
         jpFun.add(pagList);
         
         JButton fim = new JButton("Finalizar compra");
+        fim.addActionListener(new btnFinalizarCompra(this));
         jpFun.add(fim);
         telaDir.add(jpFun, BorderLayout.SOUTH);
 

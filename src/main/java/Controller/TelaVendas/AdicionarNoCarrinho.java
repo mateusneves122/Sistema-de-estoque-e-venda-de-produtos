@@ -43,7 +43,7 @@ public class AdicionarNoCarrinho implements ActionListener{
                 //}
                 int qtd = Integer.parseInt(this.tela.getQuantidade().getText());
                 int valorCelula = Integer.parseInt(tabelaModel.getValueAt(index, 3).toString());
-                if(valorCelula >= qtd){
+                if(valorCelula >= qtd) {
                     
                     //altera o valor no estoque
                     valorCelula -= qtd;
