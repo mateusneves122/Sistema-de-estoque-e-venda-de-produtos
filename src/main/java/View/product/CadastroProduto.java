@@ -467,7 +467,7 @@ public class CadastroProduto extends JFrame {
         JPanel jpTabela = new JPanel();
         jpTabela.setPreferredSize(new Dimension(640, 480));
         
-        this.setTitle("Cadastro e edição de produtos");
+        this.setTitle("Cadastro e edição de produtos e funcionários");
         String[][] dataTable = {
             //{"","","",""}
         };
@@ -638,6 +638,8 @@ public class CadastroProduto extends JFrame {
     }
     
     public void configuraPlanilhaFuncionarios() {
+        JPanel jpTabela = new JPanel();
+        jpTabela.setPreferredSize(new Dimension(640, 720));
         
     }
     
