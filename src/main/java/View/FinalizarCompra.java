@@ -27,7 +27,6 @@ public class FinalizarCompra extends JFrame {
     
     private void configuraJanela(){
         this.setSize(200, 120);
-//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         this.tela = new JPanel();
         this.tela.setLayout(new BorderLayout());
@@ -51,6 +50,8 @@ public class FinalizarCompra extends JFrame {
         this.add(jpFinalizarCompra, BorderLayout.WEST);
     }
 
+    
+    
     public void mostraTela() {
         this.add(tela);
         this.setVisible(true);
@@ -61,11 +62,6 @@ public class FinalizarCompra extends JFrame {
         configuraFinalizarCompra();
         mostraTela();
     }
-    
-//    public static void main(String[] args) {
-//        FinalizarCompra fc = new FinalizarCompra();
-//        fc.montaTela();
-//    } 
 }
 
   

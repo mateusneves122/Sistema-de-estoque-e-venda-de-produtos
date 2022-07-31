@@ -19,11 +19,13 @@ public class btnFinalizarCompra implements ActionListener {
 
     private TelaVendas telaVenda;
     private FinalizarCompra telaFinCompra;
+    private String formaDePagamento;
     private double totalPagar;
     
     public btnFinalizarCompra(TelaVendas tela) {
        this.telaVenda = tela;
        this.totalPagar = 0;
+       this.formaDePagamento = this.telaVenda.getFormaPagamentoToString();
     }
     
     @Override
@@ -33,18 +35,19 @@ public class btnFinalizarCompra implements ActionListener {
        
        this.totalPagar = calculaTotal(carrinho);
        
-       telaFinCompra = new FinalizarCompra(Double.toString(totalPagar), "Dinheiro");
+       telaFinCompra = new FinalizarCompra(Double.toString(totalPagar), formaDePagamento);
        telaFinCompra.montaTela();
     }
     
+    
     private double calculaTotal (JTable carrinho) {
        int totalRow = carrinho.getRowCount();
-       int soma = 0;
+       double soma = 0;
        
        for(int i = 0;i < totalRow;i++) {
            double valor = Double.parseDouble((String) carrinho.getModel().getValueAt(i, 2));
-           int quantidade = (int) carrinho.getModel().getValueAt(i, 3);
-           soma += valor*(double)quantidade;
+           double quantidade = (int) carrinho.getModel().getValueAt(i, 3);
+           soma += valor*quantidade;
         }
        return soma;
     }

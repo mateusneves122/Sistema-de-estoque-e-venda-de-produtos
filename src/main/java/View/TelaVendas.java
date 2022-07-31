@@ -7,6 +7,8 @@ package View;
 import Controller.TelaVendas.AdicionarNoCarrinho;
 import Controller.TelaVendas.ExcluirDoCarrinho;
 import Controller.TelaVendas.btnFinalizarCompra;
+import Enum.ColumnNameProduto;
+import Enum.FormaPagamento;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
@@ -24,10 +26,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author PICHAU
  */
+
+
 public class TelaVendas extends JFrame {
     private JPanel tela;
     private JTable produtos;
     private JTable carrinho;
+    private JComboBox pagamentoList;
+    private String pagamento;
     private JPanel telaEsq;
     private JPanel telaDir;
     private JTextField Quantidade;
@@ -80,6 +86,14 @@ public class TelaVendas extends JFrame {
         this.Quantidade = Quantidade;
     }
     
+    public String getFormaPagamentoToString() {
+        return pagamentoList.getSelectedItem().toString();
+    }
+    
+    public int getFormaPagamentoIndex() {
+        return pagamentoList.getSelectedIndex();
+    }
+    
     
     private void configuraJanela() {
         this.setSize(1280, 720);
@@ -113,18 +127,21 @@ public class TelaVendas extends JFrame {
         remover.addActionListener(new ExcluirDoCarrinho(this));
         jpFun.add(remover);
         
-        String[] fPagamento = { "Cartão", "Dinheiro" };
-        JComboBox pagList = new JComboBox(fPagamento);
-        pagList.setSelectedIndex(0);
-        //pagList.addActionListener(this);
+        //JComboBox da forma de pagamento;
+        pagamentoList = boxFormaDePagamento();
         jpFun.add(new JLabel("Forma de pagamento:"));
-        jpFun.add(pagList);
+        jpFun.add(pagamentoList);
         
         JButton fim = new JButton("Finalizar compra");
         fim.addActionListener(new btnFinalizarCompra(this));
         jpFun.add(fim);
         telaDir.add(jpFun, BorderLayout.SOUTH);
 
+    }
+    
+    private JComboBox boxFormaDePagamento () {
+        JComboBox pagList = new JComboBox(FormaPagamento.values());
+        return pagList;
     }
     
     //TODO :POSSIVEL ERRO 
@@ -134,21 +151,13 @@ public class TelaVendas extends JFrame {
         jpTabela.setLayout(new BorderLayout());
         jpTabela.setPreferredSize(new Dimension(630, 480));
         
-        //this.listaProdutos = new Estoque();
         this.setTitle("Vendas");
         String[][] dataTable = {
             {"1","banana","1.99","100"},
             {"2","pera","2.99","50"}
         };
         
-        String[] columnNames = {
-            "Id",
-            "Produto",
-            "Valor Unitário",
-            "Quantidade"
-        };
-        
-        this.produtos = new JTable(new DefaultTableModel(dataTable, columnNames)) {
+        this.produtos = new JTable(new DefaultTableModel(dataTable, ColumnNameProduto.values())) {
             @Override
             public boolean isCellEditable(int data, int columns) {
                 return false;
@@ -170,20 +179,12 @@ public class TelaVendas extends JFrame {
         jpCarrinho.setLayout(new BorderLayout());
         jpCarrinho.setPreferredSize(new Dimension(630, 460));
         
-        //this.listaProdutos = new Estoque();
         this.setTitle("Vendas");
         String[][] dataTable = {
             //{"","","",""}
         };
         
-        String[] columnNames = {
-            "Id",
-            "Produto",
-            "Valor Unitário",
-            "Quantidade"
-        };
-        
-        this.carrinho = new JTable(new DefaultTableModel(dataTable, columnNames)) {
+        this.carrinho = new JTable(new DefaultTableModel(dataTable, ColumnNameProduto.values())) {
             @Override
             public boolean isCellEditable(int data, int columns) {
                 return false;
