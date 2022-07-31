@@ -26,7 +26,6 @@ public class FinalizarCompraBtn implements ActionListener {
     public FinalizarCompraBtn(TelaVendas tela) {
        this.telaVenda = tela;
        this.totalPagar = 0;
-//       this.formaDePagamento = this.telaVenda.getFormaPagamentoToString();
     }
     
     @Override

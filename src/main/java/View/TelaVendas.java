@@ -9,6 +9,7 @@ import Controller.TelaVendas.ExcluirDoCarrinho;
 import Controller.TelaVendas.FinalizarCompraBtn;
 import Enum.ColumnNameProduto;
 import Enum.FormaPagamento;
+import Interfaces.View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
@@ -28,7 +29,7 @@ import javax.swing.table.DefaultTableModel;
  */
 
 
-public class TelaVendas extends JFrame {
+public class TelaVendas extends JFrame implements View {
     private JPanel tela;
     private JTable produtos;
     private JTable carrinho;
@@ -94,8 +95,8 @@ public class TelaVendas extends JFrame {
         return pagamentoList.getSelectedIndex();
     }
     
-    
-    private void configuraJanela() {
+    @Override
+    public void configuraJanela() {
         this.setSize(1280, 720);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -113,6 +114,7 @@ public class TelaVendas extends JFrame {
         //JButton adicionar = new JButton("Salvar");
         
     }
+    
     private void configuraFun() {
         int size = 5;
         JPanel jpFun = new JPanel();

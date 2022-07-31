@@ -5,6 +5,7 @@
  */
 package View;
 
+import Interfaces.View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
@@ -15,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class FinalizarCompra extends JFrame {
+public class FinalizarCompra extends JFrame implements View {
     private JPanel tela;
     private String totalPagar;
     private String metodoPagamento;
@@ -25,7 +26,8 @@ public class FinalizarCompra extends JFrame {
         this.metodoPagamento = metodoPagamento;
     }
     
-    private void configuraJanela(){
+    @Override
+    public void configuraJanela(){
         this.setSize(200, 120);
         
         this.tela = new JPanel();

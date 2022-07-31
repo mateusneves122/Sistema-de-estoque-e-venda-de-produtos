@@ -5,6 +5,7 @@
 package View;
 
 import Controller.LoginEntrar.Entrar;
+import Interfaces.View;
 import Model.employee.Funcionario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -20,7 +21,7 @@ import javax.swing.JTextField;
  *
  * @author ice
  */
-public class Login extends JFrame {
+public class Login extends JFrame implements View {
     private JPanel tela;
     private JTextField tfNome;
     private JPasswordField tfSenha;
@@ -54,7 +55,8 @@ public class Login extends JFrame {
         this.funcionarios = funcionarios;
     }
     
-    private void configuraJanela() {
+    @Override
+    public void configuraJanela() {
         this.setSize(320, 120);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
