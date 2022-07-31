@@ -12,18 +12,24 @@ import Controller.CadastroProdutos.VisualizaItem;
 import Model.Estoque;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -70,6 +76,8 @@ public class CadastroProduto extends JFrame {
     private JTextField registro;
     private JComboBox sexo;
     private JTextField cargo;
+    private ButtonGroup isAdmin;
+    private JSpinner data;
     
     private JTable tabelaFuncionarios;
 
@@ -251,6 +259,15 @@ public class CadastroProduto extends JFrame {
         this.dLocalizacao = dLocalizacao;
     }
 
+    public JSpinner getData() {
+        return data;
+    }
+
+    public void setData(JSpinner data) {
+        this.data = data;
+    }
+    
+    
     //////////////////////////////////// Métodos Getters e setters dos Funcionários///////////
 
     public JTextField getNomeFuncionario() {
@@ -324,7 +341,15 @@ public class CadastroProduto extends JFrame {
     public void setCargo(JTextField cargo) {
         this.cargo = cargo;
     }
-    
+
+    public ButtonGroup getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(ButtonGroup isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
     
     
     //////////////////////////////////// Métodos da Janela///////////////////////////////////
@@ -536,8 +561,8 @@ public class CadastroProduto extends JFrame {
         
         painelCrud.setLayout(new BorderLayout());
         painelCrud.setPreferredSize(new Dimension(426,720));
-        esquerda.setPreferredSize(new Dimension(213,720));
-        direitaVazia.setPreferredSize(new Dimension(213,720));
+        esquerda.setPreferredSize(new Dimension(226,720));
+        direitaVazia.setPreferredSize(new Dimension(200,720));
         
         
         esquerda.add(new JLabel("Nome:"));
@@ -567,7 +592,7 @@ public class CadastroProduto extends JFrame {
         esquerda.add(telefone);
         
         esquerda.add(new JLabel("Registro:"));
-        registro = new JTextField(11);
+        registro = new JTextField(13);
         esquerda.add(registro);
         
         esquerda.add(new JLabel("Sexo:"));
@@ -575,17 +600,44 @@ public class CadastroProduto extends JFrame {
         sexo = new JComboBox(sexos);
         esquerda.add(sexo);
         
-        esquerda.add(new JLabel("               Cargo:"));
+        esquerda.add(new JLabel("                     Cargo:"));
         cargo = new JTextField(10);
         esquerda.add(cargo);
         
+        esquerda.add(new JLabel("Grupo:"));
+        JRadioButton funcionario = new JRadioButton("vendas");
+        JRadioButton admin = new JRadioButton("Administração");
+        isAdmin = new ButtonGroup();
+        isAdmin.add(funcionario);
+        isAdmin.add(admin);
+        isAdmin.setSelected(funcionario.getModel(), rootPaneCheckingEnabled);
+        esquerda.add(funcionario);
+        esquerda.add(admin);
+        
+        esquerda.add(new JLabel("Contrato até:"));
+        SpinnerDateModel dataModel = new SpinnerDateModel();
+        data = new JSpinner(dataModel);
+        data.setEditor(new JSpinner.DateEditor(data,"dd.MM.yyyy"));
+        esquerda.add(data);
+        
         JButton adicionar = new JButton("Adicionar");
         esquerda.add(adicionar);
+        
+        JButton remover = new JButton("Remover");
+        esquerda.add(remover);
+        
+        JButton editar = new JButton("Editar");
+        esquerda.add(editar);
         
         painelCrud.add(esquerda, BorderLayout.WEST);
         
         this.telaFuncionario.add(painelCrud, BorderLayout.WEST);
     }
+    
+    public void configuraPlanilhaFuncionarios() {
+        
+    }
+    
     
     public void mostraTela() {
         this.add(this.abas);
