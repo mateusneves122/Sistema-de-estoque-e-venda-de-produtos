@@ -85,12 +85,13 @@ public class CadastroProdutoFuncionario extends JFrame {
     private JTable tabelaFuncionarios;
 
     
-    public CadastroProdutoFuncionario(Login tela) {
+    public CadastroProdutoFuncionario(/*Login tela*/) {
         this.funcionariosContratados = new FuncionariosContratados();
+        this.listaProdutos = new Estoque();
         this.atualizar = new JButton("Atualizar");
         this.setTitle("Cadastro e edição de produtos e funcionários");
         
-        this.montaTela();
+        //this.montaTela();
     }
     //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
 
@@ -579,4 +580,8 @@ public class CadastroProdutoFuncionario extends JFrame {
         mostraTela();
     }
     
+    public static void main(String[] args) {
+        CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario();
+        tela.montaTela();
+    }
 }

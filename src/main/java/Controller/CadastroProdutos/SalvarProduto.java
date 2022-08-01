@@ -45,7 +45,7 @@ public class SalvarProduto implements ActionListener {
             produto.setPesoVolume(pesoVolume);
             produto.setUnidadeMedida(unidadeMedida);
             
-            tela.getListaProdutos().addProduct(produto);
+            tela.getListaProdutos().getProdutosEmEstoque().add(produto);
             DefaultTableModel model = (DefaultTableModel) this.tela.getTabelaProdutos().getModel();
             model.addRow(new Object[]{produto.getId(), nome, preco, quantidade});
             

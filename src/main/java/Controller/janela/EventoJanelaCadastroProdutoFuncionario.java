@@ -12,7 +12,9 @@ import View.produtoFuncionario.CadastroProdutoFuncionario;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,21 +30,34 @@ public class EventoJanelaCadastroProdutoFuncionario implements WindowListener {
     @Override
     public void windowOpened(WindowEvent e) {
         try {
+            System.out.println("Abriu");
             String lerArquivo = Arquivo.lerArquivo("dadosProdutos");
             List<Produto> estoque = JSONProduto.toProdutos(lerArquivo);
             
+            this.tela.getListaProdutos().setProdutosEmEstoque(new ArrayList<>());
             this.tela.getListaProdutos().setProdutosEmEstoque(estoque);
+            System.out.println("Abriu2");
+            
+            DefaultTableModel model = (DefaultTableModel) tela.getTabelaProdutos().getModel();
+            
+            for(Produto i : estoque) {
+                model.addRow(new Object[]{i.getId(),i.getNome(),i.getPreco(),i.getQuantidade()});
+            }
+            
         } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
+        System.out.println("Fechou");
         String toJSON = JSONFuncionario.toJSON(this.tela.getFuncionariosContratados().getFuncionariosContratados());
         Arquivo.escreverArquivo("dadosFuncionarios", toJSON);
         
         toJSON = JSONProduto.toJSON(this.tela.getListaProdutos().getProdutosEmEstoque());
         Arquivo.escreverArquivo("dadosProdutos", toJSON);
+        System.out.println("Fechou2");
     }
 
     @Override
