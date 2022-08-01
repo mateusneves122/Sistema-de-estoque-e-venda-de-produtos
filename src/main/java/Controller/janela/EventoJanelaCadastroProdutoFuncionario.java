@@ -7,9 +7,12 @@ package Controller.janela;
 import Armazenamento.Arquivo;
 import Armazenamento.JSONFuncionario;
 import Armazenamento.JSONProduto;
+import Model.product.Produto;
 import View.produtoFuncionario.CadastroProdutoFuncionario;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileNotFoundException;
+import java.util.List;
 
 /**
  *
@@ -24,6 +27,13 @@ public class EventoJanelaCadastroProdutoFuncionario implements WindowListener {
     
     @Override
     public void windowOpened(WindowEvent e) {
+        try {
+            String lerArquivo = Arquivo.lerArquivo("dadosProdutos");
+            List<Produto> estoque = JSONProduto.toProdutos(lerArquivo);
+            
+            this.tela.getListaProdutos().setProdutosEmEstoque(estoque);
+        } catch (FileNotFoundException ex) {
+        }
     }
 
     @Override

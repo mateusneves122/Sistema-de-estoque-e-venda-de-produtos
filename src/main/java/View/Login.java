@@ -5,6 +5,8 @@
 package View;
 
 import Controller.LoginEntrar.Entrar;
+import Controller.janela.EventoJanelaLogin;
+import Model.FuncionariosContratados;
 import Model.employee.Funcionario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -25,9 +27,10 @@ public class Login extends JFrame {
     private JTextField tfNome;
     private JPasswordField tfSenha;
     
-    private JList<Funcionario> funcionarios;
+    private FuncionariosContratados funcionariosContratados;
 
     public Login() {
+        funcionariosContratados = new FuncionariosContratados();
     }
 
     public JTextField getTfNome() {
@@ -46,12 +49,12 @@ public class Login extends JFrame {
         this.tfSenha = tfSenha;
     }
 
-    public JList<Funcionario> getFuncionarios() {
-        return funcionarios;
+    public FuncionariosContratados getFuncionariosContratados() {
+        return funcionariosContratados;
     }
 
-    public void setFuncionarios(JList<Funcionario> funcionarios) {
-        this.funcionarios = funcionarios;
+    public void setFuncionariosContratados(FuncionariosContratados funcionariosContratados) {
+        this.funcionariosContratados = funcionariosContratados;
     }
     
     private void configuraJanela() {
@@ -61,7 +64,7 @@ public class Login extends JFrame {
         this.tela = new JPanel();
         this.tela.setLayout(new BorderLayout());
         this.setLocationRelativeTo(null);
-        // this.addWindowListener();
+        this.addWindowListener(new EventoJanelaLogin(this));
     }
     
     private void configuraLogin() {

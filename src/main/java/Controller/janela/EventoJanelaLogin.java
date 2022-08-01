@@ -12,7 +12,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.util.List;
-import javax.swing.DefaultListModel;
 
 /**
  *
@@ -28,18 +27,11 @@ public class EventoJanelaLogin implements WindowListener {
     @Override
     public void windowOpened(WindowEvent e) {
         try {
-            String lerArquivo = Arquivo.lerArquivo("dados");
+            
+            String lerArquivo = Arquivo.lerArquivo("dadosFuncionarios");
             List<Funcionario> contatos = JSONFuncionario.toFuncionarios(lerArquivo);
             
-            DefaultListModel<Funcionario> modelo = new DefaultListModel<>();
-            
-            for (Funcionario contato : contatos) {
-                modelo.addElement(contato);
-            }
-            // Editar aqui
-            //tela.getLista().setModel(modelo);
-            tela.repaint();
-            
+            this.tela.getFuncionariosContratados().setFuncionariosContratados(contatos);
         } catch (FileNotFoundException ex) {
         }
     }

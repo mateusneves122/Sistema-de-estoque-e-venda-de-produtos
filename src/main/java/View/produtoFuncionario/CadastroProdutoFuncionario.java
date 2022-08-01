@@ -17,6 +17,7 @@ import Controller.cadastroFuncionario.VisualizarFuncionario;
 import Controller.janela.EventoJanelaCadastroProdutoFuncionario;
 import Model.Estoque;
 import Model.FuncionariosContratados;
+import View.Login;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
@@ -38,6 +39,8 @@ import javax.swing.table.DefaultTableModel;
  * @author yanfo
  */
 public class CadastroProdutoFuncionario extends JFrame {
+    private Login telaLogin;
+    
     protected JTabbedPane abas;
     protected JButton atualizar;
     protected JButton adicionar;
@@ -81,6 +84,14 @@ public class CadastroProdutoFuncionario extends JFrame {
     
     private JTable tabelaFuncionarios;
 
+    
+    public CadastroProdutoFuncionario(Login tela) {
+        this.funcionariosContratados = new FuncionariosContratados();
+        this.atualizar = new JButton("Atualizar");
+        this.setTitle("Cadastro e edição de produtos e funcionários");
+        
+        this.montaTela();
+    }
     //////////////////////////////////// Métodos Getters e Setters///////////////////////////////////
 
     public FuncionariosContratados getFuncionariosContratados() {
@@ -214,13 +225,6 @@ public class CadastroProdutoFuncionario extends JFrame {
     }
     
     //////////////////////////////////// Métodos da Janela///////////////////////////////////
-    
-    public CadastroProdutoFuncionario() {
-        this.listaProdutos = new Estoque();
-        this.funcionariosContratados = new FuncionariosContratados();
-        this.atualizar = new JButton("Atualizar");
-        this.setTitle("Cadastro e edição de produtos e funcionários");
-    }
     
     private void configuraJanela() {
         // Janela por padrão na Resolução 1280x720
@@ -575,8 +579,4 @@ public class CadastroProdutoFuncionario extends JFrame {
         mostraTela();
     }
     
-    public static void main(String[] args) {
-        CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario();
-        tela.montaTela();
-    }
 }

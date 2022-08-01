@@ -75,4 +75,8 @@ public class Estoque {
         return produtosEmEstoque;
     }
 
+    public void setProdutosEmEstoque(List<Produto> produtosEmEstoque) {
+        this.produtosEmEstoque = produtosEmEstoque;
+    }
+    
 }

@@ -6,10 +6,9 @@ package Controller.LoginEntrar;
 
 import Model.employee.Funcionario;
 import View.Login;
+import View.produtoFuncionario.CadastroProdutoFuncionario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -24,16 +23,12 @@ public class Entrar implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        List<Funcionario> funcionarios = new ArrayList<>();
-        funcionarios.add(new Funcionario("Mateus","33333333333", "1234"));
-        funcionarios.add(new Funcionario("Denis","55555555555", "1234"));
-        
-        String nome = tela.getTfNome().getText();
-        String senha = tela.getTfSenha().getText();
-        
-        for(Funcionario i : funcionarios) {
-            if(nome.equals(i.getNome()) && senha.equals(i.getSenha())) {
-                System.out.println("Logou");
+        for(Funcionario i : tela.getFuncionariosContratados().getFuncionariosContratados()) {
+            if(i.getNome().equals(tela.getTfNome().getText()) && i.getSenha().equals(String.copyValueOf(tela.getTfSenha().getPassword()))) {
+                if(i.isAdmin()) {
+                    this.tela.dispose();
+                    CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario(this.tela);
+                }
             }
         }
     }

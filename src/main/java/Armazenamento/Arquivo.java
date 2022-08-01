@@ -32,13 +32,8 @@ public class Arquivo {
         FileWriter fwArquivo;
         BufferedWriter bwArquivo;
         try {
-            File arquivo = new File(caminho);
-            //Se o arquivo já existir, então abrir para concatenação, caso contrário criar novo arquivo
-            fwArquivo = new FileWriter(arquivo, false);
-            bwArquivo = new BufferedWriter(fwArquivo);
-            // escrevendo String no arquivo e adicionando caracter para criar nova linha
-            bwArquivo.write(conteudo + '\n');
-            // fechando o arquivo
+            File arquivo = new File(caminho);fwArquivo = new FileWriter(arquivo, false);
+            bwArquivo = new BufferedWriter(fwArquivo);bwArquivo.write(conteudo + '\n');
             bwArquivo.close();
             fwArquivo.close();
 

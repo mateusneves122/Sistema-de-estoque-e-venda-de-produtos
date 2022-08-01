@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author yanfo
  */
 public class SalvarProduto implements ActionListener {
-    private CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario();
+    private CadastroProdutoFuncionario tela;
 
     public SalvarProduto(CadastroProdutoFuncionario tela) {
         this.tela = tela;
