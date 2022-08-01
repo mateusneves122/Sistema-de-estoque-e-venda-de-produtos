@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.TelaVendas.CompraD;
 import Interfaces.View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -20,10 +21,12 @@ public class FinalizarCompra extends JFrame implements View {
     private JPanel tela;
     private String totalPagar;
     private String metodoPagamento;
+    private TelaVendas telaVenda;
     
-    public FinalizarCompra(String totalPagar, String metodoPagamento) {
+    public FinalizarCompra(String totalPagar, String metodoPagamento,TelaVendas t) {
         this.totalPagar = totalPagar;
         this.metodoPagamento = metodoPagamento;
+        this.telaVenda = t;
     }
     
     @Override
@@ -48,6 +51,7 @@ public class FinalizarCompra extends JFrame implements View {
         JButton btnConfimar = new JButton("Confirmar");
         btnConfimar.setPreferredSize(new Dimension(120,20));
         jpFinalizarCompra.add(btnConfimar);
+        btnConfimar.addActionListener(new CompraD(telaVenda,this));
         
         this.add(jpFinalizarCompra, BorderLayout.WEST);
     }

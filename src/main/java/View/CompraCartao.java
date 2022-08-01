@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.TelaVendas.ValidaCartao;
 import Interfaces.View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -25,11 +26,54 @@ public class CompraCartao extends JFrame implements View{
     private String totalPagar;
     private String metodoPagamento;
     private JTextField nCartao;
+    private TelaVendas telaVenda;
     
-    public CompraCartao(String totalPagar, String metodoPagamento) {
+    public CompraCartao(String totalPagar, String metodoPagamento ,TelaVendas t) {
         this.totalPagar = totalPagar;
         this.metodoPagamento = metodoPagamento;
+        this.telaVenda = t;
     }
+
+    public JPanel getTela() {
+        return tela;
+    }
+
+    public void setTela(JPanel tela) {
+        this.tela = tela;
+    }
+
+    public String getTotalPagar() {
+        return totalPagar;
+    }
+
+    public void setTotalPagar(String totalPagar) {
+        this.totalPagar = totalPagar;
+    }
+
+    public String getMetodoPagamento() {
+        return metodoPagamento;
+    }
+
+    public void setMetodoPagamento(String metodoPagamento) {
+        this.metodoPagamento = metodoPagamento;
+    }
+
+    public JTextField getnCartao() {
+        return nCartao;
+    }
+
+    public void setnCartao(JTextField nCartao) {
+        this.nCartao = nCartao;
+    }
+
+    public TelaVendas getTelaVenda() {
+        return telaVenda;
+    }
+
+    public void setTelaVenda(TelaVendas telaVenda) {
+        this.telaVenda = telaVenda;
+    }
+    
     
     @Override
     public void configuraJanela(){
@@ -55,12 +99,14 @@ public class CompraCartao extends JFrame implements View{
         jpFinalizarCompra.add(pagList);
         jpFinalizarCompra.add(new JLabel("Numero do cartão:"));
         this.nCartao = new JTextField(16);
+        nCartao.setText("teste");
         jpFinalizarCompra.add(nCartao);
         
         
         JButton btnConfimar = new JButton("Confirmar");
         btnConfimar.setPreferredSize(new Dimension(120,20));
         jpFinalizarCompra.add(btnConfimar);
+        btnConfimar.addActionListener(new ValidaCartao(telaVenda,this));
         
         this.add(jpFinalizarCompra, BorderLayout.WEST);
     }

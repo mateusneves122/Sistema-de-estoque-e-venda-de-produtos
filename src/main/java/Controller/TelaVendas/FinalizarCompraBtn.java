@@ -39,10 +39,10 @@ public class FinalizarCompraBtn implements ActionListener {
        //Paramêtros para instancia a telFinCompra;
        if(this.telaVenda.getFormaPagamentoIndex() == 0){
            
-           telaFinCompra = new FinalizarCompra(Double.toString(totalPagar), formaDePagamento);
+           telaFinCompra = new FinalizarCompra(Double.toString(totalPagar), formaDePagamento,telaVenda);
            telaFinCompra.montaTela();
        }else{
-           telacartao = new CompraCartao(Double.toString(totalPagar), formaDePagamento);
+           telacartao = new CompraCartao(Double.toString(totalPagar), formaDePagamento,telaVenda);
            telacartao.montaTela();
        }
        
