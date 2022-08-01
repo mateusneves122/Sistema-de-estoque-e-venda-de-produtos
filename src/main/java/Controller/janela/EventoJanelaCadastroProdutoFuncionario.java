@@ -7,6 +7,7 @@ package Controller.janela;
 import Armazenamento.Arquivo;
 import Armazenamento.JSONFuncionario;
 import Armazenamento.JSONProduto;
+import Model.employee.Funcionario;
 import Model.product.Produto;
 import View.produtoFuncionario.CadastroProdutoFuncionario;
 import java.awt.event.WindowEvent;
@@ -43,6 +44,29 @@ public class EventoJanelaCadastroProdutoFuncionario implements WindowListener {
             for(Produto i : estoque) {
                 model.addRow(new Object[]{i.getId(),i.getNome(),i.getPreco(),i.getQuantidade()});
             }
+            
+            tela.getTabelaProdutos().setModel(model);
+            
+            lerArquivo = Arquivo.lerArquivo("dadosFuncionarios");
+            List<Funcionario> funContratados = JSONFuncionario.toFuncionarios(lerArquivo);
+            
+            this.tela.getListaProdutos().setProdutosEmEstoque(new ArrayList<>());
+            this.tela.getListaProdutos().setProdutosEmEstoque(estoque);
+            
+            DefaultTableModel model2 = (DefaultTableModel) tela.getTabelaFuncionarios().getModel();
+            
+            String funcao;
+            for(Funcionario i : funContratados) {
+                if(i.isAdmin()) {
+                    funcao = "Administração";
+                }
+                else {
+                    funcao = "Vendas";
+                }
+                model2.addRow(new Object[]{i.getNome(),i.getRegistro(), i.getCargo(), funcao, i.getPagamentoFixo()});
+            }
+            tela.getTabelaFuncionarios().setModel(model2);
+            
             
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());

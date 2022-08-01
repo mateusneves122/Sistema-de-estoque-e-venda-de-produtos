@@ -87,9 +87,6 @@ public class Login extends JFrame {
         
         jpLogin.add(btnEntrar);
         
-        JButton cadastrar = new JButton("Cadastrar");
-        cadastrar.setPreferredSize(new Dimension(130,20));
-        jpLogin.add(cadastrar);
         
         tela.add(jpLogin, BorderLayout.CENTER);
     }

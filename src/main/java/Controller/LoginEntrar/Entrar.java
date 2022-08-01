@@ -29,7 +29,7 @@ public class Entrar implements ActionListener {
                 System.out.println("Entrou!");
                 if(i.isAdmin()) {
                     this.tela.dispose();
-                    //CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario(this.tela);
+                    CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario();
                 }
             }
         }
