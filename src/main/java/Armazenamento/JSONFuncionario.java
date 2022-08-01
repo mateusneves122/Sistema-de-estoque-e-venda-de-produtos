@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author yanfo
  */
-public class JSON {
+public class JSONFuncionario {
     public static String toJSON(Funcionario funcionario) {
         Gson gson = new Gson();
         String json = gson.toJson(funcionario);

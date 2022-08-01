@@ -6,47 +6,33 @@ package Controller.janela;
 
 import Armazenamento.Arquivo;
 import Armazenamento.JSONFuncionario;
-import Model.employee.Funcionario;
-import View.Login;
+import Armazenamento.JSONProduto;
+import View.produtoFuncionario.CadastroProdutoFuncionario;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileNotFoundException;
-import java.util.List;
-import javax.swing.DefaultListModel;
 
 /**
  *
  * @author yanfo
  */
-public class EventoJanelaLogin implements WindowListener {
-    private Login tela;
+public class EventoJanelaCadastroProdutoFuncionario implements WindowListener {
+    private CadastroProdutoFuncionario tela;
 
-    public EventoJanelaLogin(Login tela) {
+    public EventoJanelaCadastroProdutoFuncionario(CadastroProdutoFuncionario tela) {
         this.tela = tela;
     }
-
+    
     @Override
     public void windowOpened(WindowEvent e) {
-        try {
-            String lerArquivo = Arquivo.lerArquivo("dados");
-            List<Funcionario> contatos = JSONFuncionario.toFuncionarios(lerArquivo);
-            
-            DefaultListModel<Funcionario> modelo = new DefaultListModel<>();
-            
-            for (Funcionario contato : contatos) {
-                modelo.addElement(contato);
-            }
-            // Editar aqui
-            //tela.getLista().setModel(modelo);
-            tela.repaint();
-            
-        } catch (FileNotFoundException ex) {
-        }
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
+        String toJSON = JSONFuncionario.toJSON(this.tela.getFuncionariosContratados().getFuncionariosContratados());
+        Arquivo.escreverArquivo("dadosFuncionarios", toJSON);
         
+        toJSON = JSONProduto.toJSON(this.tela.getListaProdutos().getProdutosEmEstoque());
+        Arquivo.escreverArquivo("dadosProdutos", toJSON);
     }
 
     @Override
@@ -56,23 +42,18 @@ public class EventoJanelaLogin implements WindowListener {
 
     @Override
     public void windowIconified(WindowEvent e) {
-        
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-        
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
-        
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
-        
     }
-
     
 }

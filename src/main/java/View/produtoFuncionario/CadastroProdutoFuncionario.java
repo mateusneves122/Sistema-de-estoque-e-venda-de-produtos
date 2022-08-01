@@ -14,6 +14,7 @@ import Controller.cadastroFuncionario.LimparCampos;
 import Controller.cadastroFuncionario.RemoverFuncionario;
 import Controller.cadastroFuncionario.SalvarFuncionario;
 import Controller.cadastroFuncionario.VisualizarFuncionario;
+import Controller.janela.EventoJanelaCadastroProdutoFuncionario;
 import Model.Estoque;
 import Model.FuncionariosContratados;
 import java.awt.BorderLayout;
@@ -237,6 +238,8 @@ public class CadastroProdutoFuncionario extends JFrame {
         
         this.abas.addTab("Produtos", this.telaProduto);
         this.abas.addTab("Funcionários", this.telaFuncionario);
+        
+        this.addWindowListener(new EventoJanelaCadastroProdutoFuncionario(this));
         
         this.setLocationRelativeTo(null);
     }
