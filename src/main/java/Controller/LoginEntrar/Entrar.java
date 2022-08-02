@@ -30,6 +30,7 @@ public class Entrar implements ActionListener {
                 if(i.isAdmin()) {
                     this.tela.dispose();
                     CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario();
+                    tela.montaTela();
                 }
             }
         }

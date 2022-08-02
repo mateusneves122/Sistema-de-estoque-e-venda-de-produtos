@@ -34,25 +34,22 @@ public class EventoJanelaCadastroProdutoFuncionario implements WindowListener {
             System.out.println("Abriu");
             String lerArquivo = Arquivo.lerArquivo("dadosProdutos");
             List<Produto> estoque = JSONProduto.toProdutos(lerArquivo);
-            
             this.tela.getListaProdutos().setProdutosEmEstoque(new ArrayList<>());
             this.tela.getListaProdutos().setProdutosEmEstoque(estoque);
             System.out.println("Abriu2");
             
             DefaultTableModel model = (DefaultTableModel) tela.getTabelaProdutos().getModel();
-            
             for(Produto i : estoque) {
                 model.addRow(new Object[]{i.getId(),i.getNome(),i.getPreco(),i.getQuantidade()});
             }
-            
             tela.getTabelaProdutos().setModel(model);
+            
+            
             
             lerArquivo = Arquivo.lerArquivo("dadosFuncionarios");
             List<Funcionario> funContratados = JSONFuncionario.toFuncionarios(lerArquivo);
-            
-            this.tela.getListaProdutos().setProdutosEmEstoque(new ArrayList<>());
-            this.tela.getListaProdutos().setProdutosEmEstoque(estoque);
-            
+            this.tela.getFuncionariosContratados().setFuncionariosContratados(new ArrayList<>());
+            this.tela.getFuncionariosContratados().setFuncionariosContratados(funContratados);
             DefaultTableModel model2 = (DefaultTableModel) tela.getTabelaFuncionarios().getModel();
             
             String funcao;

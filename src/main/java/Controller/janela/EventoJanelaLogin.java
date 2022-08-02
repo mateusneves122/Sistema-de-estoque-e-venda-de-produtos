@@ -11,6 +11,7 @@ import View.Login;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +32,7 @@ public class EventoJanelaLogin implements WindowListener {
             String lerArquivo = Arquivo.lerArquivo("dadosFuncionarios");
             List<Funcionario> contatos = JSONFuncionario.toFuncionarios(lerArquivo);
             
+            this.tela.getFuncionariosContratados().setFuncionariosContratados(new ArrayList<>());
             this.tela.getFuncionariosContratados().setFuncionariosContratados(contatos);
         } catch (FileNotFoundException ex) {
         }
