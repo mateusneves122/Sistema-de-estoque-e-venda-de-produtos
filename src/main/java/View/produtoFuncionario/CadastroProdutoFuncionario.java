@@ -310,7 +310,7 @@ public class CadastroProdutoFuncionario extends JFrame {
             "Cozinha",
             "Jardim",
             "Esporte",
-            "Ferramenta",
+            "Construção",
             "Pet Shop"};
         this.tipoProduto = new JComboBox(grupo);
         this.tipoProduto.setSelectedIndex(0);
