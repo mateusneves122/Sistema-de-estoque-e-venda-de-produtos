@@ -5,6 +5,7 @@
 package View.produtoFuncionario;
 
 import Controller.CadastroProdutos.AtualizarProduto;
+import Controller.CadastroProdutos.CancelarEdicao;
 import Controller.CadastroProdutos.EditarProduto;
 import Controller.CadastroProdutos.ExcluirProduto;
 import Controller.CadastroProdutos.SalvarProduto;
@@ -42,6 +43,7 @@ public class CadastroProdutoFuncionario extends JFrame {
     protected JTabbedPane abas;
     protected JButton atualizar;
     protected JButton adicionar;
+    protected JButton cancelar;
     
     private JPanel telaProduto;
     private JTable tabelaProdutos;
@@ -87,6 +89,7 @@ public class CadastroProdutoFuncionario extends JFrame {
         this.funcionariosContratados = new FuncionariosContratados();
         this.listaProdutos = new Estoque();
         this.atualizar = new JButton("Atualizar");
+        this.cancelar = new JButton("Cancelar");
         this.setTitle("Cadastro e edição de produtos e funcionários");
         
         //this.montaTela();
@@ -99,6 +102,10 @@ public class CadastroProdutoFuncionario extends JFrame {
     
     public JButton getAtualizar() {
         return atualizar;
+    }
+
+    public JButton getCancelar() {
+        return cancelar;
     }
 
     public JPanel getTelaProduto() {
@@ -339,6 +346,11 @@ public class CadastroProdutoFuncionario extends JFrame {
         this.atualizar.addActionListener(new AtualizarProduto(this));
         this.atualizar.setEnabled(false);
         esquerda.add(this.atualizar);
+        
+        // Cancelar edição
+        this.cancelar.addActionListener(new CancelarEdicao(this));
+        this.cancelar.setEnabled(false);
+        esquerda.add(this.cancelar);
         
         jpInsercao.add(esquerda, BorderLayout.WEST);
         jpInsercao.add(direita, BorderLayout.EAST);

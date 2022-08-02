@@ -59,6 +59,7 @@ public class EditarProduto implements ActionListener {
             
             this.tela.getAtualizar().setEnabled(true);
             this.tela.getAdicionar().setEnabled(false);
+            this.tela.getCancelar().setEnabled(true);
             
             tela.getdDescricao().setText("");
             tela.getdFornecedor().setText("");

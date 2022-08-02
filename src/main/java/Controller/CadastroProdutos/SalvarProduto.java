@@ -33,7 +33,7 @@ public class SalvarProduto implements ActionListener {
             String tipo = tela.getTipoProduto().getSelectedItem().toString();
             String localizacao = tela.getLocalizacao().getText();
             String fornecedor = tela.getFornecedor().getText();
-            double pesoVolume = Double.parseDouble(tela.getValorUnidade().getText());
+            double unidadeQtd = Double.parseDouble(tela.getValorUnidade().getText());
             String unidadeMedida = tela.getUnidadeMedida().getSelectedItem().toString();
             
             Produto produto = new Produto(nome, preco, quantidade);
@@ -42,7 +42,7 @@ public class SalvarProduto implements ActionListener {
             produto.setTipo(tipo);
             produto.setLocalizacaoNoEstoque(localizacao);
             produto.setFornecedor(fornecedor);
-            produto.setPesoVolume(pesoVolume);
+            produto.setPesoVolume(unidadeQtd);
             produto.setUnidadeMedida(unidadeMedida);
             
             tela.getListaProdutos().getProdutosEmEstoque().add(produto);
@@ -62,6 +62,8 @@ public class SalvarProduto implements ActionListener {
             
             tela.getTipoProduto().setSelectedIndex(0);
             tela.getValorUnidade().setText("");
+            tela.getValorUnidade().setBackground(Color.white);
+                    
             tela.getUnidadeMedida().setSelectedIndex(0);
             tela.getFornecedor().setText("");
             tela.getLocalizacao().setText("");
@@ -72,6 +74,7 @@ public class SalvarProduto implements ActionListener {
         catch (NumberFormatException err) {
             tela.getPreco().setBackground(new Color(254,57,57));
             tela.getQuantidade().setBackground(new Color(254,57,57));
+            tela.getValorUnidade().setBackground(new Color(254,57,57));
         }
     }
     
