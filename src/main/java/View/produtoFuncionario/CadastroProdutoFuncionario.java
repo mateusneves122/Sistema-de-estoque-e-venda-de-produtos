@@ -39,6 +39,7 @@ import javax.swing.table.DefaultTableModel;
  * @author yanfo
  */
 public class CadastroProdutoFuncionario extends JFrame {
+    private int registroUsuarioAtual;
     
     protected JTabbedPane abas;
     protected JButton atualizar;
@@ -81,11 +82,13 @@ public class CadastroProdutoFuncionario extends JFrame {
     private JComboBox sexo;
     private JTextField cargo;
     private JComboBox isAdmin;
+    private JLabel alerta;
     
     private JTable tabelaFuncionarios;
 
     
-    public CadastroProdutoFuncionario() {
+    public CadastroProdutoFuncionario(int registro) {
+        this.registroUsuarioAtual = registro;
         this.funcionariosContratados = new FuncionariosContratados();
         this.listaProdutos = new Estoque();
         this.atualizar = new JButton("Atualizar");
@@ -193,6 +196,14 @@ public class CadastroProdutoFuncionario extends JFrame {
     }
 
     //////////////////////////////////// Métodos Getters e setters dos Funcionários///////////
+
+    public JLabel getAlerta() {
+        return alerta;
+    }
+
+    public int getRegistroUsuarioAtual() {
+        return registroUsuarioAtual;
+    }
 
     public JTextField getNomeFuncionario() {
         return nomeFuncionario;
@@ -539,6 +550,9 @@ public class CadastroProdutoFuncionario extends JFrame {
         JButton limpar = new JButton("Limpar");
         limpar.addActionListener(new LimparCampos(this));
         esquerda.add(limpar);
+        
+        this.alerta = new JLabel("");
+        esquerda.add(this.alerta);
         
         painelCrud.add(esquerda, BorderLayout.WEST);
         

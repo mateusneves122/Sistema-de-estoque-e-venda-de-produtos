@@ -61,6 +61,8 @@ public class VisualizarFuncionario implements MouseListener {
                 }
             }
             
+            this.tela.getAlerta().setText("");
+            this.tela.repaint();
         }
     }
 

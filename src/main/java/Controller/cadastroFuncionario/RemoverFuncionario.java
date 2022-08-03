@@ -25,21 +25,28 @@ public class RemoverFuncionario implements ActionListener {
         int index = this.tela.getTabelaFuncionarios().getSelectedRow();
         if(index!=-1) {
             int id = (int) this.tela.getTabelaFuncionarios().getValueAt(index, 1);
-            this.tela.getFuncionariosContratados().removeRegistroFuncionario(id);
-            
-            DefaultTableModel tabela = (DefaultTableModel) this.tela.getTabelaFuncionarios().getModel();
-            tabela.removeRow(index);
-            this.tela.getTabelaFuncionarios().setModel(tabela);
-            
-            this.tela.getNomeFuncionario().setText("");
-            this.tela.getCpf().setText("");
-            this.tela.getPagamentoFixo().setText("");
-            this.tela.getSenha().setText("");
-            this.tela.getRg().setText("");
-            this.tela.getTelefone().setText("");
-            this.tela.getSexo().setSelectedIndex(0);
-            this.tela.getCargo().setText("");
-            this.tela.getIsAdmin().setSelectedIndex(0);
+            if (id != this.tela.getRegistroUsuarioAtual()) {
+                this.tela.getFuncionariosContratados().removeRegistroFuncionario(id);
+
+                DefaultTableModel tabela = (DefaultTableModel) this.tela.getTabelaFuncionarios().getModel();
+                tabela.removeRow(index);
+                this.tela.getTabelaFuncionarios().setModel(tabela);
+
+                this.tela.getNomeFuncionario().setText("");
+                this.tela.getCpf().setText("");
+                this.tela.getPagamentoFixo().setText("");
+                this.tela.getSenha().setText("");
+                this.tela.getRg().setText("");
+                this.tela.getTelefone().setText("");
+                this.tela.getSexo().setSelectedIndex(0);
+                this.tela.getCargo().setText("");
+                this.tela.getIsAdmin().setSelectedIndex(0);
+                
+                this.tela.getAlerta().setText("");
+            }
+            else {
+                this.tela.getAlerta().setText("Impossível deletar funcionário logado");
+            }
         }
     }
     
