@@ -590,7 +590,7 @@ public class CadastroProdutoFuncionario extends JFrame {
         mostraTela();
     }
     
-    /*public static void main(String[] args) {
+   /* public static void main(String[] args) {
         CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario();
         tela.montaTela();
     }*/

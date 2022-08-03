@@ -4,6 +4,8 @@
 
 package Model.product;
 
+import java.util.Random;
+
 public class Produto {
 
     private double preco;
@@ -21,10 +23,11 @@ public class Produto {
     private String unidadeMedida;
 
     public Produto(String nome, double preco, int quantidade) {
+        Random numeroRegistro = new Random();
         this.preco = preco;
         this.nome = nome;
         this.codigo++;
-        this.id = codigo;
+        this.id = codigo + numeroRegistro.nextInt(1000);
         this.quantidade = quantidade;
         this.descricao = "";
     }

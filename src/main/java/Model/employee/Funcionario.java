@@ -6,6 +6,7 @@ package Model.employee;
 
 import Model.Estoque;
 import Model.Pessoa;
+import java.util.Random;
 
 public class Funcionario extends Pessoa {
 
@@ -23,10 +24,12 @@ public class Funcionario extends Pessoa {
 
     public Funcionario(String nome, String cpf, String senha) {
         super(nome, cpf);
+        Random numeroRegistro = new Random();
+        
         estoque = new Estoque();
         this.senha = senha;
         geraRegistro += 1;
-        this.registro = geraRegistro;
+        this.registro = numeroRegistro.nextInt(1000) + geraRegistro;
     }
 
     public String getSenha() {
