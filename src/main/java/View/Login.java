@@ -7,6 +7,8 @@ package View;
 import Controller.LoginEntrar.Entrar;
 import Controller.janela.EventoJanelaLogin;
 import Model.FuncionariosContratados;
+import Interfaces.View;
+import Model.employee.Funcionario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.JButton;
@@ -20,7 +22,7 @@ import javax.swing.JTextField;
  *
  * @author ice
  */
-public class Login extends JFrame {
+public class Login extends JFrame implements View {
     private JPanel tela;
     private JTextField tfNome;
     private JPasswordField tfSenha;
@@ -55,7 +57,8 @@ public class Login extends JFrame {
         this.funcionariosContratados = funcionariosContratados;
     }
     
-    private void configuraJanela() {
+    @Override
+    public void configuraJanela() {
         this.setSize(320, 120);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -89,11 +92,13 @@ public class Login extends JFrame {
         tela.add(jpLogin, BorderLayout.CENTER);
     }
     
+    @Override
     public void mostraTela() {
         this.add(tela);
         this.setVisible(true);
     }
     
+    @Override
     public void montaTela() {
         configuraJanela();
         configuraLogin();
