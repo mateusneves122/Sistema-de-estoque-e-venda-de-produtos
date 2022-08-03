@@ -27,7 +27,7 @@ public class CadastrarCliente extends JFrame implements View {
     private JPanel tela;
     private JTextField nome;
     private JTextField cpf;
-    protected ClienteCadastrado clienteList;
+    private ClienteCadastrado clienteList;
 
     public CadastrarCliente() {
         this.clienteList = new ClienteCadastrado();
@@ -39,6 +39,14 @@ public class CadastrarCliente extends JFrame implements View {
 
     public JTextField getCpf() {
         return this.cpf;
+    }
+
+    public ClienteCadastrado getClienteList() {
+        return clienteList;
+    }
+
+    public void setClienteList(ClienteCadastrado clienteList) {
+        this.clienteList = clienteList;
     }
 
     @Override

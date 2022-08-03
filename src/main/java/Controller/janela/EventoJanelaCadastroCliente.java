@@ -7,6 +7,7 @@ package Controller.janela;
 
 import Armazenamento.Arquivo;
 import Armazenamento.JSONCliente;
+import Model.ClienteCadastrado;
 import Model.client.Cliente;
 import View.CadastrarCliente;
 import java.awt.event.WindowEvent;
@@ -19,13 +20,12 @@ import java.util.List;
  *
  * @author SuvacoDeCobra
  */
-public class EventoJanelaCadastroCliente extends CadastrarCliente implements WindowListener {
+public class EventoJanelaCadastroCliente implements WindowListener {
 
     private CadastrarCliente tela;
         
     public EventoJanelaCadastroCliente(CadastrarCliente cadastrarCliente) {
         this.tela = cadastrarCliente;
-        this.clienteList.setClientesCadastrados(new ArrayList<>());
     }
     
     @Override
@@ -35,8 +35,12 @@ public class EventoJanelaCadastroCliente extends CadastrarCliente implements Win
             String lerArquivo = Arquivo.lerArquivo("dadosClientes");
             List<Cliente> clientes = JSONCliente.toClientes(lerArquivo);
             
-            this.clienteList.setClientesCadastrados(new ArrayList<>());
-            this.clienteList.setClientesCadastrados(clientes);
+            //this.tela.getClienteList().setClientesCadastrados(new ArrayList<>());
+            this.tela.getClienteList().setClientesCadastrados(clientes);
+            
+            for(Cliente i : clientes) {
+                System.out.println(i.getNome() + " " + i.getCpf());
+            }
         } catch (FileNotFoundException ex) {
         }
     }
@@ -44,7 +48,7 @@ public class EventoJanelaCadastroCliente extends CadastrarCliente implements Win
     @Override
     public void windowClosing(WindowEvent e) {
         System.out.println("Fechou");
-        String toJSON = JSONCliente.toJSON(this.clienteList.getClientesCadastrados());
+        String toJSON = JSONCliente.toJSON(this.tela.getClienteList().getClientesCadastrados());
         Arquivo.escreverArquivo("dadosClientes", toJSON);
     }
 

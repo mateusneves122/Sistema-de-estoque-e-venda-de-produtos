@@ -8,9 +8,12 @@ import Controller.TelaVendas.AdicionarClienteBtn;
 import Controller.TelaVendas.AdicionarNoCarrinho;
 import Controller.TelaVendas.ExcluirDoCarrinho;
 import Controller.TelaVendas.FinalizarCompraBtn;
+import Controller.janela.EventoJanelaTelaVendas;
 import Enum.ColumnNameProduto;
 import Enum.FormaPagamento;
 import Interfaces.View;
+import Model.ClienteCadastrado;
+import Model.Estoque;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
@@ -40,6 +43,9 @@ public class TelaVendas extends JFrame implements View {
     private JPanel telaDir;
     private JTextField Quantidade;
 
+    private ClienteCadastrado clienteList;
+    private Estoque estoque;
+    
     public TelaVendas() {
     
     }
@@ -99,6 +105,23 @@ public class TelaVendas extends JFrame implements View {
     public int getFormaPagamentoIndex() {
         return pagamentoList.getSelectedIndex();
     }
+
+    public ClienteCadastrado getClienteList() {
+        return clienteList;
+    }
+
+    public void setClienteList(ClienteCadastrado clienteList) {
+        this.clienteList = clienteList;
+    }
+
+    public Estoque getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Estoque estoque) {
+        this.estoque = estoque;
+    }
+    
     
     @Override
     public void configuraJanela() {
@@ -116,6 +139,7 @@ public class TelaVendas extends JFrame implements View {
         
         this.setLocationRelativeTo(null);
         
+        this.addWindowListener(new EventoJanelaTelaVendas(this));
         //JButton adicionar = new JButton("Salvar");
         
     }

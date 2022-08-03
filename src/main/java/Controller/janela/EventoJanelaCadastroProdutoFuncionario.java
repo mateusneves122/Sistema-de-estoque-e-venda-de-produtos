@@ -32,10 +32,12 @@ public class EventoJanelaCadastroProdutoFuncionario implements WindowListener {
     public void windowOpened(WindowEvent e) {
         try {
             System.out.println("Abriu");
+            
             String lerArquivo = Arquivo.lerArquivo("dadosProdutos");
             List<Produto> estoque = JSONProduto.toProdutos(lerArquivo);
             this.tela.getListaProdutos().setProdutosEmEstoque(new ArrayList<>());
             this.tela.getListaProdutos().setProdutosEmEstoque(estoque);
+            
             System.out.println("Abriu2");
             
             DefaultTableModel model = (DefaultTableModel) tela.getTabelaProdutos().getModel();

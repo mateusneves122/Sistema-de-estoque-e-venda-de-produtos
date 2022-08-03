@@ -29,8 +29,8 @@ public class Entrar implements ActionListener {
                 System.out.println("Entrou!");
                 if(i.isAdmin()) {
                     this.tela.dispose();
-                    CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario(i.getRegistro());
-                    tela.montaTela();
+                    //CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario(i.getRegistro());
+                    //tela.montaTela();
                 }
             }
         }
