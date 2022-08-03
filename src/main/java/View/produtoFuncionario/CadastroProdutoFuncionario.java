@@ -87,8 +87,8 @@ public class CadastroProdutoFuncionario extends JFrame {
     private JTable tabelaFuncionarios;
 
     
-    public CadastroProdutoFuncionario(/*int registro*/) {
-        //this.registroUsuarioAtual = registro;
+    public CadastroProdutoFuncionario(int registro) {
+        this.registroUsuarioAtual = registro;
         this.funcionariosContratados = new FuncionariosContratados();
         this.listaProdutos = new Estoque();
         this.atualizar = new JButton("Atualizar");
@@ -605,8 +605,8 @@ public class CadastroProdutoFuncionario extends JFrame {
         mostraTela();
     }
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario();
         tela.montaTela();
-    }
+    }*/
 }

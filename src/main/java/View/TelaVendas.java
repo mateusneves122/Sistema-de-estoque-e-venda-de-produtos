@@ -14,6 +14,7 @@ import Enum.FormaPagamento;
 import Interfaces.View;
 import Model.ClienteCadastrado;
 import Model.Estoque;
+import Model.client.Cliente;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
@@ -43,11 +44,14 @@ public class TelaVendas extends JFrame implements View {
     private JPanel telaDir;
     private JTextField Quantidade;
 
+    private JTextField cadastroClienteNome;
+    private JTextField cadastroClienteCpf;
     private ClienteCadastrado clienteList;
     private Estoque estoque;
     
     public TelaVendas() {
-    
+        this.estoque = new Estoque();
+        this.clienteList = new ClienteCadastrado();
     }
 
     public JPanel getTela() {
@@ -121,7 +125,22 @@ public class TelaVendas extends JFrame implements View {
     public void setEstoque(Estoque estoque) {
         this.estoque = estoque;
     }
-    
+
+    public JTextField getCadastroClienteNome() {
+        return cadastroClienteNome;
+    }
+
+    public void setCadastroClienteNome(JTextField cadastroClienteNome) {
+        this.cadastroClienteNome = cadastroClienteNome;
+    }
+
+    public JTextField getCadastroClienteCpf() {
+        return cadastroClienteCpf;
+    }
+
+    public void setCadastroClienteCpf(JTextField cadastroClienteCpf) {
+        this.cadastroClienteCpf = cadastroClienteCpf;
+    }
     
     @Override
     public void configuraJanela() {
@@ -165,12 +184,20 @@ public class TelaVendas extends JFrame implements View {
         
         JButton fim = new JButton("Finalizar compra");
         fim.addActionListener(new FinalizarCompraBtn(this));
+        fim.addActionListener(new FinalizarCompraBtn(this));
         jpFun.add(fim);
         
+        jpFun.add(new JLabel("Nome:"));
+        this.cadastroClienteNome = new JTextField(size);
+        jpFun.add(this.cadastroClienteNome);
+        
+        jpFun.add(new JLabel("Cpf:"));
+        this.cadastroClienteCpf = new JTextField(size);
+        jpFun.add(this.cadastroClienteCpf);
+        
         JButton adicionarCliente = new JButton("Adicionar Cliente");
-        fim.addActionListener(new FinalizarCompraBtn(this));
+        adicionarCliente.addActionListener(new AdicionarClienteBtn(this));
         jpFun.add(adicionarCliente);
-        adicionarCliente.addActionListener(new AdicionarClienteBtn(this.tela));
         
         telaDir.add(jpFun, BorderLayout.SOUTH);
     }
@@ -188,10 +215,7 @@ public class TelaVendas extends JFrame implements View {
         jpTabela.setPreferredSize(new Dimension(630, 480));
         
         this.setTitle("Vendas");
-        String[][] dataTable = {
-            {"1","banana","1.99","100"},
-            {"2","pera","2.99","50"}
-        };
+        String[][] dataTable = {};
         
         this.produtos = new JTable(new DefaultTableModel(dataTable, ColumnNameProduto.values())) {
             @Override

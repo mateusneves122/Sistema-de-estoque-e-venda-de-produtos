@@ -37,9 +37,9 @@ public class JSONCliente {
 
     public static List<Cliente> toClientes(String conteudo) {
         Gson gson = new Gson();
-        java.lang.reflect.Type clientesTipo = new TypeToken<ArrayList<Cliente>>() {
+        java.lang.reflect.Type funcionariosTipo = new TypeToken<ArrayList<Cliente>>() {
         }.getType();
-        List<Cliente> clientes = gson.fromJson(conteudo, clientesTipo);
+        List<Cliente> clientes = gson.fromJson(conteudo, funcionariosTipo);
 
         return clientes;
     }

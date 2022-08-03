@@ -8,6 +8,7 @@ package Controller.TelaVendas;
 import Model.client.Cliente;
 import TratamentoErro.CpfException;
 import View.CadastrarCliente;
+import View.TelaVendas;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,26 +21,33 @@ import javax.swing.JLabel;
  */
 public class CadastrarClienteBtn implements ActionListener {
 
-    private CadastrarCliente telaCadastrarCliente;
+    private CadastrarCliente telaCliente;
+    private TelaVendas tela;
 
-    public CadastrarClienteBtn(CadastrarCliente telaPrincipal) {
-        this.telaCadastrarCliente = telaPrincipal;
+    public CadastrarClienteBtn(CadastrarCliente telaPrincipal, TelaVendas tela) {
+        this.telaCliente = telaPrincipal;
+        this.tela = tela;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String nome = this.telaCadastrarCliente.getNome().getText();
-        String cpf = this.telaCadastrarCliente.getCpf().getText();
+        for(Cliente i : this.tela.getClienteList().getClientesCadastrados()) {
+            System.out.println(i.getNome() + " " + i.getCpf());
+        }
+        String nome = this.telaCliente.getNome().getText();
+        String cpf = this.telaCliente.getCpf().getText();
         try {
             cpfContemLetras(cpf);
-            cpfUsado(cpf, this.telaCadastrarCliente.getClienteList().getClientesCadastrados());
+            cpfUsado(cpf, this.tela.getClienteList().getClientesCadastrados());
             Cliente cliente = new Cliente(nome,cpf);
-            this.telaCadastrarCliente.getClienteList().getClientesCadastrados().add(cliente);
-            this.telaCadastrarCliente.getCpf().setBackground(Color.WHITE);
+            this.tela.getClienteList().getClientesCadastrados().add(cliente);
+            this.telaCliente.getCpf().setBackground(Color.WHITE);
             
-            this.telaCadastrarCliente.add(new JLabel("Cliente Cadastrado!"));
+            this.telaCliente.add(new JLabel("Cliente Cadastrado!"));
+            
+            
         } catch (CpfException err) {
-            this.telaCadastrarCliente.getCpf().setBackground(new Color(254, 57, 57));
+            this.telaCliente.getCpf().setBackground(new Color(254, 57, 57));
         }
     }
 

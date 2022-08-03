@@ -24,13 +24,14 @@ import javax.swing.JTextField;
  */
 public class CadastrarCliente extends JFrame implements View {
 
-    private JPanel tela;
+    private JPanel telaCadastro;
     private JTextField nome;
     private JTextField cpf;
-    private ClienteCadastrado clienteList;
+    private TelaVendas tela;
+    
 
-    public CadastrarCliente() {
-        this.clienteList = new ClienteCadastrado();
+    public CadastrarCliente(TelaVendas tela) {
+        this.tela = tela;
     }
 
     public JTextField getNome() {
@@ -41,12 +42,20 @@ public class CadastrarCliente extends JFrame implements View {
         return this.cpf;
     }
 
-    public ClienteCadastrado getClienteList() {
-        return clienteList;
+    public TelaVendas getTela() {
+        return tela;
     }
 
-    public void setClienteList(ClienteCadastrado clienteList) {
-        this.clienteList = clienteList;
+    public void setTela(TelaVendas tela) {
+        this.tela = tela;
+    }
+
+    public JPanel getTelaCadastro() {
+        return telaCadastro;
+    }
+
+    public void setTelaCadastro(JPanel telaCadastro) {
+        this.telaCadastro = telaCadastro;
     }
 
     @Override
@@ -54,10 +63,10 @@ public class CadastrarCliente extends JFrame implements View {
         this.setSize(260, 180);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
-        this.addWindowListener(new EventoJanelaCadastroCliente(this));
+        this.addWindowListener(new EventoJanelaCadastroCliente(this.tela));
         
-        this.tela = new JPanel();
-        this.tela.setLayout(new BorderLayout());
+        this.telaCadastro = new JPanel();
+        this.telaCadastro.setLayout(new BorderLayout());
         this.setLocationRelativeTo(null);
     }
 
@@ -77,16 +86,16 @@ public class CadastrarCliente extends JFrame implements View {
         
         JButton cadastrar = new JButton("Cadastrar");
         cadastrar.setPreferredSize(new Dimension(130,25));
+        cadastrar.addActionListener(new CadastrarClienteBtn(this, this.tela));
         jpCadastrarCliente.add(cadastrar);
-        cadastrar.addActionListener(new CadastrarClienteBtn(this));
         
-        tela.add(jpCadastrarCliente, BorderLayout.CENTER);
+        telaCadastro.add(jpCadastrarCliente, BorderLayout.CENTER);
         
     }
 
     @Override
     public void mostraTela() {
-        this.add(tela);
+        this.add(telaCadastro);
         this.setVisible(true);
     }
 
@@ -97,9 +106,9 @@ public class CadastrarCliente extends JFrame implements View {
         mostraTela();
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         CadastrarCliente t = new CadastrarCliente();
         t.montaTela();
-    }
+    }*/
 
 }

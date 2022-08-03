@@ -6,9 +6,9 @@
 package Controller.TelaVendas;
 
 import View.CadastrarCliente;
+import View.TelaVendas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JPanel;
 
 /**
  *
@@ -16,16 +16,16 @@ import javax.swing.JPanel;
  */
 public class AdicionarClienteBtn implements ActionListener {
     
-    private JPanel telaVenda;
     private CadastrarCliente telaCadastrarCliente;
+    private TelaVendas tela;
     
-    public AdicionarClienteBtn(JPanel tela) {
-        this.telaVenda = tela;
+    public AdicionarClienteBtn(TelaVendas tela) {
+        this.tela = tela;
     }
         
     @Override
     public void actionPerformed(ActionEvent e) {
-        telaCadastrarCliente = new CadastrarCliente();
+        telaCadastrarCliente = new CadastrarCliente(tela);
         telaCadastrarCliente.montaTela();
     }
     

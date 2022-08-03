@@ -42,22 +42,30 @@ public class EventoJanelaTelaVendas implements WindowListener  {
             tela.getProdutos().setModel(model);
             tela.repaint();
             
-            /*// Carregar lista de clientes
+            // Carregar lista de clientes
             lerArquivo = Arquivo.lerArquivo("dadosClientes");
             List<Cliente> clientes = JSONCliente.toClientes(lerArquivo);
-            
-            //this.tela.getClienteList().setClientesCadastrados(new ArrayList<>());
             this.tela.getClienteList().setClientesCadastrados(clientes);
             
             for(Cliente i : clientes) {
                 System.out.println(i.getNome() + " " + i.getCpf());
-            }*/
+            }
         } catch (FileNotFoundException ex) {
         }
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
+        System.out.println("Fechou");
+        String toJSON = JSONCliente.toJSON(this.tela.getClienteList().getClientesCadastrados());
+        Arquivo.escreverArquivo("dadosClientes", toJSON);
+        for(Cliente i : this.tela.getClienteList().getClientesCadastrados()) {
+            System.out.println(i.getNome() + " " + i.getCpf());
+        }
+        
+        toJSON = JSONProduto.toJSON(this.tela.getEstoque().getProdutosEmEstoque());
+        Arquivo.escreverArquivo("dadosProdutos", toJSON);
+        System.out.println("Fechou2");
     }
 
     @Override

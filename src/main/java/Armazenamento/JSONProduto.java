@@ -29,9 +29,9 @@ public class JSONProduto {
     
     public static Produto toProduto(String conteudo) {
         Gson gson = new Gson();
-        Produto contato = gson.fromJson(conteudo, Produto.class);
+        Produto produtos = gson.fromJson(conteudo, Produto.class);
 
-        return contato;
+        return produtos;
     }
 
     public static List<Produto> toProdutos(String conteudo) {

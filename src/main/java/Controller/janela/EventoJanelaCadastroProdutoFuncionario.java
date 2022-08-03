@@ -34,8 +34,11 @@ public class EventoJanelaCadastroProdutoFuncionario implements WindowListener {
             System.out.println("Abriu");
             
             String lerArquivo = Arquivo.lerArquivo("dadosProdutos");
+            System.out.println("Abriu");
             List<Produto> estoque = JSONProduto.toProdutos(lerArquivo);
-            this.tela.getListaProdutos().setProdutosEmEstoque(new ArrayList<>());
+            System.out.println("Abriu");
+            //this.tela.getListaProdutos().setProdutosEmEstoque(new ArrayList<>());
+            System.out.println("Abriu");
             this.tela.getListaProdutos().setProdutosEmEstoque(estoque);
             
             System.out.println("Abriu2");

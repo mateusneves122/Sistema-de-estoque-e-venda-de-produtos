@@ -6,6 +6,7 @@ package Controller.LoginEntrar;
 
 import Model.employee.Funcionario;
 import View.Login;
+import View.TelaVendas;
 import View.produtoFuncionario.CadastroProdutoFuncionario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,15 +30,17 @@ public class Entrar implements ActionListener {
                 System.out.println("Entrou!");
                 if(i.isAdmin()) {
                     this.tela.dispose();
-                    //CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario(i.getRegistro());
-                    //tela.montaTela();
+                    CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario(i.getRegistro());
+                    tela.montaTela();
+                }
+                else {
+                    this.tela.dispose();
+                    TelaVendas tela = new TelaVendas();
+                    tela.montaTela();
                 }
             }
         }
     }
 
-    /*@Override
-    public void actionPerformed(ActionEvent arg0) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }*/
+    
 }

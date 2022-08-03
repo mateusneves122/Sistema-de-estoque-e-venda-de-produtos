@@ -10,6 +10,7 @@ import Armazenamento.JSONCliente;
 import Model.ClienteCadastrado;
 import Model.client.Cliente;
 import View.CadastrarCliente;
+import View.TelaVendas;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
@@ -22,34 +23,25 @@ import java.util.List;
  */
 public class EventoJanelaCadastroCliente implements WindowListener {
 
-    private CadastrarCliente tela;
+    private TelaVendas tela;
         
-    public EventoJanelaCadastroCliente(CadastrarCliente cadastrarCliente) {
-        this.tela = cadastrarCliente;
+    public EventoJanelaCadastroCliente(TelaVendas tela) {
+        this.tela = tela;
     }
     
     @Override
     public void windowOpened(WindowEvent e) {
-        try {
-            
-            String lerArquivo = Arquivo.lerArquivo("dadosClientes");
-            List<Cliente> clientes = JSONCliente.toClientes(lerArquivo);
-            
-            //this.tela.getClienteList().setClientesCadastrados(new ArrayList<>());
-            this.tela.getClienteList().setClientesCadastrados(clientes);
-            
-            for(Cliente i : clientes) {
-                System.out.println(i.getNome() + " " + i.getCpf());
-            }
-        } catch (FileNotFoundException ex) {
-        }
+        
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
-        System.out.println("Fechou");
+        /*System.out.println("Fechou");
         String toJSON = JSONCliente.toJSON(this.tela.getClienteList().getClientesCadastrados());
         Arquivo.escreverArquivo("dadosClientes", toJSON);
+        for(Cliente i : this.tela.getClienteList().getClientesCadastrados()) {
+            System.out.println(i.getNome() + " " + i.getCpf());
+        }*/
     }
 
     @Override
