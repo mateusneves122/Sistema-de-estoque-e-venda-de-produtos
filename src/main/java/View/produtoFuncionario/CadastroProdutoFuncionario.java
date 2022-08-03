@@ -311,6 +311,7 @@ public class CadastroProdutoFuncionario extends JFrame {
         // Grupos de produtos disponíveis para inserção
         String[] grupo = {
             "Alimento",
+            "Bebida",
             "Material",
             "Fármaco",
             "Eletrônico",
