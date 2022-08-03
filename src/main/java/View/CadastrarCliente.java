@@ -26,6 +26,9 @@ public class CadastrarCliente extends JFrame implements View {
     private JTextField nome;
     private JTextField cpf;
 
+    public CadastrarCliente() {
+    }
+
     public JTextField getNome() {
         return this.nome;
     }

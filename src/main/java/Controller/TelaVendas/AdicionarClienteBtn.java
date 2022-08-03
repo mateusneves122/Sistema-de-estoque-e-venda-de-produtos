@@ -14,18 +14,19 @@ import javax.swing.JPanel;
  *
  * @author SuvacoDeCobra
  */
-public class CadastrarClienteBtn implements ActionListener {
-
+public class AdicionarClienteBtn implements ActionListener {
+    
     private JPanel telaVenda;
     private CadastrarCliente telaCadastrarCliente;
     
-    public CadastrarClienteBtn(JPanel tela) {
+    public AdicionarClienteBtn(JPanel tela) {
         this.telaVenda = tela;
     }
-    
+        
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        telaCadastrarCliente = new CadastrarCliente();
+        telaCadastrarCliente.montaTela();
     }
     
 }

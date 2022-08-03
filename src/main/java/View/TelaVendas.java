@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.TelaVendas.AdicionarClienteBtn;
 import Controller.TelaVendas.AdicionarNoCarrinho;
 import Controller.TelaVendas.ExcluirDoCarrinho;
 import Controller.TelaVendas.FinalizarCompraBtn;
@@ -138,9 +139,10 @@ public class TelaVendas extends JFrame implements View {
         fim.addActionListener(new FinalizarCompraBtn(this));
         jpFun.add(fim);
         
-        JButton cadastrarCliente = new JButton("Cadastrar Cliente");
+        JButton adicionarCliente = new JButton("Adicionar Cliente");
         fim.addActionListener(new FinalizarCompraBtn(this));
-        jpFun.add(cadastrarCliente);
+        jpFun.add(adicionarCliente);
+        adicionarCliente.addActionListener(new AdicionarClienteBtn(this.tela));
         telaDir.add(jpFun, BorderLayout.SOUTH);
 
     }
