@@ -1,1 +1,1 @@
-[{"senha":"1234","admin":true,"pagamentoFixo":123.0,"rg":"123","telefone":123,"registro":105,"sexo":"Masculino","cargo":"Admin","nome":"admin","cpf":"123"}]
+[{"senha":"1234","admin":true,"pagamentoFixo":123.0,"rg":"123","telefone":123,"registro":105,"sexo":"Masculino","cargo":"Admin","nome":"admin","cpf":"123"},{"senha":"qwerty","admin":false,"pagamentoFixo":3450.0,"rg":"AG29437774","telefone":28045770,"registro":686,"sexo":"Masculino","cargo":"Vendedor","nome":"Ramon","cpf":"4561237981"}]

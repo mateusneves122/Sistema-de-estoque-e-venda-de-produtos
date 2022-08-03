@@ -187,17 +187,21 @@ public class TelaVendas extends JFrame implements View {
         fim.addActionListener(new FinalizarCompraBtn(this));
         jpFun.add(fim);
         
-        jpFun.add(new JLabel("Nome:"));
-        this.cadastroClienteNome = new JTextField(size);
-        jpFun.add(this.cadastroClienteNome);
+        JPanel cadastro = new JPanel();
+        cadastro.setBorder(BorderFactory.createTitledBorder("Cadastro de clientes"));
+        cadastro.add(new JLabel("Nome:"));
+        this.cadastroClienteNome = new JTextField(size*2);
+        cadastro.add(this.cadastroClienteNome);
         
-        jpFun.add(new JLabel("Cpf:"));
-        this.cadastroClienteCpf = new JTextField(size);
-        jpFun.add(this.cadastroClienteCpf);
+        cadastro.add(new JLabel("Cpf:"));
+        this.cadastroClienteCpf = new JTextField(size*2);
+        cadastro.add(this.cadastroClienteCpf);
         
         JButton adicionarCliente = new JButton("Adicionar Cliente");
         adicionarCliente.addActionListener(new AdicionarClienteBtn(this));
-        jpFun.add(adicionarCliente);
+        cadastro.add(adicionarCliente);
+        
+        jpFun.add(cadastro);
         
         telaDir.add(jpFun, BorderLayout.SOUTH);
     }

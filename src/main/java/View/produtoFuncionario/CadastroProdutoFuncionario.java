@@ -16,6 +16,7 @@ import Controller.cadastroFuncionario.RemoverFuncionario;
 import Controller.cadastroFuncionario.SalvarFuncionario;
 import Controller.cadastroFuncionario.VisualizarFuncionario;
 import Controller.janela.EventoJanelaCadastroProdutoFuncionario;
+import Interfaces.View;
 import Model.Estoque;
 import Model.FuncionariosContratados;
 import java.awt.BorderLayout;
@@ -38,7 +39,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author yanfo
  */
-public class CadastroProdutoFuncionario extends JFrame {
+public class CadastroProdutoFuncionario extends JFrame implements View {
     private int registroUsuarioAtual;
     
     protected JTabbedPane abas;
@@ -243,7 +244,8 @@ public class CadastroProdutoFuncionario extends JFrame {
     
     //////////////////////////////////// Métodos da Janela///////////////////////////////////
     
-    private void configuraJanela() {
+    @Override
+    public void configuraJanela() {
         // Janela por padrão na Resolução 1280x720
         this.setSize(1280, 720);
         
@@ -590,11 +592,13 @@ public class CadastroProdutoFuncionario extends JFrame {
     }
     
     
+    @Override
     public void mostraTela() {
         this.add(this.abas);
         this.setVisible(true);
     }
     
+    @Override
     public void montaTela() {
         configuraJanela();
         configuraInsercaoProduto();
