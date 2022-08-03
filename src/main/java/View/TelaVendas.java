@@ -137,6 +137,10 @@ public class TelaVendas extends JFrame implements View {
         JButton fim = new JButton("Finalizar compra");
         fim.addActionListener(new FinalizarCompraBtn(this));
         jpFun.add(fim);
+        
+        JButton cadastrarCliente = new JButton("Cadastrar Cliente");
+        fim.addActionListener(new FinalizarCompraBtn(this));
+        jpFun.add(cadastrarCliente);
         telaDir.add(jpFun, BorderLayout.SOUTH);
 
     }

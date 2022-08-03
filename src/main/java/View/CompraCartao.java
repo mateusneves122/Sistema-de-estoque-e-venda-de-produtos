@@ -99,7 +99,6 @@ public class CompraCartao extends JFrame implements View{
         jpFinalizarCompra.add(pagList);
         jpFinalizarCompra.add(new JLabel("Numero do cartão:"));
         this.nCartao = new JTextField(16);
-        nCartao.setText("teste");
         jpFinalizarCompra.add(nCartao);
         
         

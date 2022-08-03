@@ -93,11 +93,13 @@ public class Login extends JFrame implements View {
         tela.add(jpLogin, BorderLayout.CENTER);
     }
     
+    @Override
     public void mostraTela() {
         this.add(tela);
         this.setVisible(true);
     }
     
+    @Override
     public void montaTela() {
         configuraJanela();
         configuraLogin();
