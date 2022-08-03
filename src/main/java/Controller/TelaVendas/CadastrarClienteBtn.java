@@ -14,18 +14,18 @@ import javax.swing.JPanel;
  *
  * @author SuvacoDeCobra
  */
-public class CadastrarClienteBtn implements ActionListener {
+public class CadastrarClienteBtn extends CadastrarCliente implements ActionListener {
 
-    private JPanel telaVenda;
     private CadastrarCliente telaCadastrarCliente;
     
-    public CadastrarClienteBtn(JPanel tela) {
-        this.telaVenda = tela;
+    public CadastrarClienteBtn(CadastrarCliente telaPrincipal) {
+        this.telaCadastrarCliente = telaPrincipal;
+        System.out.println("TESTE DO NOME" + telaPrincipal.getNome().getText());
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-
+//        String nome = this.getNome().getText();
+//        System.out.println("TESTANDO NOME: " + this.getNome().getText());
     }
-    
 }

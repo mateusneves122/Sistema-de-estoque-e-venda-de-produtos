@@ -6,7 +6,9 @@
 package View;
 
 import Controller.TelaVendas.CadastrarClienteBtn;
+import Controller.janela.EventoJanelaCadastroCliente;
 import Interfaces.View;
+import Model.ClienteCadastrado;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -25,8 +27,10 @@ public class CadastrarCliente extends JFrame implements View {
     private JPanel tela;
     private JTextField nome;
     private JTextField cpf;
+    protected ClienteCadastrado clienteList;
 
     public CadastrarCliente() {
+        this.clienteList = new ClienteCadastrado();
     }
 
     public JTextField getNome() {
@@ -41,6 +45,8 @@ public class CadastrarCliente extends JFrame implements View {
     public void configuraJanela() {
         this.setSize(260, 180);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        this.addWindowListener(new EventoJanelaCadastroCliente(this));
         
         this.tela = new JPanel();
         this.tela.setLayout(new BorderLayout());
@@ -64,7 +70,7 @@ public class CadastrarCliente extends JFrame implements View {
         JButton cadastrar = new JButton("Cadastrar");
         cadastrar.setPreferredSize(new Dimension(130,25));
         jpCadastrarCliente.add(cadastrar);
-        cadastrar.addActionListener(new CadastrarClienteBtn(tela));
+        cadastrar.addActionListener(new CadastrarClienteBtn(this));
         
         tela.add(jpCadastrarCliente, BorderLayout.CENTER);
         

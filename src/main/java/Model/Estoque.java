@@ -13,7 +13,7 @@ import Model.product.*;
 
 public class Estoque {
 
-    List<Produto> produtosEmEstoque = new ArrayList<>();
+    private List<Produto> produtosEmEstoque = new ArrayList<>();
 
     public void addProduct(Produto product) {
         produtosEmEstoque.add(product);

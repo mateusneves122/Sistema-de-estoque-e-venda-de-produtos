@@ -78,6 +78,7 @@ public class CompraCartao extends JFrame implements View{
     @Override
     public void configuraJanela(){
         this.setSize(200,230);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         this.tela = new JPanel();
         this.tela.setLayout(new BorderLayout());

@@ -29,9 +29,9 @@ public class JSONFuncionario {
     
     public static Funcionario toFuncionario(String conteudo) {
         Gson gson = new Gson();
-        Funcionario contato = gson.fromJson(conteudo, Funcionario.class);
+        Funcionario funcionario = gson.fromJson(conteudo, Funcionario.class);
 
-        return contato;
+        return funcionario;
     }
 
     public static List<Funcionario> toFuncionarios(String conteudo) {

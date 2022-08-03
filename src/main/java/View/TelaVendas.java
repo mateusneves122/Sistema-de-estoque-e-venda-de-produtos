@@ -40,6 +40,10 @@ public class TelaVendas extends JFrame implements View {
     private JPanel telaDir;
     private JTextField Quantidade;
 
+    public TelaVendas() {
+    
+    }
+
     public JPanel getTela() {
         return tela;
     }
@@ -143,8 +147,8 @@ public class TelaVendas extends JFrame implements View {
         fim.addActionListener(new FinalizarCompraBtn(this));
         jpFun.add(adicionarCliente);
         adicionarCliente.addActionListener(new AdicionarClienteBtn(this.tela));
+        
         telaDir.add(jpFun, BorderLayout.SOUTH);
-
     }
     
     private JComboBox boxFormaDePagamento () {
