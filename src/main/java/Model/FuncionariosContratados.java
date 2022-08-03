@@ -30,7 +30,7 @@ public class FuncionariosContratados {
     public void removeRegistroFuncionario(int id) {
 
         if (this.checkIfThereIsOnlyOneElementInTheList()) {
-            this.removeFirstProduct();
+            this.removeFirstEmployee();
         } else if (!this.funcionariosContratados.isEmpty()) {
             Funcionario p;
             for (int i = 0; i < funcionariosContratados.size(); i++) {
@@ -51,7 +51,7 @@ public class FuncionariosContratados {
         }
     }
 
-    private void removeFirstProduct() {
+    private void removeFirstEmployee() {
         this.funcionariosContratados.remove(0);
     }
 }
