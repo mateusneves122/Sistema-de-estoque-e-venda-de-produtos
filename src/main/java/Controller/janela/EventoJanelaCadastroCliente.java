@@ -1,21 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Yan Messias de Azevedo Fonseca - 202165153A
+//Denis Freesz Vianello          - 202076020
+//Matheus Neves dos Santos       - 2020655569C
 package Controller.janela;
 
-import Armazenamento.Arquivo;
-import Armazenamento.JSONCliente;
-import Model.ClienteCadastrado;
-import Model.client.Cliente;
-import View.CadastrarCliente;
+
 import View.TelaVendas;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *

@@ -1,8 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Yan Messias de Azevedo Fonseca - 202165153A
+//Denis Freesz Vianello          - 202076020
+//Matheus Neves dos Santos       - 2020655569C
 package View;
 
 import Controller.TelaVendas.CadastrarClienteBtn;

@@ -1,7 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+//Yan Messias de Azevedo Fonseca - 202165153A
+//Denis Freesz Vianello          - 202076020
+//Matheus Neves dos Santos       - 2020655569C
 package Armazenamento;
 
 import java.io.BufferedWriter;
