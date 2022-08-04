@@ -46,9 +46,6 @@ public class EventoJanelaTelaVendas implements WindowListener  {
             List<Cliente> clientes = JSONCliente.toClientes(lerArquivo);
             this.tela.getClienteList().setClientesCadastrados(clientes);
             
-            for(Cliente i : clientes) {
-                System.out.println(i.getNome() + " " + i.getCpf());
-            }
         } catch (FileNotFoundException ex) {
         }
     }
