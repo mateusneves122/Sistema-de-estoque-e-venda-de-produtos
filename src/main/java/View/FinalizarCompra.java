@@ -28,6 +28,14 @@ public class FinalizarCompra extends JFrame implements View {
         this.cadastroAtivo = t.verificaSeClienteTemCadastroCpf(t.getCPF());
     }
     
+    private String getDesconto() {
+        if(this.cadastroAtivo) {
+            return "2%";
+        } else{
+            return "0%";
+        }
+    }
+    
     @Override
     public void configuraJanela(){
         this.setSize(200, 120);
@@ -45,7 +53,7 @@ public class FinalizarCompra extends JFrame implements View {
         
         jpFinalizarCompra.setLayout(new GridLayout(4,4));
         jpFinalizarCompra.add(new JLabel("Total a pagar: " + totalPagar));
-        jpFinalizarCompra.add(new JLabel("Desconto: 2%"));
+        jpFinalizarCompra.add(new JLabel("Desconto: " + getDesconto()));
         jpFinalizarCompra.add(new JLabel("Metodo de pagamento: " + metodoPagamento));
         
         JButton btnConfimar = new JButton("Confirmar");

@@ -54,8 +54,7 @@ public class FinalizarCompraBtn implements ActionListener {
        this.telaVenda.getCadastroClienteNome().setText("");
        this.telaVenda.getCadastroClienteCpf().setText("");
     }
-    
-    
+        
     private double calculaTotal (JTable carrinho) {
        int totalRow = carrinho.getRowCount();
        double soma = 0;
