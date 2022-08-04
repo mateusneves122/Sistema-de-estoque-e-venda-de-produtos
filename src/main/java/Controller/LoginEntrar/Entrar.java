@@ -23,10 +23,8 @@ public class Entrar implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("teste");
         for(Funcionario i : tela.getFuncionariosContratados().getFuncionariosContratados()) {
             if(i.getNome().equals(tela.getTfNome().getText()) && i.getSenha().equals(String.copyValueOf(tela.getTfSenha().getPassword()))) {
-                System.out.println("Entrou!");
                 if(i.isAdmin()) {
                     this.tela.dispose();
                     CadastroProdutoFuncionario tela = new CadastroProdutoFuncionario(i.getRegistro());

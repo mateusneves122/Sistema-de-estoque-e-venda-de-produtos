@@ -23,7 +23,7 @@ public class CancelarEdicao implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         tela.getAtualizar().setEnabled(false);
         tela.getCancelar().setEnabled(false);
-        tela.getAdicionar().setEnabled(true);
+        tela.getAdicionarNoEstoque().setEnabled(true);
         
         tela.getNomeProduto().setText("");
         tela.getPreco().setText("");

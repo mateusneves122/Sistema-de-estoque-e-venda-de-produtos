@@ -52,16 +52,11 @@ public class EventoJanelaTelaVendas implements WindowListener  {
 
     @Override
     public void windowClosing(WindowEvent e) {
-        System.out.println("Fechou");
         String toJSON = JSONCliente.toJSON(this.tela.getClienteList().getClientesCadastrados());
         Arquivo.escreverArquivo("dadosClientes", toJSON);
-        for(Cliente i : this.tela.getClienteList().getClientesCadastrados()) {
-            System.out.println(i.getNome() + " " + i.getCpf());
-        }
         
         toJSON = JSONProduto.toJSON(this.tela.getEstoque().getProdutosEmEstoque());
         Arquivo.escreverArquivo("dadosProdutos", toJSON);
-        System.out.println("Fechou2");
     }
 
     @Override

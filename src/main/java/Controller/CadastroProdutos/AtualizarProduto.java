@@ -73,7 +73,7 @@ public class AtualizarProduto implements ActionListener {
             tela.getDescricao().setText("");
             
             tela.getAtualizar().setEnabled(false);
-            tela.getAdicionar().setEnabled(true);
+            tela.getAdicionarNoEstoque().setEnabled(true);
             
             this.tela.repaint();
         }

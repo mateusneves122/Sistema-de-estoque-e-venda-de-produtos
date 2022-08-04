@@ -72,13 +72,11 @@ public class EventoJanelaCadastroProdutoFuncionario implements WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
-        System.out.println("Fechou");
         String toJSON = JSONFuncionario.toJSON(this.tela.getFuncionariosContratados().getFuncionariosContratados());
         Arquivo.escreverArquivo("dadosFuncionarios", toJSON);
         
         toJSON = JSONProduto.toJSON(this.tela.getListaProdutos().getProdutosEmEstoque());
         Arquivo.escreverArquivo("dadosProdutos", toJSON);
-        System.out.println("Fechou2");
     }
 
     @Override

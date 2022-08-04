@@ -39,11 +39,11 @@ import javax.swing.table.DefaultTableModel;
  * @author yanfo
  */
 public class CadastroProdutoFuncionario extends JFrame implements View {
-    private int registroUsuarioAtual;
+    private final int registroUsuarioAtual;
     
     protected JTabbedPane abas;
     protected JButton atualizar;
-    protected JButton adicionar;
+    protected JButton adicionarNoEstoque;
     protected JButton cancelar;
     
     private JPanel telaProduto;
@@ -93,7 +93,7 @@ public class CadastroProdutoFuncionario extends JFrame implements View {
         this.listaProdutos = new Estoque();
         this.atualizar = new JButton("Atualizar");
         this.cancelar = new JButton("Cancelar");
-        this.setTitle("Cadastro e edição de produtos e funcionários");
+        
         
         //this.montaTela();
     }
@@ -167,8 +167,8 @@ public class CadastroProdutoFuncionario extends JFrame implements View {
         return localizacao;
     }
 
-    public JButton getAdicionar() {
-        return adicionar;
+    public JButton getAdicionarNoEstoque() {
+        return adicionarNoEstoque;
     }
 
     public JTextArea getdDescricao() {
@@ -247,7 +247,7 @@ public class CadastroProdutoFuncionario extends JFrame implements View {
     public void configuraJanela() {
         // Janela por padrão na Resolução 1280x720
         this.setSize(1280, 720);
-        
+        this.setTitle("Cadastro e edição de produtos e funcionários");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         this.abas = new JTabbedPane();
@@ -350,10 +350,10 @@ public class CadastroProdutoFuncionario extends JFrame implements View {
         this.descricao.setBorder(BorderFactory.createTitledBorder("Descrição"));
         direita.add(this.descricao);
         
-        // Adição do botão adicionar: Adiciona os produtos na planilha
-        this.adicionar = new JButton("Adicionar");
-        adicionar.addActionListener(new SalvarProduto(this));
-        esquerda.add(adicionar);
+        // Adição do botão adicionarNoEstoque: Adiciona os produtos na planilha
+        this.adicionarNoEstoque = new JButton("Adicionar");
+        adicionarNoEstoque.addActionListener(new SalvarProduto(this));
+        esquerda.add(adicionarNoEstoque);
         
         // Atualização dos itens editados na planilha
         this.atualizar.addActionListener(new AtualizarProduto(this));
@@ -537,9 +537,9 @@ public class CadastroProdutoFuncionario extends JFrame implements View {
         esquerda.add(isAdmin);
         
         // Botões para a manipulação dos dados
-        JButton adicionar = new JButton("Adicionar");
-        adicionar.addActionListener(new SalvarFuncionario(this));
-        esquerda.add(adicionar);
+        JButton adicionarFuncionario = new JButton("Adicionar");
+        adicionarFuncionario.addActionListener(new SalvarFuncionario(this));
+        esquerda.add(adicionarFuncionario);
         
         JButton remover = new JButton("Remover");
         remover.addActionListener(new RemoverFuncionario(this));
