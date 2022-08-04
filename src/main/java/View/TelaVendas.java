@@ -56,7 +56,7 @@ public class TelaVendas extends JFrame implements View {
         this.estoque = new Estoque();
         this.clienteList = new ClienteCadastrado();
     }
-
+    
     public JPanel getTela() {
         return tela;
     }
@@ -162,7 +162,6 @@ public class TelaVendas extends JFrame implements View {
         
         return verificaClienteList;
     }
-    
     
     @Override
     public void configuraJanela() {

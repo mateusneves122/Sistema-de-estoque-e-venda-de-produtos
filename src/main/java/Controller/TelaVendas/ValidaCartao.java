@@ -5,7 +5,6 @@ package Controller.TelaVendas;
 
 import View.CompraCartao;
 import View.TelaVendas;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

@@ -38,13 +38,21 @@ public class FinalizarCompraBtn implements ActionListener {
        //Paramêtros para instancia a telFinCompra;
        if(this.telaVenda.getFormaPagamentoIndex() == 0){
            
+           double desconto = 0;
+           
+           if(this.telaVenda.verificaSeClienteTemCadastroCpf(telaVenda.getCPF())){
+                desconto = calculaDesconto(totalPagar);
+                totalPagar -= desconto;
+            }
+           
            telaFinCompra = new FinalizarCompra(Double.toString(totalPagar), formaDePagamento,telaVenda);
            telaFinCompra.montaTela();
        }else{
            telacartao = new CompraCartao(Double.toString(totalPagar), formaDePagamento,telaVenda);
            telacartao.montaTela();
        }
-       
+       this.telaVenda.getCadastroClienteNome().setText("");
+       this.telaVenda.getCadastroClienteCpf().setText("");
     }
     
     
@@ -59,4 +67,10 @@ public class FinalizarCompraBtn implements ActionListener {
         }
        return soma;
     }
+    
+    private double calculaDesconto(double totalPagar) {
+      return totalPagar*0.02;  
+    }
+
+    
 }

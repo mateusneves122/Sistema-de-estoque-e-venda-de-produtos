@@ -20,7 +20,6 @@ public class FinalizarCompra extends JFrame implements View {
     private String metodoPagamento;
     private TelaVendas telaVenda;
     private boolean cadastroAtivo;
-    private double desconto;
     
     public FinalizarCompra(String totalPagar, String metodoPagamento,TelaVendas t) {
         this.totalPagar = totalPagar;
@@ -29,23 +28,10 @@ public class FinalizarCompra extends JFrame implements View {
         this.cadastroAtivo = t.verificaSeClienteTemCadastroCpf(t.getCPF());
     }
     
-    private void calculaDesconto() {
-      double d = Double.parseDouble(totalPagar)*0.02;  
-      this.desconto = d;
-    }
-    
-    private double getDesconto() {
-        if(this.cadastroAtivo) {
-            calculaDesconto();
-        }
-        return this.desconto;
-    }
-    
     @Override
     public void configuraJanela(){
         this.setSize(200, 120);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
         
         this.tela = new JPanel();
         this.tela.setLayout(new BorderLayout());
@@ -59,7 +45,7 @@ public class FinalizarCompra extends JFrame implements View {
         
         jpFinalizarCompra.setLayout(new GridLayout(4,4));
         jpFinalizarCompra.add(new JLabel("Total a pagar: " + totalPagar));
-        jpFinalizarCompra.add(new JLabel("Desconto: " + this.desconto));
+        jpFinalizarCompra.add(new JLabel("Desconto: 2%"));
         jpFinalizarCompra.add(new JLabel("Metodo de pagamento: " + metodoPagamento));
         
         JButton btnConfimar = new JButton("Confirmar");
@@ -71,12 +57,13 @@ public class FinalizarCompra extends JFrame implements View {
     }
 
     
-    
+    @Override
     public void mostraTela() {
         this.add(tela);
         this.setVisible(true);
     }
 
+    @Override
     public void montaTela() {
         configuraJanela();
         configuraFinalizarCompra();
