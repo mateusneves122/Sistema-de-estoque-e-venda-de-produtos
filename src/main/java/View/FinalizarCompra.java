@@ -9,7 +9,6 @@ import Controller.TelaVendas.CompraD;
 import Interfaces.View;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,11 +21,26 @@ public class FinalizarCompra extends JFrame implements View {
     private String totalPagar;
     private String metodoPagamento;
     private TelaVendas telaVenda;
+    private boolean cadastroAtivo;
+    private double desconto;
     
     public FinalizarCompra(String totalPagar, String metodoPagamento,TelaVendas t) {
         this.totalPagar = totalPagar;
         this.metodoPagamento = metodoPagamento;
         this.telaVenda = t;
+        this.cadastroAtivo = t.verificaSeClienteTemCadastroCpf(t.getCPF());
+    }
+    
+    private void calculaDesconto() {
+      double d = Double.parseDouble(totalPagar)*0.02;  
+      this.desconto = d;
+    }
+    
+    private double getDesconto() {
+        if(this.cadastroAtivo) {
+            calculaDesconto();
+        }
+        return this.desconto;
     }
     
     @Override
@@ -47,7 +61,7 @@ public class FinalizarCompra extends JFrame implements View {
         
         jpFinalizarCompra.setLayout(new GridLayout(4,4));
         jpFinalizarCompra.add(new JLabel("Total a pagar: " + totalPagar));
-        jpFinalizarCompra.add(new JLabel("Desconto: " + "R$0.00"));
+        jpFinalizarCompra.add(new JLabel("Desconto: " + this.desconto));
         jpFinalizarCompra.add(new JLabel("Metodo de pagamento: " + metodoPagamento));
         
         JButton btnConfimar = new JButton("Confirmar");

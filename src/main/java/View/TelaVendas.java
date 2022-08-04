@@ -17,6 +17,7 @@ import Model.Estoque;
 import Model.client.Cliente;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -46,8 +47,11 @@ public class TelaVendas extends JFrame implements View {
 
     private JTextField cadastroClienteNome;
     private JTextField cadastroClienteCpf;
+    private JTextField cpf;
     private ClienteCadastrado clienteList;
     private Estoque estoque;
+    
+    private double desconto;
     
     public TelaVendas() {
         this.estoque = new Estoque();
@@ -141,6 +145,25 @@ public class TelaVendas extends JFrame implements View {
     public void setCadastroClienteCpf(JTextField cadastroClienteCpf) {
         this.cadastroClienteCpf = cadastroClienteCpf;
     }
+   
+    public String getCPF() {
+        return this.cpf.getText();
+    }
+    
+    public boolean verificaSeClienteTemCadastroCpf(String cpf) {
+        List<Cliente> cliente = clienteList.getClientesCadastrados();
+        boolean verificaClienteList = false;
+        
+        for(Cliente c: cliente) {
+            if(c.getCpf().equals(cpf)) {
+               verificaClienteList = true;
+               break;
+            }
+        }
+        
+        return verificaClienteList;
+    }
+    
     
     @Override
     public void configuraJanela() {
@@ -186,6 +209,14 @@ public class TelaVendas extends JFrame implements View {
         fim.addActionListener(new FinalizarCompraBtn(this));
         fim.addActionListener(new FinalizarCompraBtn(this));
         jpFun.add(fim);
+        
+        JPanel verificaCpf = new JPanel();
+        verificaCpf.setBorder(BorderFactory.createTitledBorder("Cliente já cadastrado"));
+        verificaCpf.add(new JLabel("CPF:"));
+        this.cpf = new JTextField(size*2);
+        verificaCpf.add(this.cpf);
+        
+        jpFun.add(verificaCpf);      
         
         JPanel cadastro = new JPanel();
         cadastro.setBorder(BorderFactory.createTitledBorder("Cadastro de clientes"));

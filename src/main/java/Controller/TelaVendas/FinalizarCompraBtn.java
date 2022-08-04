@@ -11,7 +11,7 @@ import View.TelaVendas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTable;
-
+import Model.Estoque;
 /**
  *
  * @author SuvacoDeCobra
@@ -19,6 +19,7 @@ import javax.swing.JTable;
 
 public class FinalizarCompraBtn implements ActionListener {
 
+    public static Estoque estoque;
     private TelaVendas telaVenda;
     private FinalizarCompra telaFinCompra;
     private CompraCartao telacartao;
@@ -54,7 +55,7 @@ public class FinalizarCompraBtn implements ActionListener {
        double soma = 0;
        
        for(int i = 0;i < totalRow;i++) {
-           double valor = Double.parseDouble((String) carrinho.getModel().getValueAt(i, 2));
+           double valor = (double)carrinho.getModel().getValueAt(i, 2);
            int quantidade = (int) carrinho.getModel().getValueAt(i, 3);
            soma += valor*(double)quantidade;
         }
