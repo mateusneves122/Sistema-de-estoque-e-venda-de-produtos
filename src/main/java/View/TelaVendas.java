@@ -307,8 +307,4 @@ public class TelaVendas extends JFrame implements View {
         mostraTela();
     }
     
-    public static void main(String[] args) {
-        TelaVendas tela = new TelaVendas();
-        tela.montaTela();
-    }
 }

@@ -27,12 +27,6 @@ public class EventoJanelaCadastroCliente implements WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
-        /*System.out.println("Fechou");
-        String toJSON = JSONCliente.toJSON(this.tela.getClienteList().getClientesCadastrados());
-        Arquivo.escreverArquivo("dadosClientes", toJSON);
-        for(Cliente i : this.tela.getClienteList().getClientesCadastrados()) {
-            System.out.println(i.getNome() + " " + i.getCpf());
-        }*/
     }
 
     @Override

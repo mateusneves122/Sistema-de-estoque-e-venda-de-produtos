@@ -28,9 +28,6 @@ public class AdicionarNoCarrinho implements ActionListener{
             DefaultTableModel carrinhoModel = (DefaultTableModel) this.tela.getCarrinho().getModel();
             DefaultTableModel tabelaModel = (DefaultTableModel) this.tela.getProdutos().getModel();
             try{
-                //if(carrinhoModel.getRowCount()> 1){
-                //    carrinhoModel.removeRow(carrinhoModel.getRowCount()-1);
-                //}
                 int qtd = Integer.parseInt(this.tela.getQuantidade().getText());
                 int valorCelula = Integer.parseInt(tabelaModel.getValueAt(index, 3).toString());
                 if(valorCelula >= qtd) {
