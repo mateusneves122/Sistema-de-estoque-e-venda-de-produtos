@@ -55,8 +55,8 @@ public class EventoJanelaTelaVendas implements WindowListener  {
         String toJSON = JSONCliente.toJSON(this.tela.getClienteList().getClientesCadastrados());
         Arquivo.escreverArquivo("dadosClientes", toJSON);
         
-        toJSON = JSONProduto.toJSON(this.tela.getEstoque().getProdutosEmEstoque());
-        Arquivo.escreverArquivo("dadosProdutos", toJSON);
+        String toJSONproduto = JSONProduto.toJSON(this.tela.getEstoque().getProdutosEmEstoque());
+        Arquivo.escreverArquivo("dadosProdutos", toJSONproduto);
     }
 
     @Override

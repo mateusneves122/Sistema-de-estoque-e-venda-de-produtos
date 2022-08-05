@@ -3,12 +3,10 @@
 //Matheus Neves dos Santos       - 2020655569C
 package Controller.TelaVendas;
 
-import Enum.ColumnNameProduto;
 import View.FinalizarCompra;
 import View.TelaVendas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *

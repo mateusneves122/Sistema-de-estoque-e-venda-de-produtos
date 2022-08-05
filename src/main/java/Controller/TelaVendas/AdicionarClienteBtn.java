@@ -35,6 +35,9 @@ public class AdicionarClienteBtn implements ActionListener {
         try {
             cpfContemLetras(cpf);
             cpfUsado(cpf, this.tela.getClienteList().getClientesCadastrados());
+            if(Double.parseDouble(cpf) < 0) {
+                throw new NumberFormatException();
+            }
             Cliente cliente = new Cliente(nome,cpf);
             this.tela.getClienteList().getClientesCadastrados().add(cliente);
             this.tela.getCadastroClienteCpf().setBackground(Color.WHITE);

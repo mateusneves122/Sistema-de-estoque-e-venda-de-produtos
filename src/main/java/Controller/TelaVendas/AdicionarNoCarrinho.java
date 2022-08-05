@@ -3,6 +3,7 @@
 //Matheus Neves dos Santos       - 2020655569C
 package Controller.TelaVendas;
 
+import Model.product.Produto;
 import View.TelaVendas;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,10 @@ public class AdicionarNoCarrinho implements ActionListener{
             DefaultTableModel tabelaModel = (DefaultTableModel) this.tela.getProdutos().getModel();
             try{
                 int qtd = Integer.parseInt(this.tela.getQuantidade().getText());
+                if(qtd<0) {
+                    throw new NumberFormatException();
+                }
+                
                 int valorCelula = Integer.parseInt(tabelaModel.getValueAt(index, 3).toString());
                 if(valorCelula >= qtd) {
                     
@@ -41,6 +46,11 @@ public class AdicionarNoCarrinho implements ActionListener{
                     //calculat(carrinhoModel);
                     this.tela.getCarrinho().setModel(carrinhoModel);
                     
+                    for(Produto i : this.tela.getEstoque().getProdutosEmEstoque()) {
+                        if(i.getId() == Integer.parseInt(tabelaModel.getValueAt(index, 0).toString())) {
+                            i.setQuantidade(valorCelula);
+                        }
+                    }
                 }
                 // limpeza tela
                 tela.getQuantidade().setText("");

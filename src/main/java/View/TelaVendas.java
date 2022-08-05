@@ -180,7 +180,6 @@ public class TelaVendas extends JFrame implements View {
         this.setLocationRelativeTo(null);
         
         this.addWindowListener(new EventoJanelaTelaVendas(this));
-        //JButton adicionar = new JButton("Salvar");
         
     }
     
