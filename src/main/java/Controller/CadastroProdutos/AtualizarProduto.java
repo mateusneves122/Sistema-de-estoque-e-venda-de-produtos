@@ -29,8 +29,9 @@ public class AtualizarProduto implements ActionListener {
             String nome = this.tela.getNomeProduto().getText();
             double preco = Double.parseDouble(this.tela.getPreco().getText());
             int quantidade = Integer.parseInt(this.tela.getQuantidade().getText());
+            double valorUnidade = Double.parseDouble(tela.getValorUnidade().getText());
             
-            if(quantidade < 0 || preco < 0) {
+            if(quantidade < 0 || preco < 0 || valorUnidade<0) {
                 throw new NumberFormatException();
             }
             
@@ -48,14 +49,14 @@ public class AtualizarProduto implements ActionListener {
             String tipo = tela.getTipoProduto().getSelectedItem().toString();
             String localizacao = tela.getLocalizacao().getText();
             String fornecedor = tela.getFornecedor().getText();
-            double pesoVolume = Double.parseDouble(tela.getValorUnidade().getText());
+            
             String unidadeMedida = tela.getUnidadeMedida().getSelectedItem().toString();
             
             produto.setDescricao(descricao);
             produto.setTipo(tipo);
             produto.setLocalizacaoNoEstoque(localizacao);
             produto.setFornecedor(fornecedor);
-            produto.setPesoVolume(pesoVolume);
+            produto.setPesoVolume(valorUnidade);
             produto.setUnidadeMedida(unidadeMedida);
             
             tela.getListaProdutos().addProduct(produto);
