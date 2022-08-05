@@ -91,7 +91,7 @@ public class CompraCartao extends JFrame implements View{
         
         jpFinalizarCompra.setLayout(new GridLayout(10,1));
         jpFinalizarCompra.add(new JLabel("Total a pagar: " + totalPagar));
-        jpFinalizarCompra.add(new JLabel("Desconto:"));
+        jpFinalizarCompra.add(new JLabel("Desconto: 0%"));
         jpFinalizarCompra.add(new JLabel("Metodo de pagamento: " + metodoPagamento));
         jpFinalizarCompra.add(new JLabel("Numero de parcelas:"));
         String[] parc = {"1","2","3","4","5","6","7","8","9","10","11","12"};        

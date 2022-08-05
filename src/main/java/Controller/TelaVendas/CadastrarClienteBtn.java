@@ -29,9 +29,6 @@ public class CadastrarClienteBtn implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for(Cliente i : this.tela.getClienteList().getClientesCadastrados()) {
-            System.out.println(i.getNome() + " " + i.getCpf());
-        }
         String nome = this.telaCliente.getNome().getText();
         String cpf = this.telaCliente.getCpf().getText();
         try {

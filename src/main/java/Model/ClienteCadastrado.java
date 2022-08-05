@@ -22,7 +22,7 @@ public class ClienteCadastrado {
         return clientesCadastrados;
     }
 
-    public void setClientesCadastrados(List<Cliente> funcionariosContratados) {
+    public void setClientesCadastrados(List<Cliente> clientesCadastrados) {
         this.clientesCadastrados = clientesCadastrados;
     }
 
