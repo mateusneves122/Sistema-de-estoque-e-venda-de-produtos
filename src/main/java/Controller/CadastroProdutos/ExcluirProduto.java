@@ -35,6 +35,8 @@ public class ExcluirProduto implements ActionListener {
             tela.getdTipoProduto().setText("");
             tela.getdUnidadeMedida().setText("");
             tela.getdUnidadeOpt().setText("");
+            
+            tela.getEditarBtn().setEnabled(true);
         }
     }
     

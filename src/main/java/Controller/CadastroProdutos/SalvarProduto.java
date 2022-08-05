@@ -75,6 +75,8 @@ public class SalvarProduto implements ActionListener {
             tela.getLocalizacao().setText("");
             tela.getDescricao().setText("");
             
+            tela.getEditarBtn().setEnabled(true);
+            
             this.tela.repaint();
         }
         catch (NumberFormatException err) {

@@ -52,6 +52,9 @@ public class AtualizarProduto implements ActionListener {
             
             String unidadeMedida = tela.getUnidadeMedida().getSelectedItem().toString();
             
+            produto.setNome(nome);
+            produto.setPreco(preco);
+            produto.setQuantidade(quantidade);
             produto.setDescricao(descricao);
             produto.setTipo(tipo);
             produto.setLocalizacaoNoEstoque(localizacao);
@@ -59,7 +62,6 @@ public class AtualizarProduto implements ActionListener {
             produto.setPesoVolume(valorUnidade);
             produto.setUnidadeMedida(unidadeMedida);
             
-            tela.getListaProdutos().addProduct(produto);
             DefaultTableModel model = (DefaultTableModel) this.tela.getTabelaProdutos().getModel();
             model.addRow(new Object[]{produto.getId(), nome, preco, quantidade});
             model.removeRow(index);
@@ -80,6 +82,7 @@ public class AtualizarProduto implements ActionListener {
             
             tela.getAtualizar().setEnabled(false);
             tela.getAdicionarNoEstoque().setEnabled(true);
+            tela.getEditarBtn().setEnabled(true);
             
             this.tela.repaint();
         }

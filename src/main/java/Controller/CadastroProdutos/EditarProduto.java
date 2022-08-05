@@ -67,6 +67,7 @@ public class EditarProduto implements ActionListener {
             tela.getdUnidadeMedida().setText("");
             tela.getdUnidadeOpt().setText("");
             
+            this.tela.getEditarBtn().setEnabled(false);
             tela.repaint();
         }
     }

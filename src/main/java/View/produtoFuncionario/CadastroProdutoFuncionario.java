@@ -45,6 +45,7 @@ public class CadastroProdutoFuncionario extends JFrame implements View {
     protected JButton atualizar;
     protected JButton adicionarNoEstoque;
     protected JButton cancelar;
+    protected JButton editarBtn;
     
     private JPanel telaProduto;
     private JTable tabelaProdutos;
@@ -109,6 +110,10 @@ public class CadastroProdutoFuncionario extends JFrame implements View {
 
     public JButton getCancelar() {
         return cancelar;
+    }
+
+    public JButton getEditarBtn() {
+        return editarBtn;
     }
 
     public JPanel getTelaProduto() {
@@ -467,9 +472,9 @@ public class CadastroProdutoFuncionario extends JFrame implements View {
         esquerda.add(remove);
         
         // Editar dados do produto
-        JButton editar = new JButton("Editar");
-        editar.addActionListener(new EditarProduto(this));
-        esquerda.add(editar);
+        editarBtn = new JButton("Editar");
+        editarBtn.addActionListener(new EditarProduto(this));
+        esquerda.add(editarBtn);
         
         jpDetalhes.add(esquerda, BorderLayout.WEST);
         jpDetalhes.add(direita, BorderLayout.EAST);

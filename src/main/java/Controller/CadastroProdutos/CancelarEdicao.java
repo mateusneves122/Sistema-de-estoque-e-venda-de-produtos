@@ -54,6 +54,8 @@ public class CancelarEdicao implements ActionListener {
             this.tela.getdLocalizacao().setText(produto.getLocalizacaoNoEstoque());
             this.tela.getdDescricao().setText(produto.getDescricao());
             
+            this.tela.getEditarBtn().setEnabled(true);
+            
             this.tela.repaint();
         }
     }
