@@ -29,6 +29,11 @@ public class AtualizarProduto implements ActionListener {
             String nome = this.tela.getNomeProduto().getText();
             double preco = Double.parseDouble(this.tela.getPreco().getText());
             int quantidade = Integer.parseInt(this.tela.getQuantidade().getText());
+            
+            if(quantidade < 0 || preco < 0) {
+                throw new NumberFormatException();
+            }
+            
             Produto produto = new Produto("",0,0);
             
             int id = Integer.parseInt(tela.getTabelaProdutos().getValueAt(index, 0).toString());

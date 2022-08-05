@@ -75,8 +75,8 @@ public class EventoJanelaCadastroProdutoFuncionario implements WindowListener {
         String toJSON = JSONFuncionario.toJSON(this.tela.getFuncionariosContratados().getFuncionariosContratados());
         Arquivo.escreverArquivo("dadosFuncionarios", toJSON);
         
-        toJSON = JSONProduto.toJSON(this.tela.getListaProdutos().getProdutosEmEstoque());
-        Arquivo.escreverArquivo("dadosProdutos", toJSON);
+        String toJSONproduto = JSONProduto.toJSON(this.tela.getListaProdutos().getProdutosEmEstoque());
+        Arquivo.escreverArquivo("dadosProdutos", toJSONproduto);
     }
 
     @Override

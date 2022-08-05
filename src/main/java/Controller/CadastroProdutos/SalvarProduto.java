@@ -27,12 +27,17 @@ public class SalvarProduto implements ActionListener {
             String nome = this.tela.getNomeProduto().getText();
             double preco = toDouble(this.tela.getPreco().getText());
             int quantidade = toInt(this.tela.getQuantidade().getText());
+            double unidadeQtd = Double.parseDouble(tela.getValorUnidade().getText());
+            
+            if(quantidade < 0 || preco < 0 || unidadeQtd < 0) {
+                throw new NumberFormatException();
+            }
             
             String descricao = tela.getDescricao().getText();
             String tipo = tela.getTipoProduto().getSelectedItem().toString();
             String localizacao = tela.getLocalizacao().getText();
             String fornecedor = tela.getFornecedor().getText();
-            double unidadeQtd = Double.parseDouble(tela.getValorUnidade().getText());
+            
             String unidadeMedida = tela.getUnidadeMedida().getSelectedItem().toString();
             
             Produto produto = new Produto(nome, preco, quantidade);
@@ -44,7 +49,9 @@ public class SalvarProduto implements ActionListener {
             produto.setPesoVolume(unidadeQtd);
             produto.setUnidadeMedida(unidadeMedida);
             
+            // Adicionar produto no estoque:
             tela.getListaProdutos().getProdutosEmEstoque().add(produto);
+            
             DefaultTableModel model = (DefaultTableModel) this.tela.getTabelaProdutos().getModel();
             model.addRow(new Object[]{produto.getId(), nome, preco, quantidade});
             

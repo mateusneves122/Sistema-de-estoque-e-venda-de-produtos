@@ -27,7 +27,6 @@ public class Estoque {
             Produto p;
             for (int i = 0; i < produtosEmEstoque.size(); i++) {
                 p = produtosEmEstoque.get(i);
-                System.out.println("ID: " + p.getId());
                 if (p.getId() == id) {
                     produtosEmEstoque.remove(p);
                     break;

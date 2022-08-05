@@ -3,6 +3,7 @@
 //Matheus Neves dos Santos       - 2020655569C
 package Controller.TelaVendas;
 
+import Model.product.Produto;
 import View.TelaVendas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,7 +33,13 @@ public class ExcluirDoCarrinho implements ActionListener {
                     if(Integer.parseInt(tabelaModel.getValueAt(i, 0).toString()) == id){
                         tabelaModel.setValueAt(Integer.parseInt(tabelaModel.getValueAt(i, 3).toString())+qtd, i, 3);
                         this.tela.getProdutos().setModel(tabelaModel);
+                        
                         break;
+                    }
+                }
+                for (Produto i : this.tela.getEstoque().getProdutosEmEstoque()) {
+                    if (i.getId() == id) {
+                        i.setQuantidade(i.getQuantidade()+qtd);
                     }
                 }
                 carrinhoModel.removeRow(index);
